@@ -1,43 +1,10 @@
-<a name="readme-top"></a>
-
-<!--
-!!! IMPORTANT !!!
-This README is an example of how you could professionally present your codebase. 
-Writing documentation is a crucial part of your work as a professional software developer and cannot be ignored. 
-
-You should modify this file to match your project and remove sections that don't apply.
-
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
-
-OPTIONAL SECTIONS:
-- FAQ
-
-After you're finished please remove all the comments and instructions!
-
-For more information on the importance of a professional README for your repositories: https://github.com/microverseinc/curriculum-transversal-skills/blob/main/documentation/articles/readme_best_practices.md
--->
-
 <div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
+  <img src="https://camo.githubusercontent.com/c01f0a75ddab428dbbe4787afa7a0990517a17c80db076037aaff29a39c355f0/68747470733a2f2f6c6d7465636875622e6f72672f77702d636f6e74656e742f75706c6f6164732f323032322f30352f4c4d2d4c4f474f2d46696e616c2d7765622e706e67" alt="logo" width="140"  height="auto" />
   <br/>
 
-  <h3><b>Microverse README Template</b></h3>
+  <h3><b>E-Commerce Readme</b></h3>
 
 </div>
-
-<!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
 
@@ -63,17 +30,16 @@ For more information on the importance of a professional README for your reposit
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [your_project_name] <a name="about-project"></a>
+# 📖 E-Commerce App <a name="about-project"></a>
 
-> Describe your project in 1 or 2 sentences.
 
-**[your_project__name]** is a...
+> **E-Commerce App** is the frontend Repository for the final capstone for the COhort-2 students at LMtech Hub.
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-> Describe the tech stack and include only the relevant sections that apply to your project.
+> Take a look at the various teechnologies that we used in this application.
 
 <details>
   <summary>Client</summary>
@@ -92,7 +58,7 @@ For more information on the importance of a professional README for your reposit
 <details>
 <summary>Database</summary>
   <ul>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+    <li><a href="">MongoDB</a></li>
   </ul>
 </details>
 
@@ -112,99 +78,88 @@ For more information on the importance of a professional README for your reposit
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> Add a link to your deployed project.
-
-- [Live Demo Link](https://google.com)
+- [Live Demo Link](https://aphia.vercel.app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- GETTING STARTED -->
+
+
+
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
-
 To get a local copy up and running, follow these steps.
+
+## BACKEND REPO:
+[Click here](https://github.com/donvico/blackhole)
 
 ### Prerequisites
 
 In order to run this project you need:
 
-<!--
-Example command:
+### Node JS
+Download [Node JS](https://nodejs.org/en/download/current):
 
 ```sh
- gem install rails
+  npm install -g npm
 ```
- -->
+
 
 ### Setup
 
 Clone this repository to your desired folder:
 
-<!--
-Example commands:
+
 
 ```sh
   cd my-folder
-  git clone git@github.com:myaccount/my-project.git
+  git clone https://github.com/PromzzyKoncepts/E-commerce-Client.git
 ```
---->
 
 ### Install
 
 Install this project with:
 
-<!--
-Example command:
+
 
 ```sh
   cd my-project
-  gem install
+  npm install
 ```
---->
+-
 
 ### Usage
 
 To run the project, execute the following command:
 
-<!--
-Example command:
+
 
 ```sh
-  rails server
+  npm start
 ```
---->
 
-### Run tests
-
-To run tests, run the following command:
-
-<!--
-Example command:
-
-```sh
-  bin/rails test test/models/article_test.rb
-```
---->
-
-### Deployment
-
-You can deploy this project using:
-
-<!--
-Example:
-
-```sh
-
-```
- -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- AUTHORS -->
 
-## 👥 Authors <a name="authors"></a>
+
+## 👥 Team Leads <a name="authors"></a>
+
+👤 **Promise Okechukwu**
+
+- GitHub: [@promzzykoncepts](https://github.com/PromzzyKoncepts)
+- Twitter: [@pr0mzzy](https://twitter.com/pr0mzzy)
+- LinkedIn: [Promise Okechukwu](https://linkedin.com/in/promiseokechukwu)
+
+
+👤 **Okafor Chidi Patrick**
+
+- GitHub: [@chidipatrick](https://github.com/chidipatrick)
+- Twitter: [@pr0mzzy](https://twitter.com/pr0mzzy)
+- LinkedIn: [Promise Okechukwu](https://linkedin.com/in/promiseokechukwu)
+
+
+## 👥 Collaborators <a name="authors"></a>
 
 > Mention all of the collaborators of this project.
 
