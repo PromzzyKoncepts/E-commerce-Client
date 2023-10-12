@@ -66,9 +66,13 @@
 ### Key Features <a name="key-features"></a>
 
 
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+- **It has product of different categories**
+- **There is an admin Dashboard that allows individuals to sell their products**
+- **It has a user/Admin data management**
+- **It has Cart that keeps all the selected product that is yet to be paid for**
+- **It has a wishlist of product that users like**
+- **it has product recommendation for users using a sorting algorithm**
+- **it has a payment option that uses flutterwave**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -162,9 +166,9 @@ To run the project, execute the following command:
 
 👤 **Obi Clementina**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@githubhandle](https://github.com/Clementify)
+- Twitter: [@twitterhandle](https://twitter.com/Clementinaify)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/clemsify)
 
 👤 **Umeadi Ifeanyi**
 
@@ -218,7 +222,7 @@ To run the project, execute the following command:
 
 > Describe 1 - 3 features you will add to the project.
 
-- [ ] **[new_feature_1]**
+- [ ] **payment/subscription plan for Admins will also be included**
 - [ ] **[new_feature_2]**
 - [ ] **[new_feature_3]**
 
