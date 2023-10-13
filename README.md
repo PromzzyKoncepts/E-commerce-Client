@@ -1,269 +1,70 @@
-<div align="center">
-  <img src="https://camo.githubusercontent.com/c01f0a75ddab428dbbe4787afa7a0990517a17c80db076037aaff29a39c355f0/68747470733a2f2f6c6d7465636875622e6f72672f77702d636f6e74656e742f75706c6f6164732f323032322f30352f4c4d2d4c4f474f2d46696e616c2d7765622e706e67" alt="logo" width="140"  height="auto" />
-  <br/>
+# Getting Started with Create React App
 
-  <h3><b>E-Commerce Readme</b></h3>
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-</div>
+## Available Scripts
 
-# 📗 Table of Contents
+In the project directory, you can run:
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
-- [💻 Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Setup](#setup)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#deployment)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
-- [📝 License](#license)
+### `npm start`
 
-<!-- PROJECT DESCRIPTION -->
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-# 📖 E-Commerce App <a name="about-project"></a>
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
+### `npm test`
 
-> **E-Commerce App** is the frontend Repository for the final capstone for the COhort-2 students at LMtech Hub.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## 🛠 Built With <a name="built-with"></a>
+### `npm run build`
 
-### Tech Stack <a name="tech-stack"></a>
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-> Take a look at the various teechnologies that we used in this application.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-<details>
-  <summary>Client</summary>
-  <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
-  </ul>
-</details>
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-<details>
-  <summary>Server</summary>
-  <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
-  </ul>
-</details>
+### `npm run eject`
 
-<details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="">MongoDB</a></li>
-  </ul>
-</details>
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-### Key Features <a name="key-features"></a>
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-- **It has product of different categories**
-- **There is an admin Dashboard that allows individuals to sell their products**
-- **It has a user/Admin data management**
-- **It has Cart that keeps all the selected product that is yet to be paid for**
-- **It has a wishlist of product that users like**
-- **it has product recommendation for users using a sorting algorithm**
-- **it has a payment option that uses flutterwave**
+## Learn More
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-## 🚀 Live Demo <a name="live-demo"></a>
+### Code Splitting
 
-- [Live Demo Link](https://aphia.vercel.app)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Analyzing the Bundle Size
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
+### Making a Progressive Web App
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
+### Advanced Configuration
 
-## 💻 Getting Started <a name="getting-started"></a>
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-To get a local copy up and running, follow these steps.
+### Deployment
 
-## BACKEND REPO:
-[Click here](https://github.com/donvico/blackhole)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### Prerequisites
+### `npm run build` fails to minify
 
-In order to run this project you need:
-
-### Node JS
-Download [Node JS](https://nodejs.org/en/download/current):
-
-```sh
-  npm install -g npm
-```
-
-
-### Setup
-
-Clone this repository to your desired folder:
-
-
-
-```sh
-  cd my-folder
-  git clone https://github.com/PromzzyKoncepts/E-commerce-Client.git
-```
-
-### Install
-
-Install this project with:
-
-
-
-```sh
-  cd my-project
-  npm install
-```
--
-
-### Usage
-
-To run the project, execute the following command:
-
-
-
-```sh
-  npm start
-```
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-## 👥 Team Leads <a name="authors"></a>
-
-👤 **Promise Okechukwu**
-
-- GitHub: [@promzzykoncepts](https://github.com/PromzzyKoncepts)
-- Twitter: [@pr0mzzy](https://twitter.com/pr0mzzy)
-- LinkedIn: [Promise Okechukwu](https://linkedin.com/in/promiseokechukwu)
-
-
-👤 **Okafor Chidi Patrick**
-
-- GitHub: [@chidipatrick](https://github.com/chidipatrick)
-- Twitter: [@pr0mzzy](https://twitter.com/pr0mzzy)
-- LinkedIn: [Promise Okechukwu](https://linkedin.com/in/promiseokechukwu)
-
-
-## 👥 Collaborators <a name="authors"></a>
-
-> Mention all of the collaborators of this project.
-
-👤 **Obi Clementina**
-
-- GitHub: [@githubhandle](https://github.com/Clementify)
-- Twitter: [@twitterhandle](https://twitter.com/Clementinaify)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/clemsify)
-
-👤 **Umeadi Ifeanyi**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Chidiebube Okoye**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Nwafor Chidimma**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Ighawosa Omoma**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Perpetual Obiefuna**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-
-👤 **Adigwe Chizoba**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-
-👤 **Anyaefiena Ifechukwu**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FUTURE FEATURES -->
-
-## 🔭 Future Features <a name="future-features"></a>
-
-> Describe 1 - 3 features you will add to the project.
-
-- [ ] **payment/subscription plan for Admins will also be included**
-- [ ] **new_feature_2**
-- [ ] **[new_feature_3]**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTRIBUTING -->
-
-## 🤝 Contributing <a name="contributing"></a>
-
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](../../issues/).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- SUPPORT -->
-
-## ⭐️ Show your support <a name="support"></a>
-
-
-If you like this project please drop a like and create an account as a user/Admin
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGEMENTS -->
-
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-
-We would like to thank LMTECH HUB management, Instructors and Supervisor for the guide and support in doing this project.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
-
-## 📝 License <a name="license"></a>
-
-This project is [MIT](./MIT.md) licensed.
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
