@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import LatestArrival from './components/LatestArrival';
 
 function App() {
   return (
     <div className="App text-5xl">
-      You can start your project now!
+      <LatestArrival />
     </div>
   );
 }
