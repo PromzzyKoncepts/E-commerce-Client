@@ -1,10 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import AddProduct from "./component/AddProduct";
 
 function App() {
   return (
-    <div className="App text-5xl">
-      You can start your project now!
+    <div className="w-full ">
+      <AddProduct />
     </div>
   );
 }
