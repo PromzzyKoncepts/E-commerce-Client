@@ -129,7 +129,6 @@ return (
 
                 <button type="submit"className="text-[16px] bg-blue-500 my-[10px] w-[200px] border border-gray-300 px-3 py-2 rounded-lg shadow-sn focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 border-2"
           > submit</button>
-          <Login/>
             </form>
         </div>
     </>
