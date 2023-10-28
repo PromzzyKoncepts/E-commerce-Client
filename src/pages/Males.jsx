@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Heart, Search } from 'lucide-react'
-import { Link } from 'react-router-dom'
 import { HiShoppingBag } from 'react-icons/hi'
 import { useDispatch } from 'react-redux';
 import { itemAdded } from '../redux/features/cartSlice';
@@ -11,6 +10,7 @@ const Males = () => {
     const dispatch = useDispatch()
     const [products, setProducts] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [clicked, setClicked] = useState(false)
 
     useEffect(() => {
         setIsLoading(true)
@@ -20,6 +20,11 @@ const Males = () => {
                 setProducts(res.data)
             })
     }, [])
+
+    const handleShopNow = (product) => {
+        // setClicked(true)
+        dispatch(itemAdded(product))
+    }
     return (
         <>
             {isLoading
@@ -41,7 +46,7 @@ const Males = () => {
                                         <Heart />
                                         <Search />
                                     </div>
-                                    <button className="flex gap-3 items-center text-xl font-medium" onClick={() => dispatch(itemAdded(product))}>
+                                    <button className="flex gap-3 items-center text-xl font-medium" onClick={() => handleShopNow(product)} disabled={clicked}>
                                         <HiShoppingBag />
                                         Shop Now
                                     </button>
