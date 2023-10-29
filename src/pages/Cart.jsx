@@ -3,6 +3,7 @@ import { Trash, Trash2 } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import StarIcon from '@mui/icons-material/Star';
+import StarHalfIcon from '@mui/icons-material/StarHalf';
 import { calcTotal, clearAll, itemDecreased, itemIncreased, itemRemoved } from '../redux/features/cartSlice'
 
 const Cart = () => {
@@ -11,6 +12,69 @@ const Cart = () => {
   dispatch(calcTotal()) //calls the calcTotal function to ensure it updates as changes in quantity are made
   const total = useSelector((state) => state.cart.total) //access the computed value of the total property in the state
 
+  const ratings = (rating) => {
+    if (rating < 1) {
+      return (
+        <>
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+        </>
+      )
+    } else if (rating < 2) {
+      return (
+        <>
+          <StarIcon className=' text-orange-500' />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+        </>
+      )
+    } else if (rating < 3) {
+      return (
+        <>
+          <StarIcon className=' text-orange-500' />
+          <StarIcon className=' text-orange-500' />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+        </>
+      )
+    } else if (rating < 4) {
+      return (
+        <>
+          <StarIcon className=' text-orange-500' />
+          <StarIcon className=' text-orange-500' />
+          <StarIcon className=' text-orange-500' />
+          <StarIcon />
+          <StarIcon />
+        </>
+      )
+    } else if (rating < 5) {
+      return (
+        <>
+          <StarIcon className=' text-orange-500' />
+          <StarIcon className=' text-orange-500' />
+          <StarIcon className=' text-orange-500' />
+          <StarIcon className=' text-orange-500' />
+          <StarIcon />
+        </>
+      )
+    } else {
+      return (
+        <>
+          <StarIcon className=' text-orange-500' />
+          <StarIcon className=' text-orange-500' />
+          <StarIcon className=' text-orange-500' />
+          <StarIcon className=' text-orange-500' />
+          <StarIcon className=' text-orange-500' />
+        </>
+      )
+    }
+  }
 
   return (
     <>
@@ -31,11 +95,11 @@ const Cart = () => {
                           </div>
                           <div className="right flex-1">
                             <div className=" flex items-center justify-between font-semibold text-lg">
-                              <h3>{item.title}</h3>
+                              <h3 className='font-mono text-lg sm:text-xl'>{item.title}</h3>
                               <h3>${item.price}</h3>
                             </div>
-                            <article className='my-3'>{item.description}</article>
-                            <p >Ratings:{item.rating.rate} <StarIcon /></p>
+                            <article className='my-3 font-[poppins]'>{item.description}</article>
+                            <p >{ratings(item.rating.rate)} </p>
                           </div>
                         </div>
                         <div className="bottom flex items-center justify-between">
