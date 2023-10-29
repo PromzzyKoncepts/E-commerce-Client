@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Heart, Search } from 'lucide-react'
-import { HiShoppingBag } from 'react-icons/hi'
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import { useDispatch } from 'react-redux';
 import { itemAdded } from '../redux/features/cartSlice';
 
@@ -10,7 +10,7 @@ const Males = () => {
     const dispatch = useDispatch()
     const [products, setProducts] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-    const [clicked, setClicked] = useState(false)
+    const [shopped, setShopped] = useState({})
 
     useEffect(() => {
         setIsLoading(true)
@@ -22,8 +22,9 @@ const Males = () => {
     }, [])
 
     const handleShopNow = (product) => {
-        // setClicked(true)
         dispatch(itemAdded(product))
+        setShopped({ ...shopped, [product.id]: true }) //copies the original shopped state and adds a new product.id property dynamically and sets its value to true
+        //The angle brackets tell JavaScript that the product id is a variable, and that the property name should be evaluated dynamically.
     }
     return (
         <>
@@ -41,14 +42,15 @@ const Males = () => {
                                 <div className="flex-1">
                                     <img src={product.image} alt={product.title} className='h-full w-full' />
                                 </div>
-                                <div className="flex  items-center justify-between py-4">
+                                <div className="flex items-center justify-between py-4">
                                     <div className="flex gap-3">
                                         <Heart />
                                         <Search />
                                     </div>
-                                    <button className="flex gap-3 items-center text-xl font-medium" onClick={() => handleShopNow(product)} disabled={clicked}>
-                                        <HiShoppingBag />
-                                        Shop Now
+                                    <button className="flex gap-3 items-center text-xl font-medium text-slate-900" onClick={() => handleShopNow(product)} >
+                                        <ShoppingBagIcon className={`${shopped[product.id] ? 'opacity-75' : 'opacity-100'}`} />
+                                        {shopped[product.id] ? (<span className='opacity-75'>Shopped</span>) : (<span>Shop Now</span>)}
+                                        {/* above code renders based on the state of the product.id variable */}
                                     </button>
                                 </div>
                                 <h2 className='font-semibold text-base'>{product.title}</h2>
