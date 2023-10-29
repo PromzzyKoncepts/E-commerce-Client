@@ -6,10 +6,10 @@ import StarIcon from '@mui/icons-material/Star';
 import { calcTotal, clearAll, itemDecreased, itemIncreased, itemRemoved } from '../redux/features/cartSlice'
 
 const Cart = () => {
-  const allCartItems = useSelector(state => state.cart.items)
+  const allCartItems = useSelector((state) => state.cart.items) //access the items array property in the state
   const dispatch = useDispatch()
-  dispatch(calcTotal()) 
-  const total = useSelector((state) => state.cart.total)
+  dispatch(calcTotal()) //calls the calcTotal function to ensure it updates as changes in quantity are made
+  const total = useSelector((state) => state.cart.total) //access the computed value of the total property in the state
 
 
   return (
@@ -39,7 +39,7 @@ const Cart = () => {
                           </div>
                         </div>
                         <div className="bottom flex items-center justify-between">
-                          <button className="remove hover:text-red-500 flex items-center hover:bg-inherit bg-red-500 text-white py-3 ps-0 pr-3 shadow-md rounded-md" onClick={() => dispatch(itemRemoved(item))}>
+                          <button className="remove hover:text-red-500 flex items-center hover:bg-inherit bg-red-500 text-white py-3 ps-0 pr-3 shadow-md rounded-md" onClick={() => dispatch(itemRemoved(item.id))}>
                             <Trash2 /> Remove
                           </button>
                           <div className="qty">
@@ -58,7 +58,7 @@ const Cart = () => {
                     </div>
                   ))}
                 </div>
-                <aside className="summary bg-zinc-200 p-4 w-full sm:w-[25%] md:h-fit">
+                <aside className="summary bg-zinc-200 p-4 w-full sm:w-[25%] md:h-fit shadow-lg">
                   <h1 className='text-md lg:text-lg font-semibold text-center'>Cart Summary</h1>
                   <div className="flex justify-between p-6">
                     <h4>Subtotal</h4>
