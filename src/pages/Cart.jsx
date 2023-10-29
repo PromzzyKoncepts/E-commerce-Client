@@ -7,8 +7,9 @@ import { calcTotal, clearAll, itemDecreased, itemIncreased, itemRemoved } from '
 
 const Cart = () => {
   const allCartItems = useSelector(state => state.cart.items)
-  const total = useSelector(state => state.cart.total)
   const dispatch = useDispatch()
+  dispatch(calcTotal()) 
+  const total = useSelector((state) => state.cart.total)
 
 
   return (
@@ -57,14 +58,14 @@ const Cart = () => {
                     </div>
                   ))}
                 </div>
-                <aside className="summary bg-zinc-200 p-4 w-full sm:w-[25%]">
-                  <h1 className='text-md font-medium text-center'>Cart Summary</h1>
+                <aside className="summary bg-zinc-200 p-4 w-full sm:w-[25%] md:h-fit">
+                  <h1 className='text-md lg:text-lg font-semibold text-center'>Cart Summary</h1>
                   <div className="flex justify-between p-6">
                     <h4>Subtotal</h4>
-                    <h3 className='font-bold'>{`$ ${total}`}</h3>
+                    <h3 className='font-bold'>{`$${total}`}</h3>
                   </div>
                   <button className='bg-orange-400 hover:bg-green-600 py-2 text-white w-full flex items-center justify-center rounded-sm shadow-lg font-bold'>
-                    <Link to='/checkout'>{`Checkout $ ${total}`}</Link>
+                    <Link to='/checkout'>{`Checkout ($${total})`}</Link>
                   </button>
                 </aside>
               </div>
