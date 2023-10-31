@@ -1,10 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import Footer from './Footer';
+import Header from './Header';
 
 function App() {
   return (
-    <div className="App text-5xl">
-      You can start your project now!
+    <div className="App ">
+      <Header />
+      <Footer />
     </div>
   );
 }
