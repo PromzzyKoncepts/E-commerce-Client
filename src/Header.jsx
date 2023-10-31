@@ -6,7 +6,7 @@ const Header = () => {
       <h1>Aphie</h1>
       <div className='flex-1 flex justify-end pe-[200px]'>
         <span className='pe-5'>Login</span>
-        <span>Register</span>
+        <span>Register Now</span>
        </div>
     </div>
   )
