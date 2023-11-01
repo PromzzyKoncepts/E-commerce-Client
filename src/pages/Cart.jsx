@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Trash, Trash2 } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import StarIcon from '@mui/icons-material/Star';
-import StarHalfIcon from '@mui/icons-material/StarHalf';
 import { calcTotal, clearAll, itemDecreased, itemIncreased, itemRemoved } from '../redux/features/cartSlice'
 
 const Cart = () => {
@@ -96,7 +95,7 @@ const Cart = () => {
                           <div className="right flex-1">
                             <div className=" flex items-center justify-between font-semibold text-lg">
                               <h3 className='font-mono text-lg sm:text-xl'>{item.title}</h3>
-                              <h3>${item.price}</h3>
+                              <h3>₦{item.price}</h3>
                             </div>
                             <article className='my-3 font-[poppins]'>{item.description}</article>
                             <p >{ratings(item.rating.rate)} </p>
@@ -126,10 +125,10 @@ const Cart = () => {
                   <h1 className='text-md lg:text-lg font-semibold text-center'>Cart Summary</h1>
                   <div className="flex justify-between p-6">
                     <h4>Subtotal</h4>
-                    <h3 className='font-bold'>{`$${total}`}</h3>
+                    <h3 className='font-bold'>{`₦${total}`}</h3>
                   </div>
                   <button className='bg-orange-400 hover:bg-green-600 py-2 text-white w-full flex items-center justify-center rounded-sm shadow-lg font-bold'>
-                    <Link to='/checkout'>{`Checkout ($${total})`}</Link>
+                    <Link to='/checkout'>{`Checkout (₦${total})`}</Link>
                   </button>
                 </aside>
               </div>

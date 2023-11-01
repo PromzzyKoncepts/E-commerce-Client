@@ -38,7 +38,8 @@ const cartSlice = createSlice({
         },
         calcTotal(state) {
             const total = state.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
-            return { ...state, total: total.toFixed(3) };
+            let formattedTotal = Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(total)
+            return { ...state, total: formattedTotal };
             // to get the total of the products in the array, we use the reduce method. 
             // the reduce method takes two parameters, accumulator (refered to here as acc) which represents the results for each iteration and the current item in the array.
             // in the callback function, the price of each item is multiplied with the quantity and added to the accumulator (acc). At the end of the iteration, acc initially 0, will represent the total of the product of item price and item quantity
