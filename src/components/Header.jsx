@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import aphia from "../assets/aphia.png";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 // import userContext from "../context/userContext";
 
 import Badge from "@mui/material/Badge";
-import { styled } from "@mui/";
 import { ArrowDropDown, Search, ShoppingCart } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+import styled from "@emotion/styled";
 // import { Burger, Menu, Overlay } from "./hamburger";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -27,7 +27,7 @@ const Header = () => {
   const [isCategories, setIsCategories] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const handleCategories = () => setIsCategories((prev) => !prev);
-  const allCartItems = useSelector((state) => state.cart.items);
+  // const allCartItems = useSelector((state) => state.cart.items);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -132,7 +132,7 @@ const Header = () => {
             className=" flex items-center gap-2 no-underline text-slate-900"
           >
             <IconButton aria-label="cart">
-              <StyledBadge badgeContent={allCartItems?.length} color="error">
+              <StyledBadge badgeContent={4} color="error">
                 <ShoppingCart />
               </StyledBadge>
             </IconButton>
