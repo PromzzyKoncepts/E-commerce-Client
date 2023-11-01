@@ -1,7 +1,7 @@
 import { useState } from "react";
 import logo from "../assets/aphia.png";
 
-const Footer = () => {
+const Footer = () => { 
   
 
   return (
@@ -20,7 +20,7 @@ const Footer = () => {
           </div>
           <div className="">
             <p>All Rights Reserved &copy; Aphia Stores Inc</p>
-            {/* <p className="text-amber-500">
+            <p className="text-amber-500">
               Designed and Built by
               <a
                 className="text-amber-500 no-underline"
@@ -29,9 +29,9 @@ const Footer = () => {
                 rel="noreferrer"
               >
                 {" "}
-                Promzzy Koncepts
+                Lm-Techies
               </a>
-            </p> */}
+            </p>            
           </div>
         </div>
 
