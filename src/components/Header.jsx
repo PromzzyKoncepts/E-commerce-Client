@@ -2,15 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import aphia from "../assets/aphia.png";
 import { useSelector } from "react-redux";
-import userContext from "../context/userContext";
+// import userContext from "../context/userContext";
 
 import Badge from "@mui/material/Badge";
-import { styled } from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import SearchIcon from "@mui/icons-material/Search";
-import { Burger, Menu, Overlay } from "./hamburger";
+import { styled } from "@mui/";
+import { ArrowDropDown, Search, ShoppingCart } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+// import { Burger, Menu, Overlay } from "./hamburger";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -21,10 +19,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const { authUser } = useContext(userContext);
+  // const { authUser } = useContext(userContext);
+  const authUser = false;
+
   const [isCategories, setIsCategories] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const handleCategories = () => setIsCategories((prev) => !prev);
@@ -70,7 +69,7 @@ const Header = () => {
             />
 
             <button type="submit" className="searchButton">
-              <SearchIcon />
+              <Search />
             </button>
           </div>
         </div>
@@ -83,7 +82,7 @@ const Header = () => {
               onMouseLeave={handleCategories}
             >
               {authUser ? ` ${authUser.username}` : "My account"}
-              <ArrowDropDownIcon />
+              <ArrowDropDown />
               {isCategories && (
                 <section className=" z-[10000] absolute bg-[#333237aa] px-3 py-3 items-center rounded">
                   <div>
@@ -134,7 +133,7 @@ const Header = () => {
           >
             <IconButton aria-label="cart">
               <StyledBadge badgeContent={allCartItems?.length} color="error">
-                <ShoppingCartIcon />
+                <ShoppingCart />
               </StyledBadge>
             </IconButton>
             Cart
@@ -146,11 +145,11 @@ const Header = () => {
             Sell
           </NavLink>
         </nav>
-        <div className="hamburger">
+        {/* <div className="hamburger">
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
           <Overlay open={open} onClick={() => setOpen(false)} />
-        </div>
+        </div> */}
       </header>
     </div>
   );
