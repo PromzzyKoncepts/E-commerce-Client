@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import Header from './components/Header';
+import ShippingAddressForm from './components/ShippingAddressForm';
 
 function App() {
   return (
-    <div className="App text-5xl">
-      <Header />
+    <div className="App text-2xl">
+      <ShippingAddressForm />
     </div>
   );
 }
