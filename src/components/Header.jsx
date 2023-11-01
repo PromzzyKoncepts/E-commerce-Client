@@ -1,33 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import aphia from "../assets/aphia.png";
-// import { useSelector } from "react-redux";
-// import userContext from "../context/userContext";
-
+import userContext from "../context/userContext";
 import Badge from "@mui/material/Badge";
 import { ArrowDropDown, Search, ShoppingCart } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import styled from "@emotion/styled";
-// import { Burger, Menu, Overlay } from "./hamburger";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     right: -3,
     top: 13,
-    border: `2px solid ${theme.palette.background.paper}`,
     padding: "0 4px",
   },
 }));
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
-  // const { authUser } = useContext(userContext);
-  const authUser = false;
-
   const [isCategories, setIsCategories] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { authUser } = useContext(userContext);
+
   const handleCategories = () => setIsCategories((prev) => !prev);
-  // const allCartItems = useSelector((state) => state.cart.items);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -106,7 +99,7 @@ const Header = () => {
                       <>
                         <div className="mb-3">
                           <NavLink
-                            className="bg-amber-500 hover:bg-[#FF8D3A] p-2 no-underline rounded text-white"
+                            className="bg-amber-500 hover-bg-[#FF8D3A] p-2 no-underline rounded text-white"
                             to="/login"
                           >
                             Login
@@ -139,17 +132,12 @@ const Header = () => {
             Cart
           </NavLink>
           <NavLink
-            className="bg-amber-500 px-3 py-1 rounded font-bold hover:bg-orange-500 no-underline text-white"
+            className="bg-amber-500 px-3 py-1 rounded font-bold hover-bg-orange-500 no-underline text-white"
             to="/dashboard"
           >
             Sell
           </NavLink>
         </nav>
-        {/* <div className="hamburger">
-          <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} setOpen={setOpen} />
-          <Overlay open={open} onClick={() => setOpen(false)} />
-        </div> */}
       </header>
     </div>
   );
