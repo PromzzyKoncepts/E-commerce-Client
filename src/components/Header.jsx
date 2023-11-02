@@ -127,7 +127,7 @@ const Header = () => {
             className=" flex items-center gap-2 no-underline text-slate-900"
           >
             <IconButton aria-label="cart">
-              <StyledBadge badgeContent={allCartItems.length} color="error">
+              <StyledBadge badgeContent={allCartItems?.length} color="error">
                 <ShoppingCart />
               </StyledBadge>
             </IconButton>

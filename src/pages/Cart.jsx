@@ -16,6 +16,7 @@ const Cart = () => {
       return (
         <>
           <StarIcon />
+          
           <StarIcon />
           <StarIcon />
           <StarIcon />

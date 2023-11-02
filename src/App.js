@@ -6,6 +6,7 @@ import "./App.css";
 import Header from "./components/Header";
 import LogOut from "./pages/LogOut";
 import Cart from "./pages/Cart";
+import ShippingAddressForm from "./components/ShippingAddressForm";
 
 
 
@@ -24,6 +25,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/logout" element={<LogOut />} />
+
+            <Route path="/shipping" element={<ShippingAddressForm />} />
 
          </Routes>
       </div>

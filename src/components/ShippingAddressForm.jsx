@@ -1,40 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function ShippingAddressForm() {
-    const [street, setStreet] = useState('')
-    const [city, setCity] = useState('')
-    const [state, setState] = useState('')
-    const [zip, setZip] = useState('')
-    const [phoneNum, setPhoneNum] = useState('')
-    const [altPhoneNum, setAltPhoneNum] = useState('')
-
-    const handleStreet = (e) => {
-        setStreet(e.target.value)
-    }
-
-    const handleCity = (e) => {
-        setCity(e.target.value)
-    }
-
-    const handleState = (e) => {
-        setState(e.target.value)
-    }
-
-    const handleZip = (e) => {
-        setZip(e.target.value)
-    }
-
-    const handlePhoneNum = (e) => {
-        setPhoneNum(e.target.value)
-    }
-
-    const handleAltPhoneNUm = (e) => {
-        setAltPhoneNum(e.target.value)
-    }
     
     return (
-        <div className="flex items-center justify-center h-screen">
-            <form className="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
+        <div className="flex items-center justify-center ">
+            <form className="max-w-3xl m-4 p-10 bg-white rounded shadow-xl">
                 <p className="text-gray-800 font-medium">Shipping Details</p>
 
                 <div className="mt-2">
@@ -47,7 +17,7 @@ function ShippingAddressForm() {
                         required
                         placeholder="Street"
                         aria-label="Address"
-                        onChange={handleStreet}
+                        
                     />
                 </div>
 
@@ -61,8 +31,6 @@ function ShippingAddressForm() {
                         required
                         placeholder="City"
                         aria-label="City"
-                        value={city}
-                        onChange={handleCity}  
                     />
                 </div>
 
@@ -76,7 +44,6 @@ function ShippingAddressForm() {
                         required
                         placeholder="State"
                         aria-label="State"
-                        onChange={handleState}
                     />
                 </div>
 
@@ -90,7 +57,6 @@ function ShippingAddressForm() {
                         required
                         placeholder="Postal code"
                         aria-label="Zip"
-                        onChange={handleZip}
                     />
                 </div>
 
@@ -106,7 +72,6 @@ function ShippingAddressForm() {
                         required
                         placeholder="Phone Number"
                         aria-label="Phone Number"
-                        onChange={handlePhoneNum}
                     />
                 </div>
                 
@@ -118,8 +83,7 @@ function ShippingAddressForm() {
                         name="altPhoneNum"
                         type="text"
                         placeholder="Alternative Phone Number"
-                        aria-label="Alternative Phone Number" 
-                        onChange={handleAltPhoneNUm}                       
+                        aria-label="Alternative Phone Number"                        
                     />
                 </div>
                 <div className="mt-4">
@@ -140,7 +104,7 @@ function ShippingAddressForm() {
                         className="px-4 py-1 pb-2 text-slate-950 from-neutral-600 tracking-wider bg-amber-500 rounded"
                         type="submit"
                     >
-                        PROCEED
+                        NEXT
                     </button>
                 </div>
             </form>
