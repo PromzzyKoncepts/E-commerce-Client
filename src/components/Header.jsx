@@ -6,7 +6,7 @@ import Badge from "@mui/material/Badge";
 import { ArrowDropDown, Search, ShoppingCart } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import styled from "@emotion/styled";
-import { Burger, Menu, Overlay } from "./hamburger";
+import { Burger, Menu, Overlay } from "./Hamburger";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
