@@ -1,35 +1,20 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import userContext from "../context/userContext";
-
-import TextField from "@mui/material/TextField";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormControl from "@mui/material/FormControl";
-import IconButton from "@mui/material/IconButton";
+import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid"; 
+// for showpassword to show please run "npm i @heroicons/react@v1" on your terminal
 
 const Login = () => {
   const {
     actions: { signIn },
   } = useContext(userContext);
-//   const [email, setEmail] = useState("");
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState("");
-
-  // MUI FORM TEMPLATE
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  const [showPassword, setShowPassword] = useState(false); 
 
   const navigate = useNavigate();
 
@@ -56,49 +41,60 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
-      <h1 className="text-4xl text-amber-500">Sign In </h1>
-      {errors && <h3>{errors}</h3>}
-      <TextField
-        required
-        id="outlined-basic"
-        onChange={(e) => setUsername(e.target.value)}
-        label="Username"
-        variant="outlined"
-      />
-      <br />
+    <div className="flex items-center justify-center mt-8">
+      <div className="bg-white p-8 rounded shadow-md w-96">
+        <h1 className="text-3xl text-center text-amber-500 font-semibold mb-6">
+          Sign In
+        </h1>
+        {errors && <p className="text-red-500 mb-4">{errors}</p>}
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div className="mb-4">
+            <input
+              type="text"
+              className="w-full px-3 py-2 border rounded"
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Username"
+              required
+            />
+          </div>
 
-      <FormControl sx={{ width: "100%" }} variant="outlined" required>
-        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-        <OutlinedInput
-          required
-          id="outlined-adornment-password"
-          type={showPassword ? "text" : "password"}
-          onChange={(e) => setPassword(e.target.value)}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-          label="Password"
-        />
-      </FormControl>
-      <button>{isLoading ? "Loading" : "Submit"}</button>
+          <div className="mb-4 relative rounded"> 
+            <input
+              type={showPassword ? "text" : "password"} 
+              className="w-full px-3 py-2 pr-10 border rounded"
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              required
+            />
+            <button
+              type="button"
+              className="absolute inset-y-0 right-0 flex items-center pr-2"
+              onClick={() => setShowPassword(!showPassword)} 
+            >
+              {showPassword ? (
+                <EyeOffIcon className="h-6 w-6 text-gray-400" /> // Show EyeOffIcon when password is visible
+              ) : (
+                <EyeIcon className="h-6 w-6 text-gray-400" /> // Show EyeIcon when password is hidden
+              )}
+            </button>
+          </div>
 
-      <p className="login-link py-2">
-        New here?{" "}
-        <Link to="/register" className="text-amber-500">
-          Sign Up
-        </Link>
-      </p>
-    </form>
+          <button
+            className="w-full bg-amber-500 text-white py-2 rounded hover:bg-amber-600 focus:outline-none"
+            type="submit"
+          >
+            {isLoading ? "Loading" : "Sign In"}
+          </button>
+        </form>
+
+        <p className="mt-4 text-center text-gray-600">
+          New here?{" "}
+          <Link to="/register" className="text-amber-500 hover:underline">
+            Sign Up
+          </Link>
+        </p>
+      </div>
+    </div>
   );
 };
 

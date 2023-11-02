@@ -1,36 +1,20 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormHelperText from "@mui/material/FormHelperText";
-import FormControl from "@mui/material/FormControl";
-import IconButton from "@mui/material/IconButton";
+import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
-  // MUI FORM TEMPLATE
   const [showPassword, setShowPassword] = useState(false);
   const [showComfPassword, setShowComfPassword] = useState(false);
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
 
   const navigate = useNavigate();
 
@@ -45,7 +29,7 @@ const Register = () => {
     const baseUrl = "https://lmtechtestauth.onrender.com";
 
     if (password !== confirmPassword) {
-      setPasswordError("passwords do not match");
+      setPasswordError("Passwords do not match");
       setIsLoading(false);
       return;
     }
@@ -68,84 +52,89 @@ const Register = () => {
   };
 
   return (
-    <form className="shadow-black" onSubmit={(e) => handleSubmit(e)}>
-      <h1 className="text-4xl text-amber-500">Create an Account</h1>
-      {errors && <h3>{errors}</h3>}
-      <TextField
-        required
-        id="outlined-basic"
-        onChange={(e) => setEmail(e.target.value)}
-        label="Email"
-        variant="outlined"
-      />
-      <br />
-      <TextField
-        required
-        id="outlined-basic"
-        onChange={(e) => setUsername(e.target.value)}
-        label="Username"
-        variant="outlined"
-      />
-      <br />
-      <FormControl sx={{ width: "100%" }} variant="outlined" required>
-        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-        <OutlinedInput
-          id="outlined-adornment-password"
-          type={showPassword ? "text" : "password"}
-          onChange={(e) => setPassword(e.target.value)}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
+    <div className="flex items-center justify-center mt-3">
+      <div className="bg-white p-8 rounded shadow-md w-96">
+        <h1 className="text-3xl text-center text-amber-500 mb-4">Create an Account</h1>
+        {errors && <p className="text-red-500 mb-2">{errors}</p>}
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div className="mb-4">
+            <input
+              type="text"
+              className="w-full px-3 py-2 border rounded"
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <input
+              type="text"
+              className="w-full px-3 py-2 border rounded"
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Username"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <div className="relative rounded">
+              <input
+                type={showPassword ? "text" : "password"}
+                className="w-full px-3 py-2 pr-10 border rounded"
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                required
+              />
+              <button
+                type="button"
+                className="absolute inset-y-0 right-0 flex items-center pr-2"
                 onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
               >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-          label="Password"
-        />
-      </FormControl>
-      <br />
-      <FormControl sx={{ width: "100%" }} variant="outlined" required>
-        <InputLabel htmlFor="outlined-adornment-password">
-          confirm password
-        </InputLabel>
-        <OutlinedInput
-          id="outlined-adornment-password"
-          type={showComfPassword ? "text" : "password"}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={() => setShowComfPassword((show) => !show)}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
+                {showPassword ? (
+                  <EyeOffIcon className="h-6 w-6 text-gray-400" />
+                ) : (
+                  <EyeIcon className="h-6 w-6 text-gray-400" />
+                )}
+              </button>
+            </div>
+          </div>
+          <div className="mb-4">
+            <div className="relative rounded">
+              <input
+                type={showComfPassword ? "text" : "password"}
+                className="w-full px-3 py-2 pr-10 border rounded"
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="Confirm Password"
+                required
+              />
+              <button
+                type="button"
+                className="absolute inset-y-0 right-0 flex items-center pr-2"
+                onClick={() => setShowComfPassword(!showComfPassword)}
               >
-                {showComfPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-          label="Confirm Password"
-        />
-      </FormControl>
-      {/* <input
-        type="password"
-        onChange={(e) => setConfirmPassword(e.target.value)}
-        placeholder=" confirm password"
-      /> */}
-      {passwordError && <small>{passwordError}</small>}
-      <button>{isLoading ? "Loading" : "Submit"}</button>
-      <p className="login-link py-2">
-        Already have an account?{" "}
-        <Link to="/login" className="text-amber-500">
-          Sign in
-        </Link>
-      </p>
-    </form>
+                {showComfPassword ? (
+                  <EyeOffIcon className="h-6 w-6 text-gray-400" />
+                ) : (
+                  <EyeIcon className="h-6 w-6 text-gray-400" />
+                )}
+              </button>
+            </div>
+          </div>
+          {passwordError && <p className="text-red-500 mb-2">{passwordError}</p>}
+          <button
+            type="submit"
+            className="w-full bg-amber-500 text-white py-2 rounded hover:bg-amber-600 focus:outline-none"
+          >
+            {isLoading ? "Loading" : "Submit"}
+          </button>
+        </form>
+        <p className="mt-4 text-center">
+          Already have an account?{" "}
+          <Link to="/login" className="text-amber-500 hover:underline">
+            Sign in
+          </Link>
+        </p>
+      </div>
+    </div>
   );
 };
 
