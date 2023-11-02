@@ -80,13 +80,13 @@ const Cart = () => {
       {allCartItems.length < 1
         ? (<h1 className='text-3xl text-center font-mono font-bold'>There are no items in your cart</h1>)
         : (
-          <main className='p-4 bg-slate-200 flex flex-col items-center justify-center'>
+          <main className='p-4 flex flex-col items-center justify-center'>
             <div className="w-[90%] sm:w-[99%] md:w-[92%]">
               <h1 className='text-2xl text-center font-medium'>{`Cart (${allCartItems.length})`}</h1>
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-9">
                 <div className="w-full sm:w-[74%] ">
                   {allCartItems.map((item) => (
-                    <div className="  mb-8 pb-4 border-b  border-slate-600" key={item.id}>
+                    <div className="  mb-8 pb-4 border-b  border-slate-200" key={item.id}>
                       <section className='cart-items flex-1'>
                         <div className="top flex flex-col sm:flex-row">
                           <div className="left img mr-5 mb-5 ">
@@ -97,7 +97,7 @@ const Cart = () => {
                               <h3 className='font-mono text-lg sm:text-xl'>{item.title}</h3>
                               <h3>₦{item.price}</h3>
                             </div>
-                            <article className='my-3 font-[poppins]'>{item.description}</article>
+                            <article className='my-3 font-[poppins] uppercase'>{item.category}</article>
                             <p >{ratings(item.rating.rate)} </p>
                           </div>
                         </div>
