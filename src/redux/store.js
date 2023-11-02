@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import cartSlice from "./features/cartSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
-import shippingSlice from "./features/shippingSlice";
+
 
 
 const persistConfig = {
@@ -13,7 +13,7 @@ const persistConfig = {
 
 const reducer = combineReducers({
    cart: cartSlice,
-   shipping: shippingSlice
+   
    
 })
 

@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import "./App.css";
 import Header from "./components/Header";
 import LogOut from "./pages/LogOut";
+import Cart from "./pages/Cart";
 
 
 
@@ -23,6 +24,7 @@ function App() {
             
             <Route path="/register" element={<Register />} />
             <Route path="/logout" element={<LogOut />} />
+            <Route path="/cart" element={<Cart />} />
 
          </Routes>
       </div>
