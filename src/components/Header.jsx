@@ -6,6 +6,7 @@ import Badge from "@mui/material/Badge";
 import { ArrowDropDown, Search, ShoppingCart } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import styled from "@emotion/styled";
+import { Burger, Menu, Overlay } from "./Hamburger";
 import { useSelector } from "react-redux";
 
 
@@ -18,6 +19,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
   const allCartItems = useSelector((state) => state.cart.items)
   const [isCategories, setIsCategories] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -69,14 +71,14 @@ const Header = () => {
           </div>
         </div>
 
-        <nav className="flex flex-row justify-between gap-4 items-center desktop">
+        <nav className="flex flex-row justify-between gap-4 items-center  ">
           <div>
             <div
-              className="items-center relative font-semibold cursor-pointer"
+              className=" desktop items-center relative font-semibold cursor-pointer"
               onMouseEnter={handleCategories}
               onMouseLeave={handleCategories}
             >
-              {authUser ? ` ${authUser.username}` : "My account"}
+              {authUser ? ` ${authUser.username}` : "My account "}
               <ArrowDropDown />
               {isCategories && (
                 <section className=" z-[10000] absolute bg-[#333237aa] px-3 py-3 items-center rounded">
@@ -124,22 +126,39 @@ const Header = () => {
           </div>
           <NavLink
             to="/cart"
-            className=" flex items-center gap-2 no-underline text-slate-900"
+            className=" desktop flex items-center gap-2 no-underline text-slate-900 "
           >
             <IconButton aria-label="cart">
               <StyledBadge badgeContent={allCartItems.length} color="error">
                 <ShoppingCart />
               </StyledBadge>
             </IconButton>
-            Cart
+            <span className="">Cart</span>
           </NavLink>
+
           <NavLink
-            className="bg-amber-500 px-3 py-1 rounded font-bold hover-bg-orange-500 no-underline text-white"
+            className="bg-amber-500 px-3 py-1 rounded font-bold hover-bg-orange-500 no-underline text-white desktop"
             to="/dashboard"
           >
             Sell
           </NavLink>
         </nav>
+
+          <NavLink
+            to="/cart"
+            className="  items-center gap-2 no-underline text-slate-900  md:hidden"
+          >
+            <IconButton aria-label="cart ">
+              <StyledBadge badgeContent={4} color="error">
+                <ShoppingCart />
+              </StyledBadge>
+            </IconButton>
+          </NavLink>
+        <div className="hamburger py-3 my-3 ">
+          <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} />
+          <Overlay open={open} onClick={() => setOpen(false)} />
+        </div>
       </header>
     </div>
   );
