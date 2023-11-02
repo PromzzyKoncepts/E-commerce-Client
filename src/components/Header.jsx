@@ -6,6 +6,8 @@ import Badge from "@mui/material/Badge";
 import { ArrowDropDown, Search, ShoppingCart } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import styled from "@emotion/styled";
+import { useSelector } from "react-redux";
+
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -16,6 +18,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const Header = () => {
+  const allCartItems = useSelector((state) => state.cart.items)
   const [isCategories, setIsCategories] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { authUser } = useContext(userContext);
@@ -40,9 +43,8 @@ const Header = () => {
 
   return (
     <div
-      className={`bg-slate-50 ${
-        isScrolled ? "fixed w-full top-0  z-[10000000]" : "relative "
-      } py-[0.6rem]`}
+      className={`bg-slate-50 ${isScrolled ? "fixed w-full top-0  z-[10000000]" : "relative "
+        } py-[0.6rem]`}
     >
       <header className=" text-gray-800 flex  justify-between md:justify-evenly  items-center  m-auto">
         <Link to="/">
@@ -125,7 +127,7 @@ const Header = () => {
             className=" flex items-center gap-2 no-underline text-slate-900"
           >
             <IconButton aria-label="cart">
-              <StyledBadge badgeContent={4} color="error">
+              <StyledBadge badgeContent={allCartItems.length} color="error">
                 <ShoppingCart />
               </StyledBadge>
             </IconButton>
