@@ -1,0 +1,36 @@
+/* Slider.css */
+.blacked {
+    background-color: rgb(34, 34, 34);
+    /* opacity: 0.9;  */
+  
+  }
+  
+  .hovered {
+    filter: brightness(0.3);
+    transition: all 0.3s ease; 
+    background-blend-mode: luminosity;
+  }
+  
+  
+  .category-link {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 6px;
+    opacity: 0;
+    background-color: #f59e0b;
+    box-shadow: 0 0 4px #00000082;
+    transform: translateY(-16rem);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .category-link:hover {
+    background-color: #FF8D3A;
+  
+  }
+  
+  
+  .visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
