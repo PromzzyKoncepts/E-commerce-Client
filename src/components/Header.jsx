@@ -6,7 +6,12 @@ import Badge from "@mui/material/Badge";
 import { ArrowDropDown, Search, ShoppingCart } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import styled from "@emotion/styled";
+<<<<<<< HEAD
 import { Burger, Menu, Overlay } from "./Hamburger";
+=======
+import { useSelector } from "react-redux";
+
+>>>>>>> 5a93326ec0eb85c881a63c53b3d4f9893dd4e734
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -17,7 +22,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const Header = () => {
+<<<<<<< HEAD
   const [open, setOpen] = useState(false);
+=======
+  const allCartItems = useSelector((state) => state.cart.items)
+>>>>>>> 5a93326ec0eb85c881a63c53b3d4f9893dd4e734
   const [isCategories, setIsCategories] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { authUser } = useContext(userContext);
@@ -42,9 +51,8 @@ const Header = () => {
 
   return (
     <div
-      className={`bg-slate-50 ${
-        isScrolled ? "fixed w-full top-0  z-[10000000]" : "relative "
-      } py-[0.6rem]`}
+      className={`bg-slate-50 ${isScrolled ? "fixed w-full top-0  z-[10000000]" : "relative "
+        } py-[0.6rem]`}
     >
       <header className=" text-gray-800 flex  justify-between md:justify-evenly  items-center  m-auto">
         <Link to="/">
@@ -126,8 +134,13 @@ const Header = () => {
             to="/cart"
             className=" desktop flex items-center gap-2 no-underline text-slate-900 "
           >
+<<<<<<< HEAD
             <IconButton aria-label="cart ">
               <StyledBadge badgeContent={4} color="error">
+=======
+            <IconButton aria-label="cart">
+              <StyledBadge badgeContent={allCartItems.length} color="error">
+>>>>>>> 5a93326ec0eb85c881a63c53b3d4f9893dd4e734
                 <ShoppingCart />
               </StyledBadge>
             </IconButton>
