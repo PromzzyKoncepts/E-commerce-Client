@@ -7,6 +7,8 @@ import Header from "./components/Header";
 import LogOut from "./pages/LogOut";
 import Cart from "./pages/Cart";
 import NotFound from "./components/404";
+import ShippingAddressForm from "./components/ShippingAddressForm";
+import OrderSummary from "./components/OrderSummary";
 
 
 
@@ -28,6 +30,10 @@ function App() {
 
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />
+
+           {/* Routes For Payments */}
+            <Route path="/shipping" element={<ShippingAddressForm />} />
+            <Route path="/order-summary" element={<OrderSummary />} />
 
          </Routes>
       </div>

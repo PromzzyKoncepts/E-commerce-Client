@@ -16,19 +16,10 @@ function ShippingAddressForm() {
     dispatch(toggleUseAddressForPayment());
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    console.log(shippingAddress);
-
-    navigate('/');
-  };
-
-
     return (
         <div className="flex items-center justify-center ">
-            <form onSubmit={handleSubmit} className="max-w-3xl m-2 p-10 bg-white rounded shadow-xl">
-                <p className=" text-xl text-amber-500 font-medium">Shipping Details</p>
+            <form className="max-w-2xl w-full m-2 p-10 bg-white rounded shadow-xl">
+                <p className=" text-xl text-amber-500 font-medium">Shipping Address </p>
 
                 <div className="mt-2">
                     <label htmlFor="user-address" className="block text-sm text-gray-600"/>
@@ -136,10 +127,23 @@ function ShippingAddressForm() {
                         </span>
                     </label>
                 </div>
-                <div className="pt-5 flex justify-center">
+
+                <div className="pt-5 flex justify-between text-xs">
                     <button
-                        className="px-4 py-1 text-slate-950 from-neutral-600 tracking-wider bg-amber-500 rounded"
-                        type="submit"
+                        className="px-4 py-1 text-amber-500 from-neutral-600 tracking-wider rounded hover:bg-amber-500 hover:text-white"
+                        type="button" 
+                        onClick={() => navigate('/cart')} 
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                        </svg>
+                    </button>
+                    
+                    <button
+                        className="px-4 py-1 text-amber-500 from-neutral-600 tracking-wider rounded hover:bg-amber-500 hover:text-white"
+                        type="button"
+                        style={{ marginLeft: 'auto' }}
+                        onClick={() => navigate('/order-summary')}
                     >
                         NEXT
                     </button>
