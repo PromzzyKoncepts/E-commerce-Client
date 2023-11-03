@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import userContext from "../context/userContext";
-import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid"; 
-// for showpassword to show please run "npm i @heroicons/react@v1" on your terminal
+import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 
 const Login = () => {
   const {
@@ -14,7 +13,7 @@ const Login = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState("");
-  const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -41,7 +40,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center mt-8">
+    <div className="flex justify-center mt-8">
       <div className="bg-white p-8 rounded shadow-md w-96">
         <h1 className="text-3xl text-center text-amber-500 font-semibold mb-6">
           Sign In
@@ -58,10 +57,10 @@ const Login = () => {
             />
           </div>
 
-          <div className="mb-4 relative rounded"> 
+          <div className="mb-4 relative rounded">
             <input
-              type={showPassword ? "text" : "password"} 
-              className="w-full px-3 py-2 pr-10 border rounded"
+              type={showPassword ? "text" : "password"}
+              className="w-full px-3 py-2 pr-10 border rounded" // Adjust padding for smaller screens
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               required
@@ -69,12 +68,12 @@ const Login = () => {
             <button
               type="button"
               className="absolute inset-y-0 right-0 flex items-center pr-2"
-              onClick={() => setShowPassword(!showPassword)} 
+              onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? (
-                <EyeOffIcon className="h-6 w-6 text-gray-400" /> // Show EyeOffIcon when password is visible
+                <EyeOffIcon className="h-6 w-4 text-gray-400" />
               ) : (
-                <EyeIcon className="h-6 w-6 text-gray-400" /> // Show EyeIcon when password is hidden
+                <EyeIcon className="h-6 w-4 text-gray-400" />
               )}
             </button>
           </div>
@@ -83,7 +82,7 @@ const Login = () => {
             className="w-full bg-amber-500 text-white py-2 rounded hover:bg-amber-600 focus:outline-none"
             type="submit"
           >
-            {isLoading ? "Loading" : "Sign In"}
+            {isLoading ? "Signing in..." : "Sign In"}
           </button>
         </form>
 

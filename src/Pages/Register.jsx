@@ -90,9 +90,9 @@ const Register = () => {
                 onClick={handleClickShowPassword}
               >
                 {showPassword ? (
-                  <EyeOffIcon className="h-6 w-6 text-gray-400" />
+                  <EyeOffIcon className="h-6 w-4 text-gray-400" />
                 ) : (
-                  <EyeIcon className="h-6 w-6 text-gray-400" />
+                  <EyeIcon className="h-6 w-4 text-gray-400" />
                 )}
               </button>
             </div>
@@ -112,9 +112,9 @@ const Register = () => {
                 onClick={() => setShowComfPassword(!showComfPassword)}
               >
                 {showComfPassword ? (
-                  <EyeOffIcon className="h-6 w-6 text-gray-400" />
+                  <EyeOffIcon className="h-6 w-4 text-gray-400" />
                 ) : (
-                  <EyeIcon className="h-6 w-6 text-gray-400" />
+                  <EyeIcon className="h-6 w-4 text-gray-400" />
                 )}
               </button>
             </div>
