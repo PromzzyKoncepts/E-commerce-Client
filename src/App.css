@@ -48,7 +48,7 @@ a.active svg {
 
 /* hover style */
 
-form {
+/* form {
   background-color: #eaeaea;
   display: flex;
   flex-direction: column;
@@ -62,7 +62,7 @@ form {
 }
 form h1 {
   color: #f59e0b;
-  /* font-size: 1rem; */
+  /* font-size: 1rem; 
   margin-bottom: 20px;
 }
 form input {
@@ -99,7 +99,7 @@ form button:hover {
   color: #f0f0f0;
   background-color: #f59e0b;
   border-radius: 3px;
-}
+} */
 
 small {
   align-self: flex-start;
