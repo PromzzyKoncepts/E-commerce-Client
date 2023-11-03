@@ -14,7 +14,7 @@ const persistConfig = {
 
 const allReducers = combineReducers({
     cart: cartSlice,
-    
+    shippingAddress: shippingAddressSlice,
 })
 
 const persistedReducer = persistReducer(persistConfig, allReducers)
