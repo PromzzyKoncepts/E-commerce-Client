@@ -21,19 +21,19 @@ function BestDealsShortcut() {
     const products = new Array(4).fill(productObject);
     return (
         <div className=''>
-            <div className="w-10/12 mx-auto bg-slate-100 pt-6 p-4 rounded-t-lg relative">
+            <div className="w-10/12 mx-auto mt-4 bg-slate-200 pt-6 p-4 rounded-t-lg relative">
                 <div className="">
-                    <h2 className='pb-4 text-5xl mx-auto w-fit mb-4'>Best Deals</h2>
-                    <Link to="/best-deals" className='bg-red-600 text-white  p-1 rounded-tr-lg absolute top-0 right-0'>Show All</Link>
+                    <h2 className='pb-4 text-3xl mx-auto w-fit mb-4'>Best Deals</h2>
+                    <Link to="/best-deals" className='bg-red-600 text-white  p-1 rounded-tr-lg absolute top-0 right-0 no-underline hover:underline'>Show All</Link>
                     <div className='flex gap-3 '>
                         {
                             products.map(item => (
-                                <a href={productObject.href} key={productObject.id} className='bg-white p-6 rounded relative'>
+                                <a href={productObject.href} key={productObject.id} className='bg-white pb-2 px-6 pt-6 rounded relative no-underline'>
                                     <div className='bg-white'>
                                         <small className='text-slate-100 bg-red-500 p-1 absolute top-0 left-0 rounded-tl-sm'>{productObject.type}</small>
                                         <img src={productObject.imagSrc} alt={productObject.imageAlt} />
                                     </div>
-                                    <div>
+                                    <div className='text-black'>
                                         <div className='flex justify-between mt-3'>
                                             <div className='flex gap-2'>
                                                 <FavoriteBorderIcon />
