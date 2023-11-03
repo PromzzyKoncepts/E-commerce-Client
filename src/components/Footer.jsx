@@ -5,7 +5,7 @@ const Footer = () => {
   
 
   return (
-    <div className=" bg-gray-800">
+    <div className=" bg-gray-800 mt-5">
       <div className="flex items-center justify-between w-10/12 m-auto py-5 text-slate-200">
         <div className="" id="contact">
           <div className="">
