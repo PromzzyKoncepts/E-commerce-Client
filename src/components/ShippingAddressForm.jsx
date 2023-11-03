@@ -1,10 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateField, toggleUseAddressForPayment } from '../redux/features/shippingAddressSlice';
+import { useNavigate } from 'react-router-dom';
 
 function ShippingAddressForm() {
     const shippingAddress = useSelector((state) => state.shippingAddress);
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const handleChange = (field, value) => {
     dispatch(updateField({ field, value }));
@@ -14,9 +16,18 @@ function ShippingAddressForm() {
     dispatch(toggleUseAddressForPayment());
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(shippingAddress);
+
+    navigate('/');
+  };
+
+
     return (
         <div className="flex items-center justify-center ">
-            <form className="max-w-3xl m-2 p-10 bg-white rounded shadow-xl">
+            <form onSubmit={handleSubmit} className="max-w-3xl m-2 p-10 bg-white rounded shadow-xl">
                 <p className=" text-xl text-amber-500 font-medium">Shipping Details</p>
 
                 <div className="mt-2">

@@ -6,7 +6,7 @@ import "./App.css";
 import Header from "./components/Header";
 import LogOut from "./pages/LogOut";
 import Cart from "./pages/Cart";
-import ShippingAddressForm from "./components/ShippingAddressForm";
+import NotFound from "./components/404";
 
 
 
@@ -26,7 +26,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/logout" element={<LogOut />} />
 
-            <Route path="/shipping" element={<ShippingAddressForm />} />
+            {/* 404 PAGE */}
+            <Route path="*" element={<NotFound />} />
 
          </Routes>
       </div>
