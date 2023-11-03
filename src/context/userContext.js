@@ -49,15 +49,16 @@ const loadingCircleTransition = {
 export const UserProvider = (props) => {
    const [authUser, setAuthUser] = useState(false);
    const [loading, setLoading] = useState(true);
-   const baseUrl = "https://lmtechtestauth.onrender.com";
+   const baseUrl = "https://aphia-dev.onrender.com/api";
 
    const signIn = async (body) => {
       try {
-         const res = await axios.post(`${baseUrl}/login`, body);
+         const res = await axios.post(`${baseUrl}/users/login`, body);
          if (res.data.success === true) {
             const decodedToken = jwt_decode(res.data.message);
-            localStorage.setItem("authToken", res.data.message);
+            localStorage.setItem("authToken", JSON.stringify(res.data));
             setAuthUser(decodedToken);
+            console.log(res.data)
             return res.data;
          } else {
             throw new Error("Authentication failed");
