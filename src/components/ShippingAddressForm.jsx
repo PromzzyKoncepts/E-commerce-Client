@@ -4,13 +4,13 @@ function ShippingAddressForm() {
     
     return (
         <div className="flex items-center justify-center ">
-            <form className="max-w-3xl m-4 p-10 bg-white rounded shadow-xl">
-                <p className="text-gray-800 font-medium">Shipping Details</p>
+            <form className="max-w-3xl m-2 p-10 bg-white rounded shadow-xl">
+                <p className=" text-xl text-amber-500 font-medium">Shipping Details</p>
 
                 <div className="mt-2">
                     <label htmlFor="user-address" className="block text-sm text-gray-600"/>
                     <input
-                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                        className="w-full px-2 py-2 text-gray-700 border rounded"
                         id="user-address"
                         name="address"
                         type="text"
@@ -24,7 +24,7 @@ function ShippingAddressForm() {
                 <div className="mt-2">
                     <label htmlFor="user-city" className="block text-sm text-gray-600"/>
                     <input
-                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                        className="w-full px-2 py-2 text-gray-700 border rounded"
                         id="user-city"
                         name="city"
                         type="text"
@@ -37,7 +37,7 @@ function ShippingAddressForm() {
                 <div className="inline-block mt-2 w-1/2 pr-1">
                     <label htmlFor="user-state" className="block text-sm text-gray-600"/>
                     <input
-                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                        className="w-full px-2 py-2 text-gray-700 border rounded"
                         id="user-state"
                         name="state"
                         type="text"
@@ -50,7 +50,7 @@ function ShippingAddressForm() {
                 <div className="inline-block mt-2 -mx-1 pl-1 w-1/2">
                     <label htmlFor="user-zip" className="block text-sm text-gray-600"/>
                     <input
-                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                        className="w-full px-2 py-2 text-gray-700 border rounded"
                         id="user-zip"
                         name="zip"
                         type="text"
@@ -60,12 +60,12 @@ function ShippingAddressForm() {
                     />
                 </div>
 
-                <p className="mt-4 text-gray-800 font-medium">Contact information</p>
+                <p className="mt-4  text-xl text-amber-500 font-medium">Contact information</p>
                 <div className="inline-block mt-2 w-1/2 pr-1">
 
                     <label htmlFor="user-phone" className="block text-sm text-gray-600" />
                     <input
-                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                        className="w-full px-2 py-2 text-gray-700 border rounded"
                         id="user-phone"
                         name="phoneNum"
                         type="text"
@@ -78,12 +78,12 @@ function ShippingAddressForm() {
                 <div className="inline-block mt-2 -mx-1 pl-1 w-1/2">
                     <label htmlFor="user-alt-phone" className="block text-sm text-gray-600"/>
                     <input
-                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                        className="w-full px-2 py-2 text-gray-700 border rounded"
                         id="user-alt-phone"
                         name="altPhoneNum"
                         type="text"
-                        placeholder="Alternative Phone Number"
-                        aria-label="Alternative Phone Number"                        
+                        placeholder="Alternative Phone"
+                        aria-label="Alternative Phone"                        
                     />
                 </div>
                 <div className="mt-4">
@@ -99,9 +99,9 @@ function ShippingAddressForm() {
                         </span>
                     </label>
                 </div>
-                <div className="mt-4 flex justify-center">
+                <div className="pt-5 flex justify-center">
                     <button
-                        className="px-4 py-1 pb-2 text-slate-950 from-neutral-600 tracking-wider bg-amber-500 rounded"
+                        className="px-4 py-1 text-slate-950 from-neutral-600 tracking-wider bg-amber-500 rounded"
                         type="submit"
                     >
                         NEXT
