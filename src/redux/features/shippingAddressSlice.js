@@ -20,9 +20,6 @@ const shippingAddressSlice = createSlice({
     toggleUseAddressForPayment: (state) => {
       state.useAddressForPayment = !state.useAddressForPayment;
     },
-    resetForm: (state) => {
-      return initialState;
-    },
   },
 });
 

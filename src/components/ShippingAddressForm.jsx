@@ -1,7 +1,19 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateField, toggleUseAddressForPayment } from '../redux/features/shippingAddressSlice';
 
 function ShippingAddressForm() {
+    const shippingAddress = useSelector((state) => state.shippingAddress);
+    const dispatch = useDispatch();
+
+    const handleChange = (field, value) => {
+    dispatch(updateField({ field, value }));
+  };
     
+    const handleToggleUseAddress = () => {
+    dispatch(toggleUseAddressForPayment());
+  };
+
     return (
         <div className="flex items-center justify-center ">
             <form className="max-w-3xl m-2 p-10 bg-white rounded shadow-xl">
@@ -17,6 +29,8 @@ function ShippingAddressForm() {
                         required
                         placeholder="Street"
                         aria-label="Address"
+                        value={shippingAddress.address}
+                        onChange={(e) => handleChange('address', e.target.value)}
                         
                     />
                 </div>
@@ -31,6 +45,8 @@ function ShippingAddressForm() {
                         required
                         placeholder="City"
                         aria-label="City"
+                        value={shippingAddress.city}
+                        onChange={(e) => handleChange('city', e.target.value)}
                     />
                 </div>
 
@@ -44,6 +60,8 @@ function ShippingAddressForm() {
                         required
                         placeholder="State"
                         aria-label="State"
+                        value={shippingAddress.state}
+                        onChange={(e) => handleChange('state', e.target.value)}
                     />
                 </div>
 
@@ -57,6 +75,9 @@ function ShippingAddressForm() {
                         required
                         placeholder="Postal code"
                         aria-label="Zip"
+                        value={shippingAddress.zip} 
+                        onChange={(e) => handleChange('zip', e.target.value)}
+                        
                     />
                 </div>
 
@@ -72,6 +93,8 @@ function ShippingAddressForm() {
                         required
                         placeholder="Phone Number"
                         aria-label="Phone Number"
+                        value={shippingAddress.phoneNum}
+                        onChange={(e) => handleChange('phoneNum', e.target.value)}
                     />
                 </div>
                 
@@ -83,7 +106,9 @@ function ShippingAddressForm() {
                         name="altPhoneNum"
                         type="text"
                         placeholder="Alternative Phone"
-                        aria-label="Alternative Phone"                        
+                        aria-label="Alternative Phone"
+                        value={shippingAddress.altPhoneNum}
+                        onChange={(e) => handleChange('altPhoneNum', e.target.value)}                      
                     />
                 </div>
                 <div className="mt-4">
@@ -92,7 +117,8 @@ function ShippingAddressForm() {
                             type="checkbox"
                             className="form-checkbox h-4 w-4 text-amber-300 transition duration-150 ease-in-out"
                             name="saveAddress"
-                            value="yes"
+                            checked={shippingAddress.useAddressForPayment}
+                            onChange={handleToggleUseAddress}
                         />
                         <span className="ml-2 text-sm text-gray-600">
                             Use this address for payment details
