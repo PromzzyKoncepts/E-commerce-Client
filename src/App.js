@@ -5,6 +5,8 @@ import Register from "./pages/Register";
 import "./App.css";
 import Header from "./components/Header";
 import LogOut from "./pages/LogOut";
+import BestDeals from "./pages/BestDeals";
+import BestDealsShortcut from "./components/BestDealsShortcut";
 
 
 
@@ -16,6 +18,7 @@ function App() {
       <div className="App">
          <Header />
          
+         
          <Routes>
             <Route path="/" element={<Home />} />
             
@@ -23,6 +26,7 @@ function App() {
             
             <Route path="/register" element={<Register />} />
             <Route path="/logout" element={<LogOut />} />
+            <Route path="/best-deals" element={<BestDeals />} />
 
          </Routes>
       </div>
