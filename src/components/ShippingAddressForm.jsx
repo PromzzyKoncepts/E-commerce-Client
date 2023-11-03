@@ -143,7 +143,7 @@ function ShippingAddressForm() {
                         className="px-4 py-1 text-amber-500 from-neutral-600 tracking-wider rounded hover:bg-amber-500 hover:text-white"
                         type="button"
                         style={{ marginLeft: 'auto' }}
-                        onClick={() => navigate('/order-summary')}
+                        onClick={() => navigate('/checkout/order-summary')}
                     >
                         NEXT
                     </button>

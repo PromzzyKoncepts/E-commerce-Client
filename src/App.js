@@ -9,6 +9,7 @@ import Cart from "./pages/Cart";
 import NotFound from "./components/404";
 import ShippingAddressForm from "./components/ShippingAddressForm";
 import OrderSummary from "./components/OrderSummary";
+import Protected from "./HOC/Protected";
 
 
 
@@ -31,9 +32,20 @@ function App() {
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />
 
-           {/* Routes For Payments */}
-            <Route path="/shipping" element={<ShippingAddressForm />} />
-            <Route path="/order-summary" element={<OrderSummary />} />
+           {/* Protected Routes For Checkouts & Payments */}
+            <Route path="/checkout/shipping" 
+              element={
+               <Protected>
+                  <ShippingAddressForm />
+               </Protected>
+            } />
+            
+            <Route path='/checkout/order-summary' 
+              element={
+               <Protected>
+                  <OrderSummary />
+               </Protected>
+            } />
 
          </Routes>
       </div>
