@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateField, toggleUseAddressForPayment } from '../../redux/features/shippingAddressSlice';
 import { useNavigate } from 'react-router-dom';
+import CheckoutSteps from './CheckoutSteps';
 
 function ShippingAddressForm() {
     const shippingAddress = useSelector((state) => state.shippingAddress);
@@ -19,6 +20,7 @@ function ShippingAddressForm() {
     return (
         <div className="flex items-center justify-center ">
             <form className="max-w-xl w-full p-5 bg-white rounded shadow-xl">
+            <CheckoutSteps />
                 <p className=" text-xl text-amber-500 font-medium">Shipping Address </p>
 
                 <div className="mt-2">

@@ -13,6 +13,7 @@ import ShippingAddressForm from "./components/checkout/ShippingAddressForm";
 import OrderSummary from "./components/checkout/OrderSummary";
 import Protected from "./HOC/Protected";
 import Payments from "./components/checkout/Payments";
+import CheckoutSteps from "./components/checkout/CheckoutSteps";
 
 
 
@@ -61,6 +62,15 @@ function App() {
                   <OrderSummary />
                </Protected>
             } />
+
+            <Route path='/checkout' 
+              element={
+               <Protected>
+                  <CheckoutSteps />
+               </Protected>
+            } />
+
+
 
          </Routes>
       </div>

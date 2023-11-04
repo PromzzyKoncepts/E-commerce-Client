@@ -79,7 +79,7 @@ const Cart = () => {
   return (
     <>
       {allCartItems.length < 1
-        ? (<h1 className='text-3xl text-center font-mono font-bold'>There are no items in your cart</h1>)
+        ? (<h1 className='text-3xl text-center font-bold'>There are no items in your cart</h1>)
         : (
           <main className='p-4 flex flex-col items-center justify-center'>
             <div className="w-[90%] sm:w-[99%] md:w-[92%]">
@@ -129,7 +129,7 @@ const Cart = () => {
                     <h3 className='font-bold'>{`₦${total}`}</h3>
                   </div>
                   <button className='bg-orange-400 hover:bg-green-600 py-2 text-white w-full flex items-center justify-center rounded-sm shadow-lg font-bold'>
-                    <Link to='/checkout'>{`Checkout (₦${total})`}</Link>
+                    <Link to='/checkout/shipping'>{`Checkout (₦${total})`}</Link>
                   </button>
                 </aside>
               </div>
