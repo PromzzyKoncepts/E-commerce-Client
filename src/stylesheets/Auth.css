@@ -1,0 +1,61 @@
+.authForm {
+    background-color: #eaeaea;
+    display: flex;
+    flex-direction: column;
+    max-width: 40%;
+    margin: auto;
+    margin-top: 3rem;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 1px 2px 5px #00000064;
+    border-radius: 6px;
+}
+
+.authForm>h1 {
+    color: #f59e0b;
+    /* font-size: 1rem; */
+    margin-bottom: 20px;
+}
+
+.authForm>input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.authForm>input:nth-child(2) {
+    margin-top: 1rem;
+}
+
+.authForm>input:last-of-type {
+    margin-bottom: 0;
+}
+
+.authForm>button {
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border: none;
+    cursor: pointer;
+    background-color: #f59e0b;
+    color: #f0f0f0;
+}
+
+.authForm button:active {
+    color: #f59e0b;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+}
+
+.authForm button:hover {
+    color: #f0f0f0;
+    background-color: #f59e0b;
+    border-radius: 3px;
+}
+
+@media screen and (max-width: 768px) {
+    .authForm {
+        max-width: 80%;
+    }
+}

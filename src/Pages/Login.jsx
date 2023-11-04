@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import "../stylesheets/Auth.css"
 import { Link, useNavigate } from "react-router-dom";
 import userContext from "../context/userContext";
 
@@ -58,11 +59,12 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form className="authForm" onSubmit={(e) => handleSubmit(e) }>
       <h1 className="text-4xl text-amber-500">Sign In </h1>
       {errors && <h3>{errors}</h3>}
       <TextField
         required
+        
         id="outlined-basic"
         onChange={(e) => setUsername(e.target.value)}
         label="Username"

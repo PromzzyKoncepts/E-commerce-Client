@@ -22,31 +22,30 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const allCartItems = useSelector((state) => state.cart.items)
   const [isCategories, setIsCategories] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  // const [isScrolled, setIsScrolled] = useState(false);
   const { authUser } = useContext(userContext);
 
   const handleCategories = () => setIsCategories((prev) => !prev);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 0) {
+  //       setIsScrolled(true);
+  //     } else {
+  //       setIsScrolled(false);
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   return (
     <div
-      className={`bg-slate-50 ${isScrolled ? "fixed w-full top-0  z-[10000000]" : "relative "
-        } py-[0.6rem]`}
+      className={`bg-slate-50  py-[0.6rem]`}
     >
       <header className=" text-gray-800 flex  justify-between md:justify-evenly  items-center  m-auto">
         <Link to="/">
@@ -149,7 +148,7 @@ const Header = () => {
             className="  items-center gap-2 no-underline text-slate-900  md:hidden"
           >
             <IconButton aria-label="cart ">
-              <StyledBadge badgeContent={4} color="error">
+              <StyledBadge badgeContent={allCartItems.length} color="error">
                 <ShoppingCart />
               </StyledBadge>
             </IconButton>

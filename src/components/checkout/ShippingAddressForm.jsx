@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateField, toggleUseAddressForPayment } from '../redux/features/shippingAddressSlice';
+import { updateField, toggleUseAddressForPayment } from '../../redux/features/shippingAddressSlice';
 import { useNavigate } from 'react-router-dom';
 
 function ShippingAddressForm() {
@@ -18,7 +18,7 @@ function ShippingAddressForm() {
 
     return (
         <div className="flex items-center justify-center ">
-            <form className="max-w-2xl w-full m-2 p-10 bg-white rounded shadow-xl">
+            <form className="max-w-xl w-full p-5 bg-white rounded shadow-xl">
                 <p className=" text-xl text-amber-500 font-medium">Shipping Address </p>
 
                 <div className="mt-2">
@@ -83,7 +83,7 @@ function ShippingAddressForm() {
                     />
                 </div>
 
-                <p className="mt-4  text-xl text-amber-500 font-medium">Contact information</p>
+                <p className="mt-2  text-xl text-amber-500 font-medium">Contact information</p>
                 <div className="inline-block mt-2 w-1/2 pr-1">
 
                     <label htmlFor="user-phone" className="block text-sm text-gray-600" />
@@ -113,7 +113,7 @@ function ShippingAddressForm() {
                         onChange={(e) => handleChange('altPhoneNum', e.target.value)}                      
                     />
                 </div>
-                <div className="mt-4">
+                <div className="mt-3">
                     <label className="flex items-center">
                         <input
                             type="checkbox"
@@ -128,7 +128,7 @@ function ShippingAddressForm() {
                     </label>
                 </div>
 
-                <div className="pt-5 flex justify-between text-xs">
+                <div className="pt-4 flex justify-between text-xs">
                     <button
                         className="px-4 py-1 text-amber-500 from-neutral-600 tracking-wider rounded hover:bg-amber-500 hover:text-white"
                         type="button" 
@@ -143,11 +143,11 @@ function ShippingAddressForm() {
                         className="px-4 py-1 text-amber-500 from-neutral-600 tracking-wider rounded hover:bg-amber-500 hover:text-white"
                         type="button"
                         style={{ marginLeft: 'auto' }}
-                        onClick={() => navigate('/checkout/order-summary')}
+                        onClick={() => navigate('/checkout/payments')}
                     >
                         NEXT
                     </button>
-                </div>
+ c               </div>
             </form>
         </div>
     );

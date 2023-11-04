@@ -9,9 +9,10 @@ import EmailVerf from "./pages/EmailVerf";
 import EmailConf from "./pages/EmailConf";
 import Cart from "./pages/Cart";
 import NotFound from "./components/404";
-import ShippingAddressForm from "./components/ShippingAddressForm";
-import OrderSummary from "./components/OrderSummary";
+import ShippingAddressForm from "./components/checkout/ShippingAddressForm";
+import OrderSummary from "./components/checkout/OrderSummary";
 import Protected from "./HOC/Protected";
+import Payments from "./components/checkout/Payments";
 
 
 
@@ -44,6 +45,13 @@ function App() {
               element={
                <Protected>
                   <ShippingAddressForm />
+               </Protected>
+            } />
+
+            <Route path="/checkout/payments" 
+              element={
+               <Protected>
+                  <Payments />
                </Protected>
             } />
             

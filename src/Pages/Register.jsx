@@ -1,4 +1,5 @@
 import axios from "axios";
+import "../stylesheets/Auth.css"
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
@@ -89,8 +90,8 @@ const Register = () => {
   };
    
   return (
-    <form className="shadow-black" onSubmit={(e) => handleSubmit(e)}>
-      <h1 className="text-4xl text-amber-500">Create an Account</h1>
+    <form className="shadow-black authForm" onSubmit={(e) => handleSubmit(e)}>
+      <h1 className="text-4xl h1 text-amber-500">Create an Account</h1>
       {errors && <h3>{errors}</h3>}
       <TextField
         required
@@ -106,25 +107,29 @@ const Register = () => {
         onChange={(e) => setLastName(e.target.value)}
         label="Lastname"
         variant="outlined"
-      />
+        className="input"
+        />
       <br/>
       <TextField
+        className="input"
         required
         id="outlined-basic"
         onChange={(e) => setPhoneNumber(e.target.value)}
         label="Phonenumber"
         variant="outlined"
-      />
+        />
       <br/>
       <TextField
+        className="input"
         required
         id="outlined-basic"
         onChange={handleEmailChange}
         label="Email"
         variant="outlined"
-      />
+        />
       <br />
       <TextField
+        className="input"
         required
         id="outlined-basic"
         onChange={(e) => setUsername(e.target.value)}
@@ -132,7 +137,9 @@ const Register = () => {
         variant="outlined"
       />
       <br />
-      <FormControl sx={{ width: "100%" }} variant="outlined" required>
+      <FormControl
+        className="input"
+       sx={{ width: "100%" }} variant="outlined" required>
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
         <OutlinedInput
           id="outlined-adornment-password"
