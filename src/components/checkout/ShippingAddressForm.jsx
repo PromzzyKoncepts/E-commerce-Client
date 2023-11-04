@@ -17,10 +17,12 @@ function ShippingAddressForm() {
     dispatch(toggleUseAddressForPayment());
   };
 
-    return (
-        <div className="flex items-center justify-center ">
-            <form className="max-w-xl w-full p-5 bg-white rounded shadow-xl">
-            <CheckoutSteps />
+  return (
+        <div className="flex items-center justify-center pt-5">
+            <form className="max-w-xl w-full p-5 bg-white rounded shadow-xl relative">
+            <div className='absolute -top-2 left-20'>
+               <CheckoutSteps />
+            </div>
                 <p className=" text-xl text-amber-500 font-medium">Shipping Address </p>
 
                 <div className="mt-2">
@@ -149,7 +151,7 @@ function ShippingAddressForm() {
                     >
                         NEXT
                     </button>
- c               </div>
+                </div>
             </form>
         </div>
     );
