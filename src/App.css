@@ -95,3 +95,9 @@ small {
     border-radius: 20px;
   }
 }
+
+@media screen and (max-width: 640px) {
+.cont-shop {
+    display: none;
+ }
+}

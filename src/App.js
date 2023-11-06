@@ -56,7 +56,7 @@ function App() {
                </Protected>
             } />
             
-            <Route path='/checkout/place-order' 
+            <Route path='/checkout/placeorder' 
               element={
                <Protected>
                   <OrderSummary />
