@@ -11,6 +11,14 @@ import EmailVerf from "./pages/EmailVerf";
 import EmailConf from "./pages/EmailConf";
 import Cart from "./pages/Cart";
 import NotFound from "./components/404";
+import PhonesAndTablets from "./categories/PhonesAndTablets";
+import Males from "./categories/Males";
+import Shoes from "./categories/Shoes";
+import OtherCategories from "./categories/OtherCategories";
+import Accessories from "./categories/Accessories";
+import Electronics from "./categories/Electronics";
+import Females from "./categories/Females";
+import Laptops from "./categories/Laptops";
 
 
 
@@ -21,11 +29,10 @@ function App() {
    return (
       <div className="App">
          <Header />
-         
-         
+
          <Routes>
             <Route path="/" element={<Home />} />
-            
+
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

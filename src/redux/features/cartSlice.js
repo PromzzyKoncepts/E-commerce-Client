@@ -11,13 +11,13 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         itemAdded(state, action) { //NB: state represents the current state or status or condition of the store
-            const item = state.items.find((item) => item.id === action.payload.id) // here, I used the find method to get the item in the cart whose id matches the id of the action.payload
+            const item = state.items.find((item) => item._id === action.payload._id) // here, I used the find method to get the item in the cart whose id matches the id of the action.payload
             if (!item) { // checks if the item doesn't already exist in the cart
                 state.items.push({ ...action.payload, quantity: 1 }) // adds it to the cart by first copying the properties of the action.payload state and adding a new property of quantity whose value is 1 to the action.payload state
             }
         },
         itemRemoved(state, action) {
-            state.items = state.items.filter((item) => item.id !== action.payload) //removes (filters out) the item whose id matches the action.payload.
+            state.items = state.items.filter((item) => item._id !== action.payload) //removes (filters out) the item whose id matches the action.payload.
             //note that when this reducer is dispatched(called), an id will be passed to it which will represent the action.payload
             /*We can also do this
             const newStateItem = state.items.filter((item) => item.id !== action.payload) 
@@ -27,12 +27,12 @@ const cartSlice = createSlice({
 
         },
         itemIncreased(state, action) {
-            let item = state.items.find((item) => item.id === action.payload) // here, I used the find method to get the item in the cart whose id matches the id of the action.payload
+            let item = state.items.find((item) => item._id === action.payload) // here, I used the find method to get the item in the cart whose id matches the id of the action.payload
             item.quantity++; //the quantity of that found item is increased by one
             return state  //ensures we don't change (mutate) the state. This will prevent some issues
         },
         itemDecreased(state, action) {
-            let item = state.items.find((item) => item.id === action.payload) //same as for itemIcreased 
+            let item = state.items.find((item) => item._id === action.payload) //same as for itemIcreased 
             item.quantity--; //the quantity found is decreased by one
             return state //ensures we don't change (mutate) the state. This will prevent some issues
         },
