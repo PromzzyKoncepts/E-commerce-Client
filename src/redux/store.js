@@ -3,7 +3,7 @@ import thunk from "redux-thunk"
 import cartSlice from "./features/cartSlice";
 import shippingAddressSlice from "./features/shippingAddressSlice";
 import userSlice from "./features/userSlice";
-import allOrdersSlice from "./features/allOrdersSlice";
+import allOrdersSlice from "./features/orderSlice";
 import allProductsSlice from "./features/allProductsSlice";
 import paymentSlice from "./features/paymentSlice";
 import storage from "redux-persist/lib/storage";

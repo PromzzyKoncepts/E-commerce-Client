@@ -97,7 +97,19 @@ small {
 }
 
 @media screen and (max-width: 640px) {
-.cont-shop {
+.sm-screen-hidden {
     display: none;
  }
+}
+
+@media screen and (max-width: 768px) {
+  .max-flex-767 {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .max-hide-767 {
+    display: none;
+  }
 }

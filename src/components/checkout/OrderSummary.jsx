@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CheckoutSteps from "./CheckoutSteps";
+import { createOrder } from "../../redux/features/orderSlice";
+
 
 const OrderSummary = () => {
     const navigate = useNavigate();
@@ -9,37 +11,35 @@ const OrderSummary = () => {
 
     //const cartItems = useSelector((state) => state.cart);
     const shippingAddress = useSelector((state) => state.shippingAddress);
-    const method = useSelector((state) => state.payment);
+    const payment = useSelector((state) => state.payment);
+    const cart = useSelector((state) => state.cart);
 
-    const cartIt = [
-        {
-            name: "Xiaomi Laptop",
-            quantity: 6,
-            price: 25.76,
-            image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/32/4981652/1.jpg?7865",
-        },
-        {
-            name: "Xiaomi Phone",
-            quantity: 4,
-            price: 220,
-            image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/32/4981652/1.jpg?7865",
-        },
-    ];
+    const orderData = {
+        street_address: shippingAddress.address,
+        city: shippingAddress.city,
+        state: shippingAddress.state,
+        phone_number: shippingAddress.phoneNum,
+        products: [],
+        amount: cart.total,
+    }
 
     // Calculate item prices, shipping price, and total price
-    const itemTotalPrice = cartIt.reduce((total, item) => total + item.quantity * item.price, 0);
-    const itemTotal = cartIt.reduce((total, itemTotal) => total + itemTotal.quantity, 0);
-    const shippingPrice = cartIt.length !== 0 ? 500 : 0;
-    const totalPrice = itemTotalPrice + shippingPrice;
+    // const itemTotalPrice = cart..reduce((total, item) => total + item.quantity * item.price, 0);
+    // const itemTotal = cartIt.reduce((total, itemTotal) => total + itemTotal.quantity, 0);
+    // const shippingPrice = cartIt.length !== 0 ? 500 : 0;
+    // const totalPrice = itemTotalPrice + shippingPrice;
 
-    const placeOrderHandler = () => {
-        // Implement order placement logic here
-        // You can use the data from cartItems, shippingAddress, and paymentMethod
+    const placeOrderHandler = async () => {
+        dispatch(createOrder(orderData));
+        // console.log("click")
+        // const token = localStorage.getItem('authToken')
+        // const res = await axios.post('https://aphia-dev.onrender.com/api/orders/create', {}, {headers: {authorization: token}})
+
     };
 
     return (
 
-        <div className="md:flex lg:flex lg:space-x-6 md:space-x-5 p-7 m-10 bg-slate-50  rounded-lg" >
+        <div className="md:flex lg:flex lg:space-x-6 md:space-x-5 p-5 bg-slate-50  rounded-lg" >
             {/* Main Content on the Left */}
             <div className="md:w-2/3 lg:w-2/3">
                 {/* Display ordered items in a table */}
@@ -54,10 +54,10 @@ const OrderSummary = () => {
                             <table className="w-full border-collapse table-auto pl-5">
                                 <thead className="bg-amber-50  pl-4">
                                     <tr>
-                                        <th className="py-2 pl-5 text-sm">Item</th>
-                                        <th className="py-2 text-sm">Quantity</th>
-                                        <th className="py-2 text-sm">Item Price</th>
-                                        <th className="py-2 text-sm">Actions</th>
+                                        <th className="py-2 pl-5 text-sm font-semibold">Item</th>
+                                        <th className="py-2 pl-1 text-sm font-semibold">Quantity</th>
+                                        <th className="py-2 pl-2 text-sm font-semibold">Item Price</th>
+                                        <th className="py-2 pr-5 text-sm font-semibold">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -75,23 +75,23 @@ const OrderSummary = () => {
                                                     </Link>
                                                 </div>
                                             </td>
-                                            <td className="py-2">
+                                            <td className="py-2 mr-3">
                                                 <div className="flex items-center space-x-2">
                                                     <button
                                                         className="text-amber-400 "
-                                                        onClick={() => adjustQuantity(index, item.quantity - 1)}
+                                                    // onClick={() => reduceQuantity(index, item.quantity - 1)}
                                                     >
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="lg:w-6 lg:h-6 w-4 h-4">
                                                             <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                         </svg>
 
                                                     </button>
-                                                    <div>
+                                                    <div className="text-sm">
                                                         {item.quantity}
                                                     </div>
                                                     <button
                                                         className="text-amber-500"
-                                                        onClick={() => adjustQuantity(index, item.quantity + 1)}
+                                                    // onClick={() => increaseQuantity(index, item.quantity + 1)}
                                                     >
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="lg:w-6 lg:h-6 w-4 h-4">
                                                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -100,17 +100,16 @@ const OrderSummary = () => {
                                                     </button>
                                                 </div>
                                             </td>
-                                            <td className="py-2 text-lg font-bold text-black">
+                                            <td className="py-2 pl-2 text-sm font-semibold text-black">
                                                 ₦{item.price.toFixed(2)}
 
                                                 <p className="text-xs font-normal text-slate-400">
-                                                    ₦{item.price.toFixed(2)} x {item.quantity} items ={" "}
-                                                    ₦{(item.quantity * item.price).toFixed(2)}
+                                                    ₦{item.price.toFixed(2)} x {item.quantity} items
                                                 </p>
                                             </td>
                                             <td className="py-2">
-                                                <button onClick={() => removeItem(index)} className="text-red-500">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="lg:w-5 lg:h-5 w-4 h-4">
+                                                <button /*onClick={() => removeItem(index)}*/ className="text-red-500">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="lg:w-5 lg:h-5 w-4 h-4 ml-4">
                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                                                     </svg>
 
@@ -124,16 +123,14 @@ const OrderSummary = () => {
                 </div>
                 <div className="">
                     <button
-                        className="cont-shop sm:hidden md:flex lg:flex justify-center mt-3 items-center text-amber-500 from-neutral-600 tracking-wider rounded"
+                        className="sm-screen-hidden sm:hidden md:flex lg:flex justify-center mt-3 items-center text-amber-500 from-neutral-600 tracking-wider rounded"
                         type="button"
                         onClick={() => navigate('/checkout/payments')}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 pt-1">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-
                         <div className="pl-3">Continue Shopping</div>
-
                     </button>
                 </div>
             </div>
@@ -143,7 +140,7 @@ const OrderSummary = () => {
                 <div className="bg-white shadow-md rounded-lg p-4">
                     <h2 className="text-xl font-semibold mb-4 text-amber-500">Order Summary</h2>
                     {/* Display shipping address */}
-                    <p className="border-b mb-2 pb-2 font-semibold">
+                    <p className="border-b mb-2 pb-2 font-semibold text-sm">
                         Shipping Address :
                         <span className="text-xs font-normal">
                             {""} {""} {shippingAddress.address}, {shippingAddress.city},{" "}
@@ -152,10 +149,10 @@ const OrderSummary = () => {
 
                     </p>
                     {/* Display payment method */}
-                    <p className="border-b mb-2 pb-2 font-semibold">
+                    <p className="border-b mb-2 pb-2 font-semibold text-sm">
                         Payment Method :
                         <span className="text-xs font-normal">
-                            {""} {""} {method.paymentMethod}
+                            {""} {""} {payment.value}
                         </span>
                     </p>
                     {/* Display item prices, shipping price, and total price */}
@@ -173,9 +170,9 @@ const OrderSummary = () => {
                     </div>
 
 
-                    <div className="pt-1 flex justify-between text-xs">
+                    <div className="md:hidden max-flex-767 pt-1 justify-between text-xs">
                         <button
-                            className="px-4 py-1 text-amber-500 from-neutral-600 tracking-wider rounded hover:bg-amber-500 hover:text-white"
+                            className="p-2 text-amber-500 from-neutral-600 tracking-wider hover:bg-amber-500 hover:text-white"
                             type="button"
                             onClick={() => navigate('/checkout/payments')}
                         >
@@ -197,7 +194,17 @@ const OrderSummary = () => {
 
                         <button
                             onClick={placeOrderHandler}
-                            className="px-4 py-1 text-white bg-amber-500 text-sm from-neutral-900 tracking-wider rounded hover:bg-amber-400 hover:text-white"
+                            className="p-2 text-white bg-amber-500 text-sm from-neutral-900 tracking-wider hover:bg-amber-400 hover:text-white"
+                            disabled={cartIt.length === 0}
+                        >
+                            PLACE ORDER
+                        </button>
+                    </div>
+
+                    <div className="max-hide-767 md:flex justify-center items-center">
+                        <button
+                            onClick={placeOrderHandler}
+                            className="p-2 w-full text-white bg-amber-500 text-lg from-neutral-900 tracking-wider hover:bg-amber-400 hover:text-white"
                             disabled={cartIt.length === 0}
                         >
                             PLACE ORDER

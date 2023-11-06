@@ -170,7 +170,7 @@ function ShippingAddressForm() {
 
                 <div className="pt-4 flex justify-between text-xs">
                     <button
-                        className="px-4 py-1 text-amber-500 from-neutral-600 tracking-wider rounded hover-bg-amber-500 hover-text-white"
+                        className="p-2 text-amber-500 from-neutral-600 tracking-wider hover:bg-amber-500 hover:text-white"
                         type="button"
                         onClick={() => navigate('/cart')}
                     >
@@ -180,7 +180,7 @@ function ShippingAddressForm() {
                     </button>
 
                     <button
-                        className="px-4 py-1 text-amber-500 from-neutral-600 tracking-wider rounded hover-bg-amber-500 hover-text-white"
+                        className="p-2 text-amber-500 from-neutral-600 tracking-wider  hover:bg-amber-500 hover:text-white"
                         type="submit"
                         style={{ marginLeft: 'auto' }}
                     >

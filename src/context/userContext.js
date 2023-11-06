@@ -56,9 +56,9 @@ export const UserProvider = (props) => {
          const res = await axios.post(`${baseUrl}/users/login`, body);
          if (res.data.success === true) {
             const decodedToken = jwt_decode(res.data.message);
-            localStorage.setItem("authToken", JSON.stringify(res.data));
+            const token = res.data.message
+            localStorage.setItem("authToken", token);
             setAuthUser(decodedToken);
-            console.log(res.data)
             return res.data;
          } else {
             throw new Error("Authentication failed");

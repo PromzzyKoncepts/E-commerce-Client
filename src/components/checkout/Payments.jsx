@@ -1,35 +1,35 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { savePaymentMethod } from "../../redux/features/paymentSlice";
+import { savePaymentMethod, paymentError } from "../../redux/features/paymentSlice";
 import CheckoutSteps from "./CheckoutSteps";
 
-const Payment = () => {
+const Payment = ({ id, checked }) => {
     const shippingAddress = useSelector((state) => state.shippingAddress);
-    const paymentMethodFromStore = useSelector((state) => state.payment);
+    const payment = useSelector((state) => state.payment); // Access the payment state
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
-    const [paymentMethod, setPaymentMethod] = useState(paymentMethodFromStore);
-    const [error, setError] = useState("");
 
     if (!shippingAddress) {
         navigate("/checkout/shipping");
     }
 
-    const handlePaymentMethodChange = (selectedMethod) => {
-        setPaymentMethod(selectedMethod);
+    const handlePaymentMethodChange = () => {
+        //set the payload structure
+        dispatch(savePaymentMethod({ id, checked: checked, value: "Bank Transfer" }));
+
+        // Clear any existing errors when changing the payment method
+        dispatch(paymentError(""));
     };
 
     const handleContinue = () => {
-        if (paymentMethod) {
-            dispatch(savePaymentMethod(paymentMethod));
-            navigate("/checkout/shipping");
+        if (payment.value) {
+            navigate("/checkout/placeorder");
         } else {
-            setError("You must choose a payment method");
+            // Set a payment error message
+            dispatch(paymentError("You must choose a payment method"));
         }
     };
-
 
     return (
         <div className="flex items-center justify-center pt-5">
@@ -43,23 +43,22 @@ const Payment = () => {
                     <div>
                         <input
                             type="radio"
-                            id="bankTransfer"
+                            id="1"
                             name="paymentMethod"
-                            value="Bank Transfer"
-                            checked={paymentMethod === "Bank Transfer"}
-                            onChange={() => handlePaymentMethodChange("Bank Transfer")}
+                            checked={payment.value === "Bank Transfer"} // Check the payment value
+                            onChange={handlePaymentMethodChange}
                             className="mr-2"
                         />
                         <label htmlFor="bankTransfer">Bank Transfer</label>
                     </div>
                 </div>
 
-                {error && <div className="text-red-500">{error}</div>}
+                {payment.error && <div className="text-red-500">{payment.error}</div>}
                 <div className="pt-4 flex justify-between text-xs">
                     <button
-                        className="px-4 py-1 text-amber-500 from-neutral-600 tracking-wider rounded hover:bg-amber-500 hover:text-white"
+                        className="p-2 text-amber-500 from-neutral-600 tracking-wider  hover:bg-amber-500 hover:text-white"
                         type="button"
-                        onClick={handleContinue}
+                        onClick={() => navigate("/checkout/shipping")}
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -78,10 +77,10 @@ const Payment = () => {
                     </button>
 
                     <button
-                        className="px-4 py-1 text-amber-500 from-neutral-600 tracking-wider rounded hover:bg-amber-500 hover:text-white"
+                        className="p-2 text-amber-500 from-neutral-600 tracking-wider hover:bg-amber-500 hover:text-white"
                         type="button"
                         style={{ marginLeft: "auto" }}
-                        onClick={() => navigate("/checkout/placeorder")}
+                        onClick={handleContinue}
                     >
                         CONTINUE
                     </button>
