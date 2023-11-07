@@ -149,7 +149,7 @@ const Header = () => {
             className="  items-center gap-2 no-underline text-slate-900  md:hidden"
           >
             <IconButton aria-label="cart ">
-              <StyledBadge badgeContent={4} color="error">
+              <StyledBadge badgeContent={allCartItems.length} color="error">
                 <ShoppingCart />
               </StyledBadge>
             </IconButton>
