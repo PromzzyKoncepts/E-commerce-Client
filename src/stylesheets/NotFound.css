@@ -1,0 +1,40 @@
+.page_404 {
+    padding: 40px 0;
+    background: #fff;
+    width: 70%;
+    margin: auto;
+  }
+  
+  /* .page_404 img {
+    width: 100%;
+  } */
+  
+  .four_zero_four_bg {
+    background-image: url(https://c7.alamy.com/zooms/9/4e93a22d55514a9e9dc701b32f0fb1fb/2b77k63.jpg);
+    height: 320px;
+    width: 600px;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: fill;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .section {
+      padding: 20px;
+      display: flex;
+      flex-direction: column-reverse;
+      /* justify-content: center; */
+      align-items: center;
+    }
+    .not_found_image {
+      height: 250px;
+  
+    }
+  
+    .oops {
+      font-size: 5rem;
+      padding: 0rem;
+    }
+  }
+  
+  

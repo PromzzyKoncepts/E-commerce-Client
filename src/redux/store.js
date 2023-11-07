@@ -4,23 +4,21 @@ import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 
 
-
 const persistConfig = {
-   key: 'root',
-   version: 1,
-   storage
+    key: 'root',
+    version: 1,
+    storage
 }
 
-const reducer = combineReducers({
-   cart: cartSlice,
-   
-   
+const allReducers = combineReducers({
+    cart: cartSlice
 })
 
-const persistedReducer = persistReducer(persistConfig, reducer)
+const persistedReducer = persistReducer(persistConfig, allReducers)
 
 const store = configureStore({
-   reducer: persistedReducer
+    reducer:persistedReducer
+    
 })
 
-export default store;
+export default store
