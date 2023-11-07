@@ -11,6 +11,7 @@ import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
 import MicrowaveIcon from "@mui/icons-material/Microwave";
 import IceSkatingIcon from "@mui/icons-material/IceSkating";
+import LaptopMacOutlinedIcon from '@mui/icons-material/LaptopMacOutlined';
 
 const Section = () => {
   return (
@@ -21,9 +22,34 @@ const Section = () => {
           <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
             <NavLink
               className="p-3 no-underline text-[#3a3a3a] text-lg gap-2 flex items-center "
+              to="/laptops"
+            >
+              <LaptopMacOutlinedIcon /> Laptops
+            </NavLink>
+          </div>
+          <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
+            <NavLink
+              className="p-3 no-underline phones text-[#3a3a3a] text-lg gap-2 flex items-center "
+              to="/devices"
+            >
+              <PhoneIphoneIcon />
+              Phone & Tablets
+            </NavLink>
+          </div>
+          <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
+            <NavLink
+              className="p-3 no-underline text-[#3a3a3a] text-lg gap-2 flex items-center "
               to="/shoes"
             >
               <IceSkatingIcon /> Shoes
+            </NavLink>
+          </div>
+          <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
+            <NavLink
+              className="p-3 no-underline text-[#3a3a3a] text-lg gap-2 flex items-center "
+              to="/electronics"
+            >
+              <MicrowaveIcon /> Electronics
             </NavLink>
           </div>
           <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
@@ -48,23 +74,6 @@ const Section = () => {
               to="/accessories"
             >
               <EarbudsIcon /> Accessories
-            </NavLink>
-          </div>
-          <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
-            <NavLink
-              className="p-3 no-underline text-[#3a3a3a] text-lg gap-2 flex items-center "
-              to="/electronics"
-            >
-              <MicrowaveIcon /> Electronics
-            </NavLink>
-          </div>
-          <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
-            <NavLink
-              className="p-3 no-underline phones text-[#3a3a3a] text-lg gap-2 flex items-center "
-              to="/devices"
-            >
-              <PhoneIphoneIcon />
-              Phone & Tablets
             </NavLink>
           </div>
           <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
