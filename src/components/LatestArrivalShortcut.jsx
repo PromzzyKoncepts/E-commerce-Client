@@ -26,7 +26,7 @@ const LatestArrivalShortcut = () => {
                     <div className='grid grid-cols-4  gap-3'>
                          {
                             data.map(item => (
-                                <a href={""} key={item._id} className='bg-white pb-2 px-6 pt-6 rounded relative no-underline'>
+                                <a href={""} key={item._id} className='bg-white text-black pb-2 px-6 pt-6 rounded relative no-underline'>
                                     <div className='bg-white'>
                                         <img src={item.images[0]} alt={item.name} className='w-full h-48 object-contain' />
                                     </div>
