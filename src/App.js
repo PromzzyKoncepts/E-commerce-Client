@@ -1,4 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
@@ -18,13 +20,16 @@ import Accessories from "./categories/Accessories";
 import Electronics from "./categories/Electronics";
 import Females from "./categories/Females";
 import Laptops from "./categories/Laptops";
+import { useEffect } from "react";
 import LatestArrivals from "./pages/LatestArrivals";
 
 
 
 function App() {
 
-
+   useEffect(() => {
+      AOS.init();
+    }, [])
 
    return (
       <div className="App">

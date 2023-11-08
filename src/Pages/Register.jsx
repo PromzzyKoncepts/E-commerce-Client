@@ -89,8 +89,8 @@ const Register = () => {
   };
    
   return (
-    <form className="shadow-black" onSubmit={(e) => handleSubmit(e)}>
-      <h1 className="text-4xl text-amber-500">Create an Account</h1>
+    <form data-aos="fade-up" className="shadow-black" onSubmit={(e) => handleSubmit(e)}>
+      <h1  className="text-4xl text-amber-500">Create an Account</h1>
       {errors && <h3>{errors}</h3>}
       <TextField
         required

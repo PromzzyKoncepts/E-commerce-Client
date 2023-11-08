@@ -45,7 +45,7 @@ const CategoriesCard = ({ apiLink, category }) => {
                     <p className=' animate-spin h-5 w-5 border-2 border-zinc-800 border-x-transparent rounded-full p-4 '></p>
                 </div>
                 :
-                (<aside className='p-6 w-10/12 mx-auto bg-slate-50 my-3 relative'>
+                (<aside  data-aos="fade-up" className='p-6 w-10/12 mx-auto bg-slate-50 my-3 relative'>
                     {Array.isArray(products)
                         ?
                         <>
