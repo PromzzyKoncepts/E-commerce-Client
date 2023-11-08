@@ -58,7 +58,7 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form data-aos="fade-up" onSubmit={(e) => handleSubmit(e)}>
       <h1 className="text-4xl text-amber-500">Sign In </h1>
       {errors && <h3>{errors}</h3>}
       <TextField
