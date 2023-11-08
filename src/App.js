@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
@@ -9,11 +9,19 @@ import EmailVerf from "./pages/EmailVerf";
 import EmailConf from "./pages/EmailConf";
 import Cart from "./pages/Cart";
 import NotFound from "./components/404";
-import ShippingAddressForm from "./components/checkout/ShippingAddressForm";
-import OrderSummary from "./components/checkout/OrderSummary";
+import PhonesAndTablets from "./categories/PhonesAndTablets";
+import Males from "./categories/Males";
+import Shoes from "./categories/Shoes";
+import OtherCategories from "./categories/OtherCategories";
+import Accessories from "./categories/Accessories";
+import Electronics from "./categories/Electronics";
+import Females from "./categories/Females";
+import Laptops from "./categories/Laptops";
 import Protected from "./HOC/Protected";
 import Payments from "./components/checkout/Payments";
-import CheckoutSteps from "./components/checkout/CheckoutSteps";
+import OrderSummary from "./components/checkout/OrderSummary";
+import ShippingAddressForm from "./components/checkout/ShippingAddressForm";
+import EmptyCart from "./components/checkout/EmptyCart";
 
 
 
@@ -24,19 +32,25 @@ function App() {
    return (
       <div className="App">
          <Header />
-         
+
          <Routes>
             <Route path="/" element={<Home />} />
-            
+
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/logout" element={<LogOut />} />
-            <Route path="/verify" element={<EmailVerf/>}/>
-            <Route path="/user/confirmation" element={<EmailConf/>}/>
-
-            {/* 404 PAGE */}
-            <Route path="*" element={<NotFound />} />
+            <Route path="/fashion/male" element={<Males />} />
+            <Route path="/fashion/female" element={<Females />} />
+            <Route path="/electronics" element={<Electronics />} />
+            <Route path="/devices" element={<PhonesAndTablets />} />
+            <Route path="/shoes" element={<Shoes />} />
+            <Route path="/laptops" element={<Laptops />} />
+            <Route path="/accessories" element={<Accessories />} />
+            <Route path="/others" element={<OtherCategories />} />
+            <Route path="/shoes" element={<Shoes />} />
+            <Route path="/verify" element={<EmailVerf />} />
+            <Route path="/user/confirmation" element={<EmailConf />} />
 
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />
@@ -63,13 +77,12 @@ function App() {
                </Protected>
             } />
 
-            <Route path='/checkout' 
+            <Route path='/cart/emptycart' 
               element={
                <Protected>
-                  <CheckoutSteps />
+                  <EmptyCart />
                </Protected>
             } />
-
 
 
          </Routes>

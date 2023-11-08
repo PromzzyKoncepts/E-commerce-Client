@@ -12,6 +12,7 @@ function ShippingAddressForm() {
 
     const handleChange = (field, value) => {
         dispatch(updateField({ field, value }));
+        
         // Clear the error for the field when the user starts typing
         setErrors({ ...errors, [field]: '' });
     };

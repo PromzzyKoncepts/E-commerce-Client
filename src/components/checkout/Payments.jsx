@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { savePaymentMethod, paymentError } from "../../redux/features/paymentSlice";
+import { bankTransferMethod, paymentError } from "../../redux/features/paymentSlice";
 import CheckoutSteps from "./CheckoutSteps";
 
-const Payment = ({ id, checked }) => {
+const Payment = () => {
     const shippingAddress = useSelector((state) => state.shippingAddress);
     const payment = useSelector((state) => state.payment); // Access the payment state
     const navigate = useNavigate();
@@ -16,14 +16,14 @@ const Payment = ({ id, checked }) => {
 
     const handlePaymentMethodChange = () => {
         //set the payload structure
-        dispatch(savePaymentMethod({ id, checked: checked, value: "Bank Transfer" }));
+        dispatch(bankTransferMethod({ id: 1, checked: true, value: "Bank Transfer" }));
 
         // Clear any existing errors when changing the payment method
         dispatch(paymentError(""));
     };
 
     const handleContinue = () => {
-        if (payment.value) {
+        if (payment.checked) {
             navigate("/checkout/placeorder");
         } else {
             // Set a payment error message
@@ -43,9 +43,8 @@ const Payment = ({ id, checked }) => {
                     <div>
                         <input
                             type="radio"
-                            id="1"
-                            name="paymentMethod"
-                            checked={payment.value === "Bank Transfer"} // Check the payment value
+                            name="bankTransfer"
+                            checked={payment.checked === true} 
                             onChange={handlePaymentMethodChange}
                             className="mr-2"
                         />

@@ -8,37 +8,24 @@ const initialState = {
   order: null,
   error: null,
   success: null,
-  orderDetails: {
-    loading: false,
-    order: [],
-    success: false,
-    error: null,
-  },
-  orderPay: {},
-  orderDeliver: {},
-  myOrders: {
-    orders: [],
-    loading: false,
-    error: null,
-  },
-  allOrders: {
-    orders: [],
-    loading: false,
-    error: null,
-  },
 };
 
 // Created an async thunk to create an order via POST request
 export const createOrder = createAsyncThunk('orders/create', async (orderData) => {
+  console.log(orderData)
     try {
       const token = localStorage.getItem('authToken');
-      const response = await axios.post(`${ORDER_URL}/orders/create`, {}, {headers: {authorization: token}});
+      const response = await axios.post(`${ORDER_URL}/orders/create`, orderData, {headers: {authorization: token}});
       console.log(response)
+      
       return response.data; 
     } catch (error) {
       throw error;
     }
   });
+
+
+
 
 const orderSlice = createSlice({
   name: 'order',
@@ -46,17 +33,6 @@ const orderSlice = createSlice({
   reducers: {
     orderRequestStart: (state) => {
       state.loading = true;
-    },
-    orderRequestSuccess: (state, action) => {
-      state.loading = false;
-      state.order = action.payload;
-      state.success = true;
-      state.error = null;
-    },
-    orderRequestFailure: (state, action) => {
-      state.loading = false;
-      state.success = false;
-      state.error = action.payload;
     },
   },
 
