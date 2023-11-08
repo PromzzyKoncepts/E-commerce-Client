@@ -6,7 +6,6 @@ import "./App.css";
 import Header from "./components/Header";
 import LogOut from "./pages/LogOut";
 import BestDeals from "./pages/BestDeals";
-import BestDealsShortcut from "./components/BestDealsShortcut";
 import EmailVerf from "./pages/EmailVerf";
 import EmailConf from "./pages/EmailConf";
 import Cart from "./pages/Cart";
@@ -19,6 +18,7 @@ import Accessories from "./categories/Accessories";
 import Electronics from "./categories/Electronics";
 import Females from "./categories/Females";
 import Laptops from "./categories/Laptops";
+import LatestArrivals from "./pages/LatestArrivals";
 
 
 
@@ -32,15 +32,23 @@ function App() {
 
          <Routes>
             <Route path="/" element={<Home />} />
-
+            <Route path="/latest-arrivals" element={<LatestArrivals />} />
+            <Route path="/best-deals" element={<BestDeals />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/logout" element={<LogOut />} />
-            <Route path="/best-deals" element={<BestDeals />} />
-            <Route path="/verify" element={<EmailVerf/>}/>
-            <Route path="/user/confirmation" element={<EmailConf/>}/>
-
+            <Route path="/fashion/male" element={<Males />} />
+            <Route path="/fashion/female" element={<Females />} />
+            <Route path="/electronics" element={<Electronics />} />
+            <Route path="/devices" element={<PhonesAndTablets />} />
+            <Route path="/shoes" element={<Shoes />} />
+            <Route path="/laptops" element={<Laptops />} />
+            <Route path="/accessories" element={<Accessories />} />
+            <Route path="/others" element={<OtherCategories />} />
+            <Route path="/shoes" element={<Shoes />} />
+            <Route path="/verify" element={<EmailVerf />} />
+            <Route path="/user/confirmation" element={<EmailConf />} />
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />
 
