@@ -23,6 +23,11 @@ import Females from "./categories/Females";
 import Laptops from "./categories/Laptops";
 import { useEffect } from "react";
 import LatestArrivals from "./pages/LatestArrivals";
+import Protected from './HOC/Protected'
+import ShippingAddressForm from "./components/checkout/ShippingAddressForm";
+import Payment from "./components/checkout/Payments";
+import OrderSummary from "./components/checkout/OrderSummary";
+import EmptyCart from "./components/checkout/EmptyCart";
 
 
 
@@ -57,6 +62,35 @@ function App() {
             <Route path="/user/confirmation" element={<EmailConf />} />
 
             <Route path="/favorite" element={<FavoritePage />} />
+
+            {/* Protected Routes For Checkouts & Payments */}
+            <Route path="/checkout/shipping" 
+              element={
+               <Protected>
+                  <ShippingAddressForm />
+               </Protected>
+            } />
+
+            <Route path="/checkout/payments" 
+              element={
+               <Protected>
+                  <Payment />
+               </Protected>
+            } />
+            
+            <Route path='/checkout/placeorder' 
+              element={
+               <Protected>
+                  <OrderSummary />
+               </Protected>
+            } />
+
+            <Route path='/cart/emptycart' 
+              element={
+               <Protected>
+                  <EmptyCart />
+               </Protected>
+            } />
 
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />
