@@ -49,6 +49,7 @@ const loadingCircleTransition = {
 export const UserProvider = (props) => {
    const [authUser, setAuthUser] = useState(false);
    const [loading, setLoading] = useState(true);
+   
    const baseUrl = "https://aphia-dev.onrender.com/api";
 
    const signIn = async (body) => {

@@ -23,6 +23,6 @@ const shippingAddressSlice = createSlice({
   },
 });
 
-export const { updateField, toggleUseAddressForPayment, resetForm } = shippingAddressSlice.actions;
+export const { updateField, toggleUseAddressForPayment } = shippingAddressSlice.actions;
 
 export default shippingAddressSlice.reducer;

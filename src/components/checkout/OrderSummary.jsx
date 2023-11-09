@@ -1,21 +1,23 @@
-import React, { useEffect } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 //import CheckoutSteps from "./CheckoutSteps";
 import { createOrder } from "../../redux/features/orderSlice";
 import { calcTotal, itemRemoved, itemIncreased, itemDecreased } from "../../redux/features/cartSlice";
+import OrderCreateOverlay from "./OrderCreateOverlay";
+
 
 const OrderSummary = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-
-    
-
     const shippingAddress = useSelector((state) => state.shippingAddress);
     const payment = useSelector((state) => state.payment);
     const allCartItems = useSelector((state) => state.cart.items);
-    const total = useSelector((state) => state.cart.total);
+    const total = useSelector((state) => state.cart.total); 
+    const orderStatus = useSelector((state) => state.order.status);
+
+    const [showOverlay, setShowOverlay] = useState(false);
 
     useEffect(() => {
         dispatch(calcTotal());
@@ -43,8 +45,9 @@ const OrderSummary = () => {
     }
 
     const placeOrderHandler = () => {
+        setShowOverlay(true);
         dispatch(createOrder(orderData));
-    };
+      };
 
     return (
 
@@ -56,8 +59,6 @@ const OrderSummary = () => {
                     <h2 className="text-xl text-amber-500 font-semibold mb-4 pl-5 pt-4">Order Items</h2>
                     {allCartItems.length < 1 
                     ? (
-                        // <div className="flex justify-center items-center py-16 bg-slate-50 text-slate-400">
-                        // </div>
                            navigate('/cart/emptycart')
                     ) : (
                         <table className="w-full border-collapse table-auto pl-5">
@@ -244,6 +245,7 @@ const OrderSummary = () => {
                 </div>
 
             </div>
+            {showOverlay && <OrderCreateOverlay orderState={orderStatus} onClose={() => setShowOverlay(false)} />}
         </div >
 
     );

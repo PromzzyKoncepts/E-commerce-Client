@@ -6,6 +6,7 @@ import orderSlice from "./features/orderSlice";
 import paymentSlice from "./features/paymentSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
+import authSlice from "./features/authSlice";
 
 
 
@@ -21,6 +22,7 @@ const allReducers = combineReducers({
     user: userSlice,
     order: orderSlice,
     payment: paymentSlice,
+    auth: authSlice,
 })
 
 const persistedReducer = persistReducer(persistConfig, allReducers)
