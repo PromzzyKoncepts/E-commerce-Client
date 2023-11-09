@@ -88,6 +88,7 @@ useEffect(() => {
       )
     }
   }
+  
 
   return (
     <>
@@ -102,7 +103,7 @@ useEffect(() => {
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="w-full sm:w-[69%] ">
                   {allCartItems.map((item) => (
-                    <div className="  mb-8 pb-4 border-b  border-slate-200" key={item._id}>
+                    <div  data-aos="fade-up" className="  mb-8 pb-4 border-b  border-slate-200" key={item._id}>
                       <section className='cart-items flex-1'>
                         <div className="top flex flex-col sm:flex-row">
                           <div className="left img mr-5 mb-5 ">
@@ -118,17 +119,17 @@ useEffect(() => {
                           </div>
                         </div>
                         <div className="bottom flex items-center justify-between">
-                          <button className="text-white flex items-center  bg-red-500 hover:bg-red-400 py-3 ps-0 pr-3 shadow-md rounded-md" onClick={() => dispatch(itemRemoved(item._id))}>
+                          <button className="text-white flex items-center  bg-red-500 hover:bg-red-600 py-3  px-3 shadow-md rounded-md" onClick={() => dispatch(itemRemoved(item._id))}>
                             <Trash2 /> Remove
                           </button>
                           <div className="qty">
-                            <button className="dec px-4 py-2 bg-orange-400 " onClick={() => dispatch(itemDecreased(item._id))} disabled={item.quantity <= 1}>
+                            <button className="dec px-4 py-2 bg-amber-500 active:bg-orange-500 " onClick={() => dispatch(itemDecreased(item._id))} disabled={item.quantity <= 1}>
                               -
                             </button>
                             <span className='mx-2'>
                               {item.quantity}
                             </span>
-                            <button className="incr px-4 py-2 bg-orange-400 " onClick={() => dispatch(itemIncreased(item._id))}>
+                            <button className="incr px-4 py-2 bg-amber-500 active:bg-orange-500" onClick={() => dispatch(itemIncreased(item._id))}>
                               +
                             </button>
                           </div>
@@ -137,14 +138,14 @@ useEffect(() => {
                     </div>
                   ))}
                 </div>
-                <aside className="summary bg-zinc-200 p-4 w-full sm:w-[30%] md:h-fit shadow-md">
+                <aside  data-aos="fade-down" className="summary bg-zinc-200 p-4 w-full sm:w-[30%] md:h-fit shadow-md">
                   <h1 className=' text-base sm:text-md lg:text-lg font-semibold text-center'>Cart Summary</h1>
                   <div className="flex justify-between sm:p-6 flex-wrap">
                     <h4 className='text-base sm:text-md lg:text-lg '>Subtotal:</h4>
                     <h3 className='font-bold text-base sm:text-md lg:text-lg '>{`₦${total}`}</h3>
                   </div>
-                  <button className='bg-orange-400 hover:bg-green-600 py-2   w-full flex items-center justify-center rounded-sm shadow-lg font-bold'>
-                    <Link to='/checkout/shipping' className='no-underline text-white'>{`Checkout (₦${total})`}</Link>
+                  <button className='bg-amber-500 hover:bg-green-600 py-2   w-full flex items-center justify-center rounded-sm shadow-lg font-bold'>
+                    <Link to='/checkout' className='no-underline text-white'>{`Checkout (₦${total})`}</Link>
                   </button>
                 </aside>
               </div>

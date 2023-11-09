@@ -14,8 +14,11 @@ import IceSkatingIcon from "@mui/icons-material/IceSkating";
 
 const Section = () => {
   return (
-    <div className="grid grid-cols-6 w-10/12 mx-auto mt-4 gap-4 ">
-      <div className="rounded item1 col-span-2 bg-slate-200">
+    <div className="md:grid md:grid-cols-6 w-10/12 mx-auto mt-4 gap-4 ">
+      <div
+        data-aos="fade-right"
+        className="rounded desktop item1 md:col-span-2 bg-slate-200"
+      >
         <h3 className=" bg-slate-300 p-3 rounded ">Categories</h3>
         <div className="navlink flex flex-col gap-2 items-left justify-center">
           <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
@@ -78,12 +81,12 @@ const Section = () => {
         </div>
       </div>
 
-      <div className="item2 col-span-4 grid gap-3 ">
+      <div data-aos="fade-down" className="item2 md:col-span-4 grid gap-3 ">
         {/* first card */}
         <Advert className="h-20 rounded" pics={advert1} />
 
         {/* second and third card */}
-        <div className="grid grid-cols-2 gap-4">
+        <div data-aos="fade-up" className="grid grid-cols-2 gap-4">
           <Advert className="item1 col-span-1" pics={advert2} />
           <Advert className="item2 col-span-1" pics={advert3} />
         </div>
