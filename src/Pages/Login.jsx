@@ -36,7 +36,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const body = {
-      username,
+      email: username,
       password,
     };
 

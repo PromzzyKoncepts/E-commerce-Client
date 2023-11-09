@@ -104,17 +104,17 @@ const Cart = () => {
                           </div>
                         </div>
                         <div className="bottom flex items-center justify-between">
-                          <button className="text-white flex items-center  bg-red-500 hover:bg-red-400 py-3 ps-0 pr-3 shadow-md rounded-md" onClick={() => dispatch(itemRemoved(item._id))}>
+                          <button className="text-white flex items-center  bg-red-500 hover:bg-red-600 py-3  px-3 shadow-md rounded-md" onClick={() => dispatch(itemRemoved(item._id))}>
                             <Trash2 /> Remove
                           </button>
                           <div className="qty">
-                            <button className="dec px-4 py-2 bg-orange-400 " onClick={() => dispatch(itemDecreased(item._id))} disabled={item.quantity <= 1}>
+                            <button className="dec px-4 py-2 bg-amber-500 active:bg-orange-500 " onClick={() => dispatch(itemDecreased(item._id))} disabled={item.quantity <= 1}>
                               -
                             </button>
                             <span className='mx-2'>
                               {item.quantity}
                             </span>
-                            <button className="incr px-4 py-2 bg-orange-400 " onClick={() => dispatch(itemIncreased(item._id))}>
+                            <button className="incr px-4 py-2 bg-amber-500 active:bg-orange-500" onClick={() => dispatch(itemIncreased(item._id))}>
                               +
                             </button>
                           </div>
@@ -129,7 +129,7 @@ const Cart = () => {
                     <h4 className='text-base sm:text-md lg:text-lg '>Subtotal:</h4>
                     <h3 className='font-bold text-base sm:text-md lg:text-lg '>{`₦${total}`}</h3>
                   </div>
-                  <button className='bg-orange-400 hover:bg-green-600 py-2   w-full flex items-center justify-center rounded-sm shadow-lg font-bold'>
+                  <button className='bg-amber-500 hover:bg-green-600 py-2   w-full flex items-center justify-center rounded-sm shadow-lg font-bold'>
                     <Link to='/checkout' className='no-underline text-white'>{`Checkout (₦${total})`}</Link>
                   </button>
                 </aside>
