@@ -4,7 +4,6 @@ import Slider from "../components/Slider";
 import Footer from "../components/Footer";
 //import MetaSearch from "../components/searchEngine/MetaSearch";
 import { useDispatch } from "react-redux";
-import 
 
 function Home() {
     // const keyword = match.params.keyword;
