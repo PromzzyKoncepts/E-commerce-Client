@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import "./App.css";
 import Header from "./components/Header";
 import LogOut from "./pages/LogOut";
+import BestDeals from "./pages/BestDeals";
 import EmailVerf from "./pages/EmailVerf";
 import EmailConf from "./pages/EmailConf";
 import Cart from "./pages/Cart";
@@ -21,6 +22,7 @@ import Electronics from "./categories/Electronics";
 import Females from "./categories/Females";
 import Laptops from "./categories/Laptops";
 import { useEffect } from "react";
+import LatestArrivals from "./pages/LatestArrivals";
 
 
 
@@ -36,7 +38,8 @@ function App() {
 
          <Routes>
             <Route path="/" element={<Home />} />
-
+            <Route path="/latest-arrivals" element={<LatestArrivals />} />
+            <Route path="/best-deals" element={<BestDeals />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -52,8 +55,8 @@ function App() {
             <Route path="/shoes" element={<Shoes />} />
             <Route path="/verify" element={<EmailVerf />} />
             <Route path="/user/confirmation" element={<EmailConf />} />
-            <Route path="/favorite" element={<FavoritePage />} />
 
+            <Route path="/favorite" element={<FavoritePage />} />
 
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />
