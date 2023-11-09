@@ -12,6 +12,7 @@ import EmailVerf from "./pages/EmailVerf";
 import EmailConf from "./pages/EmailConf";
 import Cart from "./pages/Cart";
 import NotFound from "./components/404";
+import FavoritePage from "./pages/FavoritePage";
 import PhonesAndTablets from "./categories/PhonesAndTablets";
 import Males from "./categories/Males";
 import Shoes from "./categories/Shoes";
@@ -54,12 +55,11 @@ function App() {
             <Route path="/shoes" element={<Shoes />} />
             <Route path="/verify" element={<EmailVerf />} />
             <Route path="/user/confirmation" element={<EmailConf />} />
-            {/* 404 PAGE */}
-            <Route path="*" element={<NotFound />} />
+
+            <Route path="/favorite" element={<FavoritePage />} />
 
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />
-
          </Routes>
       </div>
    );
