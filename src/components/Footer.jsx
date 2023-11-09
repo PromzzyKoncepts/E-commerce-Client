@@ -1,12 +1,12 @@
 import { useState } from "react";
-import logo from "../assets/aphia.png";
+import logo from "../assets/aphialight.png";
 
 const Footer = () => { 
   
 
   return (
     <div className=" bg-gray-800 mt-5">
-      <div className="flex items-center justify-between w-10/12 m-auto py-5 text-slate-200">
+      <div className="flex flex-wrap flex-grow items-center justify-between w-10/12 m-auto py-5 text-slate-200">
         <div className="" id="contact">
           <div className="">
             <div>
@@ -35,7 +35,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex gap-5">
+        <div className="flex flex-wrap gap-5">
           <div className="">
             <h3>About Aphia</h3>
             <a
