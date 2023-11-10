@@ -1,7 +1,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Login from "./pages/Login";
+import Login from "./Pages/Login";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import "./App.css";
