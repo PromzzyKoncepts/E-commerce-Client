@@ -39,7 +39,9 @@ function AdminAuthForm() {
   //   }, []);
 
   useEffect(() => {
+
     if (accountNumber.length === 10) {
+      console.log(typeof(formData.bank_code))
       axios
         .post(
           "https://api.flutterwave.com/v3/accounts/resolve",
@@ -86,6 +88,8 @@ function AdminAuthForm() {
 
   return (
     <form className="max-w-md mx-auto p-4 space-y-4">
+      <h1>Sign Up</h1>
+      <small className="text-center">Sign up as vendor, brand or business</small>
       <TextField
         label="Email"
         name="email"
