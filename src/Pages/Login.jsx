@@ -46,7 +46,7 @@ const Login = () => {
       if (res) {
         setIsLoading(false);
         setErrors("");
-        navigate("/cart");
+        navigate("/");
       }
     } catch (error) {
       setErrors(`${error.response.data.message}`);
