@@ -40,35 +40,31 @@ function AdminAuthForm() {
 
   useEffect(() => {
     if (accountNumber.length === 10) {
-        axios
+      axios
         .post(
-          'https://api.flutterwave.com/v3/accounts/resolve',
+          "https://api.flutterwave.com/v3/accounts/resolve",
           {
             account_number: accountNumber,
             account_bank: formData.bank_code,
           },
           {
             headers: {
-              Authorization: 'FLWSECK-2f1313acdcd54313f5a1a90162852cff-18b5378820fvt-X',
-              'Content-Type': 'application/json', // Add Content-Type header
-            },
-            params: {
-              account_number: accountNumber,
-              account_bank: formData.bank_code,
-            },
+              Authorization:
+                "FLWSECK-2f1313acdcd54313f5a1a90162852cff-18b5378820fvt-X",
+              "Content-Type": "application/json", // Add Content-Type header
+            }
+            
           }
         )
-        .then(response => {
+        .then((response) => {
           console.log(response);
           setCustomerName(response.data.data.account_holder_name);
         })
-        .catch(error => {
-          console.error('Error:', error.message);
+        .catch((error) => {
+          console.error("Error:", error.message);
         });
-      
     }
   }, [accountNumber]);
-  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -155,7 +151,6 @@ function AdminAuthForm() {
           ),
         }}
       >
-
         {/* // this is the dropdown menu for listing all banks, kindly target the bank code of the bank that is selected */}
         {banks.map((bank) => (
           <MenuItem key={bank.id} value={bank.code}>
@@ -172,8 +167,6 @@ function AdminAuthForm() {
         fullWidth
         className="w-full"
       />
-
-      
 
       <button
         variant="contained"
