@@ -52,8 +52,6 @@ const Login = () => {
       setErrors(`${error.response.data.message}`);
       setIsLoading(false);
       console.log(error.response.data.message);
-      
-
     }
   };
 
