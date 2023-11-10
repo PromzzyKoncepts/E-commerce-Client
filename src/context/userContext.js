@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useState, useEffect } from "react";
-import jwt_decode from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 import { motion } from "framer-motion";
 
 const userContext = createContext(null);
@@ -53,12 +53,13 @@ export const UserProvider = (props) => {
 
    const signIn = async (body) => {
       try {
-         const res = await axios.post(`${baseUrl}/users/login`, body);
+         const res = await axios.post(`${baseUrl}/users/login`, body)
+
          if (res.data.success === true) {
-            const decodedToken = jwt_decode(res.data.message);
+            const decodedToken = jwtDecode(res.data.message);
             localStorage.setItem("authToken", JSON.stringify(res.data));
             setAuthUser(decodedToken);
-            console.log(res.data)
+            console.log('res.data', res.data)
             return res.data;
          } else {
             throw new Error("Authentication failed");
@@ -76,7 +77,7 @@ export const UserProvider = (props) => {
    useEffect(() => {
       const storedToken = localStorage.getItem("authToken");
       if (storedToken) {
-         const decodedToken = jwt_decode(storedToken);
+         const decodedToken = jwtDecode(storedToken);
          setAuthUser(decodedToken);
       }
       setLoading(false);
