@@ -20,12 +20,11 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
-  const [phone_number, setPhoneNumber] = useState('');
-
-
+  const [phone_number, setPhoneNumber] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState("");
+  const [userNameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
   // MUI FORM TEMPLATE
@@ -37,18 +36,19 @@ const Register = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-  
+
   const handleEmailChange = (e) => {
     const newEmail = e.target.value;
     setEmail(newEmail);
-    localStorage.setItem('email', JSON.stringify(newEmail));
+    localStorage.setItem("email", JSON.stringify(newEmail));
   };
 
-
   const navigate = useNavigate();
+  console.log(password.length);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const body = {
       email,
       username,
@@ -58,36 +58,47 @@ const Register = () => {
       phone_number,
     };
 
+    function containsSpace(inputString) {
+      for (let i = 0; i < inputString.length; i++) {
+        if (inputString[i] === " ") {
+          return true; // Found a space
+        }
+      }
+      return false; // No space found
+    }
+
     const baseUrl = "https://aphia-dev.onrender.com/api";
-
-    if (password.length < 8){
-      setPasswordError('password should be atleast 8 characters')
-    }
-
-    if (password !== confirmPassword) {
-      setPasswordError("passwords do not match");
-      setIsLoading(false);
-      return;
-    }
 
     setPasswordError("");
 
-    try {
-      setIsLoading(true);
-      const res = await axios.post(`${baseUrl}/users/register`, body);
-      console.log(res, "hgjfjfyxf")
-      if (res.data.success === true) {
+    if (containsSpace(username) === true) {
+      setUsernameError("username must not contain spaces");
+      if (password.length < 8) {
         setIsLoading(false);
-        setErrors(res.data.message);
-        navigate("/verify");
+        setPasswordError("password should be atleast 8 characters");
+        if (password !== confirmPassword) {
+          setIsLoading(false);
+          setPasswordError("passwords do not match");
+        }
       }
-    } catch (error) {
-      // setErrors(`${error.response.data.message}`);
-      setIsLoading(false);
-      // console.log(error.response.data.message);
+    } else {
+      try {
+        setIsLoading(true);
+        const res = await axios.post(`${baseUrl}/users/register`, body);
+        console.log(res, "hgjfjfyxf");
+        if (res.data.success === true) {
+          setIsLoading(false);
+          setErrors(res.data.message);
+          navigate("/verify");
+        }
+      } catch (error) {
+        // setErrors(`${error.response.data.message}`);
+        setIsLoading(false);
+        // console.log(error.response.data.message);
+      }
     }
   };
-   
+
   return (
     <form className="shadow-black" onSubmit={(e) => handleSubmit(e)}>
       <h1 className="text-4xl text-amber-500">Create an Account</h1>
@@ -99,7 +110,7 @@ const Register = () => {
         label="Firstname"
         variant="outlined"
       />
-      <br/>
+      <br />
       <TextField
         required
         id="outlined-basic"
@@ -107,7 +118,7 @@ const Register = () => {
         label="Lastname"
         variant="outlined"
       />
-      <br/>
+      <br />
       <TextField
         required
         id="outlined-basic"
@@ -115,7 +126,7 @@ const Register = () => {
         label="Phonenumber"
         variant="outlined"
       />
-      <br/>
+      <br />
       <TextField
         required
         id="outlined-basic"
@@ -131,6 +142,7 @@ const Register = () => {
         label="Username"
         variant="outlined"
       />
+      {userNameError && <small className="text-red-500">{userNameError}</small>}
       <br />
       <FormControl sx={{ width: "100%" }} variant="outlined" required>
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
@@ -182,7 +194,8 @@ const Register = () => {
         onChange={(e) => setConfirmPassword(e.target.value)}
         placeholder=" confirm password"
       /> */}
-      {passwordError && <small>{passwordError}</small>}
+      {passwordError && <small className="text-red-500">{passwordError}</small>}
+
       <button>{isLoading ? "Loading" : "Submit"}</button>
       <p className="login-link py-2">
         Already have an account?{" "}
