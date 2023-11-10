@@ -40,30 +40,32 @@ function AdminAuthForm() {
 
   useEffect(() => {
     if (accountNumber.length === 10) {
-      axios
+        axios
         .post(
           'https://api.flutterwave.com/v3/accounts/resolve',
           {
-            accountNumber: accountNumber,
-            account_bank: formData.bank_code // pass in the bank code here
-
+            account_number: accountNumber,
+            account_bank: formData.bank_code,
           },
           {
             headers: {
-              Authorization: 'FLWSECK-2f1313acdcd54313f5a1a90162852cff-18b5378820fvt-X', 
+              Authorization: 'FLWSECK-2f1313acdcd54313f5a1a90162852cff-18b5378820fvt-X',
+              'Content-Type': 'application/json', // Add Content-Type header
             },
             params: {
-            accountNumber: accountNumber, 
-            account_bank: formData.bank_code // pass in the bank code here
-            }
+              account_number: accountNumber,
+              account_bank: formData.bank_code,
+            },
           }
         )
         .then(response => {
-          setCustomerName(response.data.data.account_holder_name); 
+          console.log(response);
+          setCustomerName(response.data.data.account_holder_name);
         })
         .catch(error => {
-          console.error('Incorrect account number', error);
+          console.error('Error:', error.message);
         });
+      
     }
   }, [accountNumber]);
   

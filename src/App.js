@@ -9,6 +9,8 @@ import EmailVerf from "./pages/EmailVerf";
 import EmailConf from "./pages/EmailConf";
 import Cart from "./pages/Cart";
 import NotFound from "./components/404";
+// import AdminAuthForm from "./pages/adminAuth";
+import AdminAuth from "./pages/AdminAuth"
 
 
 
@@ -29,6 +31,7 @@ function App() {
             <Route path="/logout" element={<LogOut />} />
             <Route path="/verify" element={<EmailVerf/>}/>
             <Route path="/user/confirmation" element={<EmailConf/>}/>
+            <Route path="/auth"  element={<AdminAuth/>}/>
 
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />
