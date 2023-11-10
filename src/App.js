@@ -13,7 +13,7 @@ import EmailConf from "./Pages/EmailConf";
 import Cart from "./Pages/Cart"; 
 import NotFound from "./components/404";
 // import AdminAuthForm from "./pages/adminAuth";
-import AdminAuth from "./pages/AdminAuth"
+import AdminAuth from "./Pages/AdminAuth"
 import FavoritePage from "./Pages/FavoritePage";
 import PhonesAndTablets from "./categories/PhonesAndTablets";
 import Males from "./categories/Males";

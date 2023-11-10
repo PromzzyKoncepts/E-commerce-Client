@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useState, useEffect } from "react";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { motion } from "framer-motion";
 
 const userContext = createContext(null);
@@ -84,7 +84,7 @@ export const UserProvider = (props) => {
    }, []);
 
    return (
-      <userContext.Provider value={{ authUser, actions: { signIn, signOut } }}>
+      <userContext.Provider value={{ authUser, actions: { signIn, signOut, setAuthUser } }}>
          {loading ? (
             <div className="fixed w-full min-h-screen z-50 bg-black opacity-30 flex justify-center items-center h-screen">
                <motion.div

@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import userContext from "../context/userContext";
+import { jwtDecode } from "jwt-decode";
+
 
 import TextField from "@mui/material/TextField";
 import Visibility from "@mui/icons-material/Visibility";
@@ -10,50 +12,55 @@ import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import IconButton from "@mui/material/IconButton";
+import axios from "axios";
 
 const Login = () => {
   const {
-    actions: { signIn },
+    actions: { signOut, setAuthUser },
   } = useContext(userContext);
-//   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState("");
-
-  // MUI FORM TEMPLATE
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const body = {
-      email: username,
-      password,
-    };
 
     try {
       setIsLoading(true);
-      const res = await signIn(body);
-      if (res) {
+      const res = await axios.post(
+        "https://aphia-dev.onrender.com/api/users/login",
+        {
+          username,
+          password,
+        }
+      );
+
+      // console.log(res.data.message);
+      if (res.data.success === true) {
+        const decodedToken = jwtDecode(res.data.message);
+        localStorage.setItem("authToken", res.data.message);
+        setAuthUser(decodedToken)
         setIsLoading(false);
         setErrors("");
         navigate("/cart");
+      } else {
+        throw new Error("Authentication failed");
       }
     } catch (error) {
-      setErrors(`${error.response.data.message}`);
+      setErrors(``);
       setIsLoading(false);
-      console.log(error.response.data.message);
+      console.log(error);
     }
   };
+
 
   return (
     <form data-aos="fade-up" onSubmit={(e) => handleSubmit(e)}>
