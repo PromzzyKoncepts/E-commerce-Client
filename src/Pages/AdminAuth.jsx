@@ -23,20 +23,6 @@ function AdminAuthForm() {
   const [accountNumber, setAccountNumber] = useState("");
   const [customerName, setCustomerName] = useState("");
 
-  //   useEffect(() => {
-  // Make API call if needed
-  // axios.get('https://api.flutterwave.com/v3/banks/NG', {
-  //   headers: {
-  //     Authorization: 'FLWSECK-2f1313acdcd54313f5a1a90162852cff-18b5378820fvt-X'
-  //   }
-  // })
-  //   .then((response) => {
-  //     setBanks(response.data.data);
-  //   })
-  //   .catch((error) => {
-  //     console.error('Error fetching banks: ', error);
-  //   });
-  //   }, []);
 
   useEffect(() => {
 
