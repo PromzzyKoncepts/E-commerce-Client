@@ -1,14 +1,12 @@
-import React from "react"
-
-
+/* eslint-disable import/no-anonymous-default-export */
 
 
 export default [
-    {
-        "id": 825,
-        "code": "",
-        "name": ""
-    },
+    // {
+    //     "id": 720,
+    //     "code": "Enter your account",
+    //     "name": "Enter your account"
+    // },
     {
         "id": 825,
         "code": "000019",

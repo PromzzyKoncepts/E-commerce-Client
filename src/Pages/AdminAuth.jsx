@@ -41,26 +41,17 @@ function AdminAuthForm() {
   useEffect(() => {
 
     if (accountNumber.length === 10) {
-      console.log(typeof(formData.bank_code))
       axios
         .post(
-          "https://api.flutterwave.com/v3/accounts/resolve",
+          "https://aphia-dev.onrender.com/api/users/verify_bank",
           {
             account_number: accountNumber,
             account_bank: formData.bank_code,
-          },
-          {
-            headers: {
-              Authorization:
-                "FLWSECK-2f1313acdcd54313f5a1a90162852cff-18b5378820fvt-X",
-              "Content-Type": "application/json", // Add Content-Type header
-            }
-            
           }
         )
         .then((response) => {
           console.log(response);
-          setCustomerName(response.data.data.account_holder_name);
+          setCustomerName(response.data.message.account_name);
         })
         .catch((error) => {
           console.error("Error:", error.message);
@@ -88,8 +79,10 @@ function AdminAuthForm() {
 
   return (
     <form className="max-w-md mx-auto p-4 space-y-4">
-      <h1>Sign Up</h1>
-      <small className="text-center">Sign up as vendor, brand or business</small>
+      <h1>Create an Account</h1>
+      <small className="text-center ">
+        Sign up as vendor, brand or business
+      </small>
       <TextField
         label="Email"
         name="email"
@@ -157,7 +150,10 @@ function AdminAuthForm() {
       >
         {/* // this is the dropdown menu for listing all banks, kindly target the bank code of the bank that is selected */}
         {banks.map((bank) => (
-          <MenuItem key={bank.id} value={bank.code}>
+          <MenuItem
+            key={bank.id}
+            value={bank.code}
+          >
             {bank.name}
           </MenuItem>
         ))}
@@ -171,6 +167,9 @@ function AdminAuthForm() {
         fullWidth
         className="w-full"
       />
+      {customerName && (
+        <small className="font-bold text-slate-900">{customerName}</small>
+      )}
 
       <button
         variant="contained"

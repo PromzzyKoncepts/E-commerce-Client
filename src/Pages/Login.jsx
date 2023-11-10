@@ -16,7 +16,7 @@ import axios from "axios";
 
 const Login = () => {
   const {
-    actions: { signOut, setAuthUser },
+    actions: { setAuthUser },
   } = useContext(userContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
