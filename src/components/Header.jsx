@@ -27,21 +27,21 @@ const Header = () => {
 
   const handleCategories = () => setIsCategories((prev) => !prev);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 0) {
+  //       setIsScrolled(true);
+  //     } else {
+  //       setIsScrolled(false);
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   return (
     <div
@@ -149,7 +149,7 @@ const Header = () => {
             className="  items-center gap-2 no-underline text-slate-900  md:hidden"
           >
             <IconButton aria-label="cart ">
-              <StyledBadge badgeContent={4} color="error">
+              <StyledBadge badgeContent={allCartItems.length} color="error">
                 <ShoppingCart />
               </StyledBadge>
             </IconButton>
