@@ -294,11 +294,4 @@ const Burger = ({ open, setOpen }) => (
 );
 
 export { Burger, Menu, Overlay };
-// Burger.propTypes = {
-//   open: Proptypes.bool.isRequired,
-//   setOpen: Proptypes.func.isRequired,
-// };
-// Menu.propTypes = {
-//   open: Proptypes.bool.isRequired,
-//   setOpen: Proptypes.func.isRequired,
-// };
+

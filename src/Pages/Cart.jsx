@@ -1,155 +1,186 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Trash, Trash2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import StarIcon from "@mui/icons-material/Star";
 import {
-  calculateTotal,
-  calculateTotalAsync,
-  deleteAll,
-  remove,
-  updateQuantity,
+  calcTotal,
+  clearAll,
+  itemDecreased,
+  itemIncreased,
+  itemRemoved,
 } from "../redux/features/cartSlice";
-import { Link, useNavigate } from "react-router-dom";
-import RemoveIcon from "@mui/icons-material/Remove";
-import AddIcon from "@mui/icons-material/Add";
 
 const Cart = () => {
-  const cartTotal = useSelector((state) => state.cart.total);
-  const cartItems = useSelector((state) => state.cart.items);
-  // const total = useSelector((state) => state.cart);
+  const allCartItems = useSelector((state) => state.cart.items); //access the items array property in the state
   const dispatch = useDispatch();
+  dispatch(calcTotal()); //calls the calcTotal function to ensure it updates as changes in quantity are made
+  const total = useSelector((state) => state.cart.total); //access the computed value of the total property in the state
 
-  useEffect(() => {
-    dispatch(calculateTotalAsync());
-  }, [cartItems, dispatch]);
-
-  // Function to increment the quantity of an item
-  const incrementQuantity = (itemId) => {
-    const item = cartItems.find((item) => item.id === itemId);
-    if (item) {
-      dispatch(updateQuantity({ id: itemId, quantity: item.quantity + 1 }));
+  console.log(allCartItems);
+  const ratings = (rating) => {
+    if (rating < 1) {
+      return (
+        <>
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+        </>
+      );
+    } else if (rating < 2) {
+      return (
+        <>
+          <StarIcon className=" text-orange-500" />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+        </>
+      );
+    } else if (rating < 3) {
+      return (
+        <>
+          <StarIcon className=" text-orange-500" />
+          <StarIcon className=" text-orange-500" />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+        </>
+      );
+    } else if (rating < 4) {
+      return (
+        <>
+          <StarIcon className=" text-orange-500" />
+          <StarIcon className=" text-orange-500" />
+          <StarIcon className=" text-orange-500" />
+          <StarIcon />
+          <StarIcon />
+        </>
+      );
+    } else if (rating < 5) {
+      return (
+        <>
+          <StarIcon className=" text-orange-500" />
+          <StarIcon className=" text-orange-500" />
+          <StarIcon className=" text-orange-500" />
+          <StarIcon className=" text-orange-500" />
+          <StarIcon />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <StarIcon className=" text-orange-500" />
+          <StarIcon className=" text-orange-500" />
+          <StarIcon className=" text-orange-500" />
+          <StarIcon className=" text-orange-500" />
+          <StarIcon className=" text-orange-500" />
+        </>
+      );
     }
-  };
-
-  // Function to decrement the quantity of an item
-  const decrementQuantity = (itemId) => {
-    const item = cartItems.find((item) => item.id === itemId);
-    if (item && item.quantity > 1) {
-      dispatch(updateQuantity({ id: itemId, quantity: item.quantity - 1 }));
-    }
-  };
-
-  // Function to remove an item from the cart
-  const removeFromCart = (item) => {
-    dispatch(remove(item));
-  };
-
-  // Calculate the total price of items in the cart
-  const calculateTotal = () => {
-    let total = 0;
-
-    // Calculate the total based on item prices and quantities
-    for (const item of cartItems) {
-      total += item.price * (item.quantity || 1); // Use a default quantity of 1 if quantity is undefined
-    }
-
-    //  return Math.round(total);
-    //   instead of Math.round, i deceided to use Intl.NumberrFOrmat to add comma to the total
-    return Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(
-      total
-    );
   };
 
   return (
-    <div className="">
-      {cartItems.length === 0 ? (
-        <h2 className=" flex flex-col justify-center items-center h-[60vh]">
-          You have no products in your cart!{" "}
-          <Link to="/" className="text-amber-500 no-underline">
-            {" "}
-            Kindly purchase some{" "}
-          </Link>
-        </h2>
+    <>
+      {allCartItems.length < 1 ? (
+        <h1 className="text-3xl text-center font-mono font-bold">
+          There are no items in your cart
+        </h1>
       ) : (
-        <div>
-          <h1 className="text-2xl text-center m-3">
-            Welcome to your Cart <small>({cartItems.length}) items</small>
-          </h1>
-          <div className="w-10/12 m-auto grid grid-cols-4 gap-5">
-            <div className="item1 col-span-3 bg-slate-50 p-5 rounded">
-              {cartItems.map((item) => {
-                return (
+        <main className="p-4 flex flex-col items-center justify-center w-10/12 mx-auto">
+          <div className="w-[90%] sm:w-[99%] md:w-[92%]">
+            <h1 className="text-2xl text-center font-medium">{`Cart (${allCartItems.length})`}</h1>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <div className="w-full sm:w-[69%] ">
+                {allCartItems.map((item) => (
                   <div
-                    className="cart-content grid grid-cols-4 items-center border-b border-slate-300"
-                    key={item.id}
+                    className="  mb-8 pb-4 border-b  border-slate-200"
+                    key={item._id}
                   >
-                    <div className="item1 col-span-3 my-4">
-                      <div className="flex gap-3">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="max-w-[20%] object-fill"
-                        />
-                        <div>
-                          <p className="text-2xl">{item.title}</p>
-                          <p className="desc">{item.category}</p>
+                    <section className="cart-items flex-1">
+                      <div className="top flex flex-col sm:flex-row">
+                        <div className="left img mr-5 mb-5 ">
+                          <img
+                            src={item.images[0]}
+                            alt=""
+                            className="w-full h-full sm:w-44 sm:h-44"
+                          />
+                        </div>
+                        <div className="right flex-1">
+                          <div className=" flex items-center justify-between font-semibold text-lg">
+                            <h3 className="font-mono text-lg sm:text-xl">
+                              {item.name}
+                            </h3>
+                            <h3 className=" text-base sm:text-lg">
+                              ₦{item.price}
+                            </h3>
+                          </div>
+                          <article className="my-3 font-[poppins] uppercase">
+                            item.category
+                          </article>
+                          {/* <p >{ratings(item.rating.rate)} </p> */}
+                        </div>
+                      </div>
+                      <div className="bottom flex items-center justify-between">
+                        <button
+                          className="text-white flex items-center  bg-red-500 hover:bg-red-400 py-3 ps-0 pr-3 shadow-md rounded-md"
+                          onClick={() => dispatch(itemRemoved(item._id))}
+                        >
+                          <Trash2 /> Remove
+                        </button>
+                        <div className="qty">
                           <button
-                            className="bg-amber-500 text p-2 rounded text-slate-100 hover:bg-red-700"
-                            onClick={() => removeFromCart(item)}
+                            className="dec px-4 py-2 bg-orange-400 "
+                            onClick={() => dispatch(itemDecreased(item._id))}
+                            disabled={item.quantity <= 1}
                           >
-                            Remove
+                            -
+                          </button>
+                          <span className="mx-2">{item.quantity}</span>
+                          <button
+                            className="incr px-4 py-2 bg-orange-400 "
+                            onClick={() => dispatch(itemIncreased(item._id))}
+                          >
+                            +
                           </button>
                         </div>
                       </div>
-                    </div>
-                    <div className="item2 col-span-1">
-                      <h4>&#8358;{item.price}</h4>
-                      <div>
-                        <button
-                          className="bg-amber-500 text p-2 rounded text-slate-100 hover:bg-orange-500 active:bg-orange-600"
-                          onClick={() => decrementQuantity(item.id)}
-                        >
-                          <RemoveIcon />
-                        </button>
-                        <span className="text p-2 rounded">
-                          {item.quantity || 1}
-                        </span>
-                        <button
-                          className="bg-amber-500 text p-2 rounded text-slate-100 hover:bg-orange-500 active:bg-orange-600"
-                          onClick={() => incrementQuantity(item.id)}
-                        >
-                          <AddIcon />
-                        </button>
-                      </div>
-                    </div>
+                    </section>
                   </div>
-                );
-              })}
-              <button
-                className="clearAll bg-amber-500 text px-4 py-3 rounded text-slate-100  active:bg-orange-600 mt-4 font-medium hover:bg-red-800 "
-                onClick={() => dispatch(deleteAll())}
-              >
-                Clear All
-              </button>
-            </div>
-            <div className="checkout item2 col-span-1">
-              <h5>Cart Summary</h5>
-              <div className="flex items-center justify-between">
-                <p>Sum Total</p>
-                <h3>&#8358;{Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(
-      cartTotal
-    )}</h3>
+                ))}
               </div>
-              <Link
-                className="p-3 bg-[#ff8d3a] no-underline text-slate-50 absolute rounded hover:bg-green-700"
-                to="/shipping"
-              >
-                Checkout (&#8358;{calculateTotal()})
-              </Link>
+              <aside className="summary bg-zinc-200 p-4 w-full sm:w-[30%] md:h-fit shadow-md">
+                <h1 className=" text-base sm:text-md lg:text-lg font-semibold text-center">
+                  Cart Summary
+                </h1>
+                <div className="flex justify-between sm:p-6 flex-wrap">
+                  <h4 className="text-base sm:text-md lg:text-lg ">
+                    Subtotal:
+                  </h4>
+                  <h3 className="font-bold text-base sm:text-md lg:text-lg ">{`₦${total}`}</h3>
+                </div>
+                <button className="bg-orange-400 hover:bg-green-600 py-2   w-full flex items-center justify-center rounded-sm shadow-lg font-bold">
+                  <Link
+                    to="/checkout"
+                    className="no-underline text-white"
+                  >{`Checkout (₦${total})`}</Link>
+                </button>
+              </aside>
             </div>
+            <button
+              className="text-red-800 font-semibold flex items-center self-start py-3 ps-0 pr-3 hover:bg-red-800 hover:text-white rounded-md"
+              onClick={() => dispatch(clearAll())}
+            >
+              <Trash /> Clear All
+            </button>
           </div>
-        </div>
+        </main>
       )}
-    </div>
+    </>
   );
 };
+
 
 export default Cart;
