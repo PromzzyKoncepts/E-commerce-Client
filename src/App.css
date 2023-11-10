@@ -153,4 +153,8 @@ small {
     background-color: #dda9507f;
     border-radius: 20px;
   }
+
+  .cards {
+    width: 200rem!important;
+  }
 }

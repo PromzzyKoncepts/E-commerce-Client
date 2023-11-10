@@ -19,11 +19,11 @@ const LatestArrivalShortcut = () => {
     }, [])
   return (
     <div className=''>
-            <div className="w-10/12 mx-auto mt-4 bg-slate-200 pt-6 p-4 rounded-t-lg relative">
+            <div className="  w-10/12 mx-auto mt-4 bg-slate-200 pt-6 p-4 rounded-t-lg relative">
                 <div className="">
                     <h2 className='pb-4 text-3xl mx-auto w-fit mb-4'>Latest Arrivals</h2>
                     <Link to="/latest-arrivals" className='bg-red-600 text-white  p-1 rounded-tr-lg absolute top-0 right-0 no-underline hover:underline'>Show All</Link>
-                    <div className='grid grid-cols-4  gap-3'>
+                    <div className='flex overflow-x-scroll md:grid grid-cols-4  gap-3'>
                          {
                             data.map(item => (
                                 <a href={""} key={item._id} className='bg-white text-black pb-2 px-6 pt-6 rounded relative no-underline'>
