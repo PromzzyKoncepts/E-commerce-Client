@@ -34,4 +34,4 @@ function FavoriteProduct({productObject}) {
   )
 }
 
-export default FavoriteProduct
+export default FavoriteProduct;
