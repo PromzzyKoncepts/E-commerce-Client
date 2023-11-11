@@ -41,7 +41,7 @@ function BestDeals() {
         <div className="w-10/12 mx-auto mt-4 bg-slate-200 pt-6 p-4 rounded-t-lg relative">
           <div className="">
             <h2 className="pb-4 text-3xl mx-auto w-fit mb-4">Best Deals</h2>
-            <div className="grid grid-cols-4 gap-[0.6rem]">
+            <div className="flex flex-wrap flex-grow justify-center md:grid md:grid-cols-4 gap-[0.6rem]">
               {products.map((item) => (
                 <a
                   href={""}
@@ -55,7 +55,7 @@ function BestDeals() {
                     <img
                       src={item.product.images[0]}
                       alt={item.product.name}
-                      className="w-full h-48 object-contain"
+                      className=" basis-80  object-contain"
                     />
                   </div>
                   <div className="">
