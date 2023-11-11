@@ -12,7 +12,6 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import IconButton from "@mui/material/IconButton";
 import EmailVerf from "./EmailVerf";
-import "../stylesheets/Auth.css"
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -174,11 +173,15 @@ const Register = () => {
           className="w-full mb-1 text-gray-700 rounded"
         />
       </FormControl>
-      
+      {/* <input
+        type="password"
+        onChange={(e) => setConfirmPassword(e.target.value)}
+        placeholder=" confirm password"
+      /> */}
       {passwordError && <small className="text-red-500">{passwordError}</small>}
 
-      <button className="p-2  mt-4 w-full text-white bg-amber-500  text-lg from-neutral-900 tracking-wider hover:bg-amber-400 hover:text-white">{isLoading ? "Loading" : "Submit"}</button>
-      <p className="text-center py-2">
+      <button>{isLoading ? "Loading" : "Submit"}</button>
+      <p className="login-link py-2">
         Already have an account?{" "}
         <Link to="/login" className="text-amber-500">
           Sign in

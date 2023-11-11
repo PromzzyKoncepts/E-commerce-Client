@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useState, useEffect } from "react";
-import jwt_decode from "jwt-decode";
+import jwtDecode from "jwt-decode";
 import { motion } from "framer-motion";
 
 const userContext = createContext(null);
@@ -54,12 +54,13 @@ export const UserProvider = (props) => {
 
    const signIn = async (body) => {
       try {
-         const res = await axios.post(`${baseUrl}/users/login`, body);
+         const res = await axios.post(`${baseUrl}/users/login`, body)
+
          if (res.data.success === true) {
-            const decodedToken = jwt_decode(res.data.message);
-            const token = res.data.message
-            localStorage.setItem("authToken", token);
+            const decodedToken = jwtDecode(res.data.message);
+            localStorage.setItem("authToken", JSON.stringify(res.data));
             setAuthUser(decodedToken);
+            console.log('res.data', res.data)
             return res.data;
          } else {
             throw new Error("Authentication failed");
@@ -77,14 +78,14 @@ export const UserProvider = (props) => {
    useEffect(() => {
       const storedToken = localStorage.getItem("authToken");
       if (storedToken) {
-         const decodedToken = jwt_decode(storedToken);
+         const decodedToken = jwtDecode(storedToken);
          setAuthUser(decodedToken);
       }
       setLoading(false);
    }, []);
 
    return (
-      <userContext.Provider value={{ authUser, actions: { signIn, signOut } }}>
+      <userContext.Provider value={{ authUser, actions: { signIn, signOut, setAuthUser } }}>
          {loading ? (
             <div className="fixed w-full min-h-screen z-50 bg-black opacity-30 flex justify-center items-center h-screen">
                <motion.div

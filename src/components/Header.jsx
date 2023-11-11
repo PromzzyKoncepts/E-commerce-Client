@@ -80,10 +80,10 @@ const Header = () => {
               {authUser ? ` ${authUser.username}` : "My account "}
               <ArrowDropDown />
               {isCategories && (
-                <section className=" z-[10000] absolute bg-[#333237aa] px-3 py-3 items-center rounded">
+                <section className=" z-[10000] absolute bg-[#333237aa] w-[8rem] px-3 py-3 items-center rounded">
                   <div>
                     {authUser ? (
-                      <div className="flex flex-col items-center">
+                      <div className="flex flex-col items-right">
                         <NavLink
                           className="rounded no-underline text-white"
                           to="/orders"
@@ -91,6 +91,14 @@ const Header = () => {
                           Orders
                         </NavLink>
                         <br />
+                        <NavLink
+                          className="rounded no-underline text-white"
+                          to="/favorite"
+                        >
+                          favourite
+                        </NavLink>
+                        <br />
+                        
                         <NavLink
                           className="bg-amber-500 no-underline p-2 hover:bg-[#FF8D3A] rounded text-white"
                           to="/logout"

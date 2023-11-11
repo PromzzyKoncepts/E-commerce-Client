@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import AphiaLogo from '../../assets/aphia.png';
 import { Link } from 'react-router-dom';
 
-function OrderPayConfirm() {
+const OrderPayConfirm = () => {
     const [remainingTime, setRemainingTime] = useState(null); // Initialize RemainingTime as null
     const [expired, setExpired] = useState(false);
     const order = useSelector((state) => state.order.order);

@@ -10,8 +10,10 @@ import LogOut from "./pages/LogOut";
 import BestDeals from "./pages/BestDeals";
 import EmailVerf from "./pages/EmailVerf";
 import EmailConf from "./pages/EmailConf";
-import Cart from "./pages/Cart";
+import Cart from "./pages/Cart"; 
 import NotFound from "./components/404";
+// import AdminAuthForm from "./pages/adminAuth";
+import AdminAuth from "./pages/AdminAuth"
 import FavoritePage from "./pages/FavoritePage";
 import PhonesAndTablets from "./categories/PhonesAndTablets";
 import Males from "./categories/Males";
@@ -30,7 +32,7 @@ import OrderSummary from "./components/checkout/OrderSummary";
 import EmptyCart from "./components/checkout/EmptyCart";
 import OrderPayDetails from "./components/checkout/OrderPayDetails";
 import OrderPayConfirm from "./components/checkout/OrderPayConfirm.jsx";
-import Test from "./components/checkout/Test.js";
+
 
 
 
@@ -62,12 +64,12 @@ function App() {
             <Route path="/others" element={<OtherCategories />} />
             <Route path="/shoes" element={<Shoes />} />
             <Route path="/verify" element={<EmailVerf />} />
+            <Route path="/auth"  element={<AdminAuth/>}/>
             <Route path="/user/confirmation" element={<EmailConf />} />
 
             <Route path="/favorite" element={<FavoritePage />} />
             <Route path='/cart/emptycart' element={<EmptyCart />} />
-            <Route path='/test' element={<Test />} />
-
+         
             {/* Protected Routes For Checkouts & Payments */}
             <Route path="/checkout/shipping" 
               element={
