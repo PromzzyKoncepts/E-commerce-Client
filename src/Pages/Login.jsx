@@ -55,7 +55,7 @@ const Login = () => {
         throw new Error("Authentication failed");
       }
     } catch (error) {
-      setErrors(``);
+      setErrors(`Incorrect Username or Password`);
       setIsLoading(false);
       console.log(error);
     }
@@ -65,7 +65,7 @@ const Login = () => {
   return (
     <form data-aos="fade-up" onSubmit={(e) => handleSubmit(e)}>
       <h1 className="text-4xl text-amber-500">Sign In </h1>
-      {errors && <h3>{errors}</h3>}
+      {errors && <h6 style={{ color: "red" }}>{errors}</h6>}
       <TextField
         required
         id="outlined-basic"
