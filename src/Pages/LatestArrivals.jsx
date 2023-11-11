@@ -34,15 +34,15 @@ const LatestArrivals = () => {
     const handlePrev = ()=> setCurrentPage((prev)=>prev-1)
     const handleNext = ()=> setCurrentPage((prev)=>prev+1)
   return (
-    <>
+    <div className="mt-[5rem]">
       {isLoading ? (
         <div className="p-8 w-10/12 mx-auto flex items-center justify-center h-[70vh]">
           <p className=" animate-spin h-5 w-5 border-2 border-zinc-800 border-x-transparent rounded-full p-4 "></p>
         </div>
       ) : (
-        <div className="w-10/12 mx-auto mt-4 bg-slate-200 pt-6 p-4 rounded-t-lg relative">
+        <div className="w-10/12 mx-auto mt-4 bg-slate-100  md:p-4 p-2 rounded-t-lg relative">
           <div className="">
-            <h2 className="pb-4 text-3xl mx-auto w-fit mb-4">
+            <h2 className="pb-4 text-3xl mx-auto w-fit md:mb-4">
               Latest Arrivals
             </h2>
             <div className="flex flex-wrap flex-grow justify-center md:grid md:grid-cols-4 gap-[0.6rem]">
@@ -51,11 +51,11 @@ const LatestArrivals = () => {
                   key={item._id}
                   className="bg-white pb-2 px-2 pt-6 rounded relative no-underline text-black"
                 >
-                  <div className="bg-white">
+                  <div className="bg-white flex">
                     <img
                       src={item.images[0]}
                       alt={item.name}
-                      className=" basis-80  object-contain"
+                      className=" basis-[12rem]  object-contain"
                     />
                   </div>
                   <div className="">
@@ -98,7 +98,7 @@ const LatestArrivals = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
