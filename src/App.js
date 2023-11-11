@@ -12,6 +12,8 @@ import EmailVerf from "./Pages/EmailVerf";
 import EmailConf from "./Pages/EmailConf";
 import Cart from "./Pages/Cart"; 
 import NotFound from "./components/404";
+// import AdminAuthForm from "./pages/adminAuth";
+import AdminAuth from "./Pages/AdminAuth"
 import FavoritePage from "./Pages/FavoritePage";
 import PhonesAndTablets from "./categories/PhonesAndTablets";
 import Males from "./categories/Males";
@@ -54,6 +56,7 @@ function App() {
             <Route path="/others" element={<OtherCategories />} />
             <Route path="/shoes" element={<Shoes />} />
             <Route path="/verify" element={<EmailVerf />} />
+            <Route path="/auth"  element={<AdminAuth/>}/>
             <Route path="/user/confirmation" element={<EmailConf />} />
 
             <Route path="/favorite" element={<FavoritePage />} />
