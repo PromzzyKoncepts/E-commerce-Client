@@ -83,9 +83,9 @@ const Cart = () => {
   };
 
   return (
-    <>
-      {allCartItems.length < 1 ? (
-        <h1 className="text-3xl text-center font-mono font-bold">
+    <div className="mt-[5rem]">
+      {allCartItems.length === 0 ? (
+        <h1 className="text-3xl grid h-[70vh] place-items-center text-center font-mono font-bold">
           There are no items in your cart
         </h1>
       ) : (
@@ -103,7 +103,7 @@ const Cart = () => {
                       <div className="top flex flex-col sm:flex-row">
                         <div className="left img mr-5 mb-5 ">
                           <img
-                            src={item.images[0]}
+                            src={item.product?.images?.[0] || item.images?.[0]}
                             alt=""
                             className="w-full h-full sm:w-44 sm:h-44"
                           />
@@ -111,15 +111,13 @@ const Cart = () => {
                         <div className="right flex-1">
                           <div className=" flex items-center justify-between font-semibold text-lg">
                             <h3 className="font-mono text-lg sm:text-xl">
-                              {item.name}
+                              {item.product?.name || item.name}
                             </h3>
                             <h3 className=" text-base sm:text-lg">
-                              ₦{item.price}
+                              ₦{item.product?.price || item.price}
                             </h3>
                           </div>
-                          <article className="my-3 font-[poppins] uppercase">
-                            item.category
-                          </article>
+
                           {/* <p >{ratings(item.rating.rate)} </p> */}
                         </div>
                       </div>
@@ -132,7 +130,7 @@ const Cart = () => {
                         </button>
                         <div className="qty">
                           <button
-                            className="dec px-4 py-2 bg-orange-400 "
+                            className="dec px-4 py-2 bg-amber-500 active:bg-orange-500 hover:bg-amber-600"
                             onClick={() => dispatch(itemDecreased(item._id))}
                             disabled={item.quantity <= 1}
                           >
@@ -140,7 +138,7 @@ const Cart = () => {
                           </button>
                           <span className="mx-2">{item.quantity}</span>
                           <button
-                            className="incr px-4 py-2 bg-orange-400 "
+                            className="incr px-4 py-2 bg-amber-500 active:bg-orange-500 hover:bg-amber-600"
                             onClick={() => dispatch(itemIncreased(item._id))}
                           >
                             +
@@ -178,7 +176,7 @@ const Cart = () => {
           </div>
         </main>
       )}
-    </>
+    </div>
   );
 };
 
