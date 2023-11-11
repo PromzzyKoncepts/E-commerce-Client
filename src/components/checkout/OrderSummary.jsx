@@ -29,6 +29,14 @@ const OrderSummary = () => {
         }
       }, [navigate, allCartItems]);
 
+      const handleOverlay = () => {
+          setShowOverlay(false);
+        };
+        
+        useEffect(() => {
+          setShowOverlay(false);
+        }, [navigate]);
+
     const shippingPrice =  total > 1000 ? 200 : total > 10000 ? 500 : total > 20000 ? 1500 : 0;
     const allItemQuatity = allCartItems.reduce((acc, item) => acc + item.quantity, 0);
     const totalPrice = allCartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -45,17 +53,17 @@ const OrderSummary = () => {
     }
 
     const placeOrderHandler = () => {
-        setShowOverlay(true);
         dispatch(createOrder(orderData));
+        setShowOverlay(true);
       };
 
     return (
 
-        <div className="md:flex lg:flex lg:space-x-6 md:space-x-5 p-5 bg-slate-50  rounded-lg" >
+        <div className="md:flex p-5 bg-slate-50  rounded-lg" >
             {/* Main Content on the Left */}
-            <div className="md:w-2/3 lg:w-2/3">
+            <div className=" w-full md:w-2/3 mb-4">
                 {/* Display ordered items in a table */}
-                <div className="bg-white shadow-md rounded-lg">
+                <div className="bg-white shadow-md rounded-lg mr-2 ml-2">
                     <h2 className="text-xl text-amber-500 font-semibold mb-4 pl-5 pt-4">Order Items</h2>
                     {allCartItems.length < 1 
                     ? (
@@ -167,8 +175,8 @@ const OrderSummary = () => {
             </div>
 
 
-            <div className="lg:w-1/3 md:w-1/3 mt-6 md:mt-0 lg:mt-0">
-                <div className="bg-white shadow-md rounded-lg p-4">
+            <div className="w-full md:w-1/3 md:mt-0 ">
+                <div className="bg-white shadow-md rounded-lg p-4 mr-2 ml-2">
                     <h2 className="text-xl font-semibold mb-4 text-amber-500">Order Summary</h2>
                     {/* Display shipping address */}
                     <p className="border-b mb-2 pb-2 font-semibold text-sm">
@@ -245,7 +253,7 @@ const OrderSummary = () => {
                 </div>
 
             </div>
-            {showOverlay && <OrderCreateOverlay orderState={orderStatus} onClose={() => setShowOverlay(false)} />}
+            {showOverlay && <OrderCreateOverlay orderState={orderStatus} onClose={handleOverlay}/>}
         </div >
 
     );

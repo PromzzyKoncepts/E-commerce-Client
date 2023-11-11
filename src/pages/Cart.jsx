@@ -14,7 +14,7 @@ const Cart = () => {
 
   useEffect(() => {
     dispatch(calcTotal());
-  }, [dispatch]); //calls the calcTotal function to ensure it updates as changes in quantity are made
+  }, []); //calls the calcTotal function to ensure it updates as changes in quantity are made
 
   useEffect(() => {
     // Perform any synchronous or asynchronous actions here, but avoid direct state updates

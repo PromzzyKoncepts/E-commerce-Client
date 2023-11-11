@@ -6,7 +6,7 @@ const order_url = 'https://aphia-dev.onrender.com/api';
 const initialState = {
   status: null,
   order: {
-    success: false,
+    success: null,
     message: '',
     orderId: '',
     paymentInitiation: {

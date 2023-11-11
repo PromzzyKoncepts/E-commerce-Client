@@ -2,13 +2,12 @@
     background-color: #eaeaea;
     display: flex;
     flex-direction: column;
-    max-width: 40%;
+    max-width: 60%;
     margin: auto;
     margin-top: 3rem;
+    margin-bottom: 3rem;
     padding: 3rem;
     text-align: center;
-    box-shadow: 1px 2px 5px #00000064;
-    border-radius: 6px;
 }
 
 .authForm>h1 {

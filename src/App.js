@@ -28,6 +28,9 @@ import ShippingAddressForm from "./components/checkout/ShippingAddressForm";
 import Payment from "./components/checkout/Payments";
 import OrderSummary from "./components/checkout/OrderSummary";
 import EmptyCart from "./components/checkout/EmptyCart";
+import OrderPayDetails from "./components/checkout/OrderPayDetails";
+import OrderPayConfirm from "./components/checkout/OrderPayConfirm.jsx";
+import Test from "./components/checkout/Test.js";
 
 
 
@@ -62,6 +65,8 @@ function App() {
             <Route path="/user/confirmation" element={<EmailConf />} />
 
             <Route path="/favorite" element={<FavoritePage />} />
+            <Route path='/cart/emptycart' element={<EmptyCart />} />
+            <Route path='/test' element={<Test />} />
 
             {/* Protected Routes For Checkouts & Payments */}
             <Route path="/checkout/shipping" 
@@ -85,12 +90,26 @@ function App() {
                </Protected>
             } />
 
-            <Route path='/cart/emptycart' 
+            <Route path='/checkout/makepayment' 
               element={
                <Protected>
-                  <EmptyCart />
+                  <OrderPayDetails />
                </Protected>
             } />
+
+            <Route path='/checkout/confirmpay' 
+              element={
+               <Protected>
+                  <OrderPayConfirm />
+               </Protected>
+            } />
+
+            {/* <Route path='/checkout/payconfirmed' 
+              element={
+               <Protected>
+                  < />
+               </Protected>
+            } /> */}
 
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />

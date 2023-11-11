@@ -1,3 +1,4 @@
+
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
@@ -13,76 +14,62 @@ export const signup = createAsyncThunk('auth/signup', async (body) => {
     }
 });
 
-
-export const signin = createAsyncThunk('auth/login', async (body, { dispatch }) => {
+export const signin = createAsyncThunk('auth/signin', async (body) => {
     try {
         const res = await axios.post(`${authUrl}/users/login`, body);
 
         if (res.data.success === true) {
             const decodedToken = jwt_decode(res.data.message);
             const token = res.data.message;
-            dispatch(authSlice.actions.setAuthToken(token));
-            dispatch(authSlice.actions.setAuthUser(decodedToken));
-            return res.data;
+
+            return { token, user: decodedToken };
         } else {
             throw new Error("Authentication failed");
         }
     } catch (error) {
-        dispatch(authSlice.actions.setAuthError(error.message || "Authentication failed"));
-        return null;
+        throw error;
     }
 });
 
 const initialState = {
     status: 'idle',
-    isLoggedIn: false,
-    user: {
-        email: '',
-        username: '',
-        password: '',
-        first_name: '',
-        last_name: '',
-        phone_number: '',
-    },
+    user: null,
     error: null,
-    authToken: localStorage.getItem("authToken") || null,
-    authUser: null,
-   
+    authToken: null,
+    previousLocation: null,
 };
 
 const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        setAuthToken: (state, action) => {
-            state.authToken = action.payload;
-        },
-        setAuthUser: (state, action) => {
-            state.authUser = action.payload;
-        },
-        setAuthError: (state, action) => {
-            state.error = action.payload;
-        },
+        setPreviousLocation: (state, action) => {
+            state.previousLocation = action.payload;
+          },
+
+        clearPreviousLocation: (state) => {
+            state.previousLocation = null;
+          },
+
         clearAuthError: (state) => {
             state.error = null;
         },
-
         signOut: (state) => {
             state.authToken = null;
-            state.authUser = null;
+            state.user = null;
             localStorage.removeItem("authToken");
         },
     },
-
     extraReducers: (builder) => {
         builder
             .addCase(signup.pending, (state) => {
                 state.status = 'loading';
+                
             })
             .addCase(signup.fulfilled, (state, action) => {
                 state.status = 'success';
-                state.isLoggedIn = true;
                 state.user = action.payload;
+                state.error = null;
             })
             .addCase(signup.rejected, (state, action) => {
                 state.status = 'failed';
@@ -90,17 +77,19 @@ const authSlice = createSlice({
             })
             .addCase(signin.pending, (state) => {
                 state.status = 'loading';
-                state.error = null;
             })
             .addCase(signin.fulfilled, (state, action) => {
-                state.status = 'succeess';
+                state.status = 'success';
+                state.authToken = action.payload.token;
+                state.user = action.payload.user;
             })
-            .addCase(signin.rejected, (state) => {
+            .addCase(signin.rejected, (state, action) => {
                 state.status = 'failed';
-            });           
+                state.error = action.error.message;
+            });
     },
 });
 
-export const { signOut, clearAuthError } = authSlice.actions;
+export const { signOut, clearAuthError, setPreviousLocation, clearPreviousLocation } = authSlice.actions;
 
 export default authSlice.reducer;
