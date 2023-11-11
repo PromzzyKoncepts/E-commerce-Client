@@ -180,8 +180,8 @@ const Register = () => {
       /> */}
       {passwordError && <small className="text-red-500">{passwordError}</small>}
 
-      <button>{isLoading ? "Loading" : "Submit"}</button>
-      <p className="login-link py-2">
+      <button className="p-2 mt-4 w-full text-white bg-amber-500  text-lg from-neutral-900 tracking-wider hover:bg-amber-400 hover:text-white">{isLoading ? "Loading" : "Submit"}</button>
+      <p className="text-center py-2">
         Already have an account?{" "}
         <Link to="/login" className="text-amber-500">
           Sign in
