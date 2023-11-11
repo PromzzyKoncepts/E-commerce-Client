@@ -45,7 +45,7 @@ import {
     const [hoveredIndex, setHoveredIndex] = useState(true);
   
     return (
-      <div data-aos="fade-up" className={`w-10/12 max-h-[60vh] m-auto  ${hoveredIndex ? "blacked" : ""}`}>
+      <div  className={`w-10/12 max-h-[60vh] m-auto  ${hoveredIndex ? "blacked" : ""}`}>
         <CCarousel
           controls
           indicators

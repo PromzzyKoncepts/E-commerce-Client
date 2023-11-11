@@ -103,7 +103,7 @@ const Cart = () => {
                       <div className="top flex flex-col sm:flex-row">
                         <div className="left img mr-5 mb-5 ">
                           <img
-                            src={ item.product?.images?.[0] || item.images?.[0]}
+                            src={item.product?.images?.[0] || item.images?.[0]}
                             alt=""
                             className="w-full h-full sm:w-44 sm:h-44"
                           />
@@ -111,15 +111,13 @@ const Cart = () => {
                         <div className="right flex-1">
                           <div className=" flex items-center justify-between font-semibold text-lg">
                             <h3 className="font-mono text-lg sm:text-xl">
-                              {item.name}
+                              {item.product?.name || item.name}
                             </h3>
                             <h3 className=" text-base sm:text-lg">
-                              ₦{item.price}
+                              ₦{item.product?.price || item.price}
                             </h3>
                           </div>
-                          <article className="my-3 font-[poppins] uppercase">
-                            item.category
-                          </article>
+
                           {/* <p >{ratings(item.rating.rate)} </p> */}
                         </div>
                       </div>
