@@ -55,7 +55,7 @@ const Login = () => {
         throw new Error("Authentication failed");
       }
     } catch (error) {
-      setErrors(``);
+      setErrors("");
       setIsLoading(false);
       console.log(error);
     }
