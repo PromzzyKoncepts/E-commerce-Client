@@ -8,7 +8,7 @@ import LatestArrivalShortcut from "../components/LatestArrivalShortcut";
 
     function Home() {
         return (
-            <div>
+          <div className="mt-[5rem]">
             <img src={jumiagif} className="w-full" alt="gif" />
 
             <Slider />
@@ -16,7 +16,7 @@ import LatestArrivalShortcut from "../components/LatestArrivalShortcut";
             <BestDealsShortcut />
             <LatestArrivalShortcut />
             <Footer />
-        </div>
-    );
+          </div>
+        );
 }
 export default Home;
