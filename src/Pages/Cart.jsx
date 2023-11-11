@@ -15,7 +15,7 @@ const Cart = () => {
   const allCartItems = useSelector((state) => state.cart.items); //access the items array property in the state
   const dispatch = useDispatch();
 
-  
+
   useEffect(() => {
     dispatch(calcTotal());
   }, [dispatch])
@@ -166,7 +166,7 @@ const Cart = () => {
                 </div>
                 <button className="bg-orange-400 hover:bg-green-600 py-2   w-full flex items-center justify-center rounded-sm shadow-lg font-bold">
                   <Link
-                    to="/checkout"
+                    to="/checkout/shipping"
                     className="no-underline text-white"
                   >{`Checkout (₦${total})`}</Link>
                 </button>
