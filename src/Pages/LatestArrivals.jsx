@@ -1,19 +1,31 @@
 import React, { useRef, useState, useEffect } from 'react'
+import axios from 'axios';
+import { useDispatch } from "react-redux";
+import { itemAdded } from "../redux/features/cartSlice";
+
+
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import axios from 'axios';
 
 const LatestArrivals = () => {
     const [data, setData] = useState([])
+    const [shopped, setShopped] = useState({});
     const [currentPage, setCurrentPage] = useState(1)
     const [isLoading, setIsLoading] = useState(false);
     let totalPages = useRef()
     const itemsPerPage = 8
     const startIndex = (currentPage - 1) * itemsPerPage
     const endIndex = startIndex + itemsPerPage
+
+    const dispatch = useDispatch()
+    const handleShopNow = (product) => {
+      dispatch(itemAdded(product));
+      setShopped({ ...shopped, [product._id]: true }); //copies the original shopped state and adds a new product.id property dynamically and sets its value to true
+      //The angle brackets tell JavaScript that the product id is a variable, and that the property name should be evaluated dynamically.
+    };
 
     const url = "https://aphia-dev.onrender.com/api/products"
     useEffect(()=>{
@@ -34,13 +46,13 @@ const LatestArrivals = () => {
     const handlePrev = ()=> setCurrentPage((prev)=>prev-1)
     const handleNext = ()=> setCurrentPage((prev)=>prev+1)
   return (
-    <div className="mt-[5rem]">
+    <div className="mt-[7rem]">
       {isLoading ? (
         <div className="p-8 w-10/12 mx-auto flex items-center justify-center h-[70vh]">
           <p className=" animate-spin h-5 w-5 border-2 border-zinc-800 border-x-transparent rounded-full p-4 "></p>
         </div>
       ) : (
-        <div className="w-10/12 mx-auto mt-4 bg-slate-100  md:p-4 p-2 rounded-t-lg relative">
+        <div className="w-10/12 mx-auto mt-4 bg-slate-100  p-4  rounded-t-lg relative">
           <div className="">
             <h2 className="pb-4 text-3xl mx-auto w-fit md:mb-4">
               Latest Arrivals
@@ -67,10 +79,22 @@ const LatestArrivals = () => {
                       <p className="font-semibold text-sm">
                         &#8358;{item.price}
                       </p>
-                      <p className="text-sm text-amber-600 p-1 rounded hover:bg-amber-100 active:bg-amber-200">
-                        <ShoppingBagIcon />
-                        shop now
-                      </p>
+                      <button
+                        className="flex items-center  font-medium text-slate-900"
+                        onClick={() => handleShopNow(item)}
+                      >
+                        <ShoppingBagIcon
+                          className={`${
+                            shopped[item._id] ? "opacity-75" : "opacity-100"
+                          }`}
+                        />
+                        {shopped[item._id] ? (
+                          <span className="opacity-75">Shopped</span>
+                        ) : (
+                          <span>Shop Now</span>
+                        )}
+                        {/* above code renders based on the state of the product.id variable */}
+                      </button>
                     </div>
                   </div>
                 </div>

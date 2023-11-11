@@ -103,7 +103,7 @@ const Cart = () => {
                       <div className="top flex flex-col sm:flex-row">
                         <div className="left img mr-5 mb-5 ">
                           <img
-                            src={item.images[0]}
+                            src={ item.product?.images?.[0] || item.images?.[0]}
                             alt=""
                             className="w-full h-full sm:w-44 sm:h-44"
                           />
