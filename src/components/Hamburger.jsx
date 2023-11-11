@@ -136,6 +136,13 @@ const Menu = ({ open, setOpen }) => {
                 <NavLink
                   onClick={() => setOpen(false)}
                   className=""
+                  to="/favorite"
+                >
+                  My Favorites
+                </NavLink>
+                <NavLink
+                  onClick={() => setOpen(false)}
+                  className=""
                   to="/logout"
                 >
                   Log Out
