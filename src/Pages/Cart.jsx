@@ -83,9 +83,9 @@ const Cart = () => {
   };
 
   return (
-    <>
-      {allCartItems.length < 1 ? (
-        <h1 className="text-3xl text-center font-mono font-bold">
+    <div className="mt-[5rem]">
+      {allCartItems.length === 0 ? (
+        <h1 className="text-3xl grid h-[70vh] place-items-center text-center font-mono font-bold">
           There are no items in your cart
         </h1>
       ) : (
@@ -132,7 +132,7 @@ const Cart = () => {
                         </button>
                         <div className="qty">
                           <button
-                            className="dec px-4 py-2 bg-orange-400 "
+                            className="dec px-4 py-2 bg-amber-500 active:bg-orange-500 hover:bg-amber-600"
                             onClick={() => dispatch(itemDecreased(item._id))}
                             disabled={item.quantity <= 1}
                           >
@@ -140,7 +140,7 @@ const Cart = () => {
                           </button>
                           <span className="mx-2">{item.quantity}</span>
                           <button
-                            className="incr px-4 py-2 bg-orange-400 "
+                            className="incr px-4 py-2 bg-amber-500 active:bg-orange-500 hover:bg-amber-600"
                             onClick={() => dispatch(itemIncreased(item._id))}
                           >
                             +
@@ -178,7 +178,7 @@ const Cart = () => {
           </div>
         </main>
       )}
-    </>
+    </div>
   );
 };
 
