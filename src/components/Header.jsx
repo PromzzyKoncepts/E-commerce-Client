@@ -111,7 +111,7 @@ const Header = () => {
                 className="fixed inset-0 bg-amber-900 opacity-40 cursor-pointer"
                 onClick={handleClearSearch}
               ></div>
-              <div className="absolute top-full z-[5000]  left-[20%] w-[60vw]  rounded bg-white shadow-lg p-11 mt-2">
+              <div data-aos="fade-right" className="absolute top-full z-[5000]  left-[20%] w-[60vw]  rounded bg-white shadow-lg p-11 mt-2">
                 <ul>
                   <div className="flex pb-3 justify-between items-center">
                     <div>
@@ -144,7 +144,7 @@ const Header = () => {
                         <h6>{result.name}</h6>
                       </div>
                       <div className="flex  gap-4 items-center">
-                        <p className="font-bold">&#8358;{result.price}</p>
+                        <p className="font-bold">&#8358;{Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(result.price)}</p>
                         <small>{result.quantity} products in stock</small>
                       </div>
                     </div>
