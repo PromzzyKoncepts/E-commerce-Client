@@ -3,6 +3,7 @@ import { Trash, Trash2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
+import EmptyCart from "../components/checkout/EmptyCart";
 import {
   calcTotal,
   clearAll,
@@ -88,11 +89,12 @@ const Cart = () => {
   };
 
   return (
-    <div className="mt-[5rem]">
+    <div className="">
       {allCartItems.length === 0 ? (
-        <h1 className="text-3xl grid h-[70vh] place-items-center text-center font-mono font-bold">
-          There are no items in your cart
-        </h1>
+      <EmptyCart />
+        // <h1 className="text-3xl grid h-[70vh] place-items-center text-center font-mono font-bold">
+        //   There are no items in your cart
+        // </h1>
       ) : (
         <main className="p-4 flex flex-col items-center justify-center w-10/12 mx-auto">
           <div className="w-[90%] sm:w-[99%] md:w-[92%]">
