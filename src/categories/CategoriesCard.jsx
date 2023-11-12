@@ -7,10 +7,11 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ShoppingBag from '@mui/icons-material/ShoppingBag';
 import { itemAdded } from '../redux/features/cartSlice';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CategoriesCard = ({ apiLink, category }) => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [products, setProducts] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [shopped, setShopped] = useState({})
@@ -45,7 +46,7 @@ const CategoriesCard = ({ apiLink, category }) => {
                     <p className=' animate-spin h-5 w-5 border-2 border-zinc-800 border-x-transparent rounded-full p-4 '></p>
                 </div>
                 :
-                (<aside  data-aos="fade-up" className='p-6 w-10/12 mx-auto bg-slate-50 my-3 relative'>
+                (<aside className='p-6 w-10/12 mx-auto bg-slate-50 my-3 relative'>
                     {Array.isArray(products)
                         ?
                         <>
@@ -53,9 +54,14 @@ const CategoriesCard = ({ apiLink, category }) => {
                                 {products.slice(startIndex, endIndex).map((product) => (
                                     <div className="relative bg-white hover:shadow-lg hover:rounded-md duration-500 p-4 flex flex-col" key={product._id}>
                                         <div className="flex-1 ">
-                                            <NavLink to='description'>
-                                                <img src={product.images[0]} alt={product.description} className='h-full w-full' />
-                                            </NavLink>
+                                            <div className='overflow-hidden'>
+                                                <img
+                                                    src={product.images[0]}
+                                                    alt={product.description}
+                                                    className='h-full w-full hover:scale-105 transition-all duration-500 cursor-pointer'
+                                                    onClick={() => navigate(`/products/${product._id}`)}
+                                                />
+                                            </div>
                                         </div>
                                         <div className="flex items-center justify-between py-4">
                                             <div className="flex gap-3">
@@ -68,7 +74,12 @@ const CategoriesCard = ({ apiLink, category }) => {
                                                 {/* above code renders based on the state of the product.id variable */}
                                             </button>
                                         </div>
-                                        <h2 className='font-semibold text-base'><NavLink to='description' className='no-underline hover:underline'>{product.name}</NavLink></h2>
+                                        <h2 className='font-semibold text-base'>
+                                            <div
+                                                className='no-underline hover:underline cursor-pointer'
+                                                onClick={() => navigate(`/products/${product._id}`)}>{product.name}
+                                            </div>
+                                        </h2>
                                         <div className="flex items-center justify-between">
                                             <p className=' opacity-70 text-sm'>{category}</p>
                                             <p className='font-medium text-sm'>₦{product.price}</p>
@@ -76,12 +87,13 @@ const CategoriesCard = ({ apiLink, category }) => {
                                     </div>
                                 ))}
                             </div>
-                            <div className=" flex items-center justify-between w-full left-2 pr-7 absolute top-1/2">
-                                <button className='disabled:invisible text-slate-500 bg-slate-100 rounded-full'
+                            <div className=" flex items-center justify-center p-2 bg-orange-500 w-fit m-auto my-4 rounded-sm">
+                                <button className='disabled:invisible text-slate-200 mr-2 rounded-full'
                                     onClick={handlePrev}
                                     disabled={currentPage === 1}><ArrowBackIosIcon />
                                 </button>
-                                <button className='disabled:invisible  text-slate-500 bg-slate-100 rounded-full'
+                                <span className='font-mono text-lg text-white'>{currentPage} of {totalPages.current}</span>
+                                <button className='disabled:invisible  text-slate-200 ml-2 rounded-full'
                                     onClick={handleNext}
                                     disabled={currentPage === totalPages.current}> <ArrowForwardIosIcon />
                                 </button>

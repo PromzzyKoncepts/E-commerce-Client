@@ -23,6 +23,7 @@ import Females from "./categories/Females";
 import Laptops from "./categories/Laptops";
 import { useEffect } from "react";
 import LatestArrivals from "./pages/LatestArrivals";
+import ProductDescription from "./components/ProductDescription";
 
 
 
@@ -55,6 +56,7 @@ function App() {
             <Route path="/shoes" element={<Shoes />} />
             <Route path="/verify" element={<EmailVerf />} />
             <Route path="/user/confirmation" element={<EmailConf />} />
+            <Route path="/products/:id" element={<ProductDescription />} />
 
             <Route path="/favorite" element={<FavoritePage />} />
 
