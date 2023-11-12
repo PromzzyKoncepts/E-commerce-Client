@@ -61,7 +61,7 @@ const LatestArrivals = () => {
               {data.map((item) => (
                 <div
                   key={item._id}
-                  className="bg-white pb-2 px-2 pt-6 rounded relative no-underline text-black"
+                  className="bg-white pb-2 px-2 pt-6 rounded relative no-underline text-black hover:drop-shadow-lg hover:scale-[1.02] duration-1000"
                 >
                   <div className="bg-white flex">
                     <img
