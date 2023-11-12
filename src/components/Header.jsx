@@ -100,7 +100,7 @@ const Header = () => {
           ></img>
         </Link>
 
-        <div className="wrap desktop">
+        <div className="wrap">
           <SearchBar
             onSearch={(value) => setQuery(value)}
             onClearSearch={handleClearSearch}
@@ -111,7 +111,10 @@ const Header = () => {
                 className="fixed inset-0 bg-amber-900 opacity-40 cursor-pointer"
                 onClick={handleClearSearch}
               ></div>
-              <div data-aos="fade-right" className="absolute top-full z-[5000]  left-[20%] w-[60vw]  rounded bg-white shadow-lg p-11 mt-2">
+              <div
+                data-aos="fade-right"
+                className="absolute top-full z-[5000]  md:left-[20%] left-[8%]  md:w-[60vw] w-[80vw]  rounded bg-white shadow-lg p-11 mt-2"
+              >
                 <ul>
                   <div className="flex pb-3 justify-between items-center">
                     <div>
@@ -144,8 +147,15 @@ const Header = () => {
                         <h6>{result.name}</h6>
                       </div>
                       <div className="flex  gap-4 items-center">
-                        <p className="font-bold">&#8358;{Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(result.price)}</p>
-                        <small>{result.quantity} products in stock</small>
+                        <p className="font-bold">
+                          &#8358;
+                          {Intl.NumberFormat("en-US", {
+                            maximumFractionDigits: 0,
+                          }).format(result.price)}
+                        </p>
+                        <small className="hidden md:block">
+                          {result.quantity} products in stock
+                        </small>
                       </div>
                     </div>
                   ))}
@@ -267,7 +277,7 @@ const Header = () => {
             </StyledBadge>
           </IconButton>
         </NavLink>
-        <div className="hamburger py-3 my-3 ">
+        <div className="hamburger md:py-3 pr-4 md:my-3 ">
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
           <Overlay open={open} onClick={() => setOpen(false)} />
