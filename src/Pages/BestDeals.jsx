@@ -79,7 +79,7 @@ const handleShopNow = (product) => {
                     </div>
                     <div className="flex justify-between">
                       <p className="font-semibold text-sm">
-                        &#8358;{item.product.price}
+                        &#8358;{Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(item.product.price)}
                       </p>
                       <button
                         className="flex items-center  font-medium text-slate-900"
