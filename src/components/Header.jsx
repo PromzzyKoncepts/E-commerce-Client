@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import aphia from "../assets/aphia.png";
 import userContext from "../context/userContext";
 import Badge from "@mui/material/Badge";
-import { ArrowDropDown, Search, ShoppingCart } from "@mui/icons-material";
+import { ArrowDropDown, ShoppingCart } from "@mui/icons-material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { IconButton } from "@mui/material";
@@ -24,7 +24,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const allCartItems = useSelector((state) => state.cart.items);
   const [isCategories, setIsCategories] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  // const [isScrolled, setIsScrolled] = useState(false);
   const { authUser } = useContext(userContext);
 
   const handleCategories = () => setIsCategories((prev) => !prev);
@@ -196,7 +196,7 @@ const Header = () => {
               {authUser ? ` ${authUser.username}` : "My account "}
               <ArrowDropDown />
               {isCategories && (
-                <section className=" z-[10000] absolute bg-[#333237aa] w-[8rem] px-3 py-3 items-center rounded">
+                <section className=" z-[10000] absolute bg-[#333237aa]  px-3 py-3 items-center rounded">
                   <div>
                     {authUser ? (
                       <div className="flex flex-col items-right">
@@ -252,7 +252,7 @@ const Header = () => {
             className=" desktop flex items-center gap-2 no-underline text-slate-900 "
           >
             <IconButton aria-label="cart">
-              <StyledBadge badgeContent={allCartItems.length} color="error">
+              <StyledBadge badgeContent={allCartItems?.length} color="error">
                 <ShoppingCart />
               </StyledBadge>
             </IconButton>

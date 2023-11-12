@@ -12,7 +12,7 @@ import EmailVerf from "./Pages/EmailVerf";
 import EmailConf from "./Pages/EmailConf";
 import Cart from "./Pages/Cart"; 
 import NotFound from "./components/404";
-// import AdminAuthForm from "./pages/adminAuth";
+// import AdminAuthForm from "./Pages/adminAuth";
 import AdminAuth from "./Pages/AdminAuth"
 import FavoritePage from "./Pages/FavoritePage";
 import PhonesAndTablets from "./categories/PhonesAndTablets";
@@ -25,6 +25,14 @@ import Females from "./categories/Females";
 import Laptops from "./categories/Laptops";
 import { useEffect } from "react";
 import LatestArrivals from "./Pages/LatestArrivals";
+import Protected from './HOC/Protected'
+import ShippingAddressForm from "./components/checkout/ShippingAddressForm";
+import Payment from "./components/checkout/Payments";
+import OrderSummary from "./components/checkout/OrderSummary";
+import EmptyCart from "./components/checkout/EmptyCart";
+import OrderPayDetails from "./components/checkout/OrderPayDetails";
+import OrderPayConfirm from "./components/checkout/OrderPayConfirm.jsx";
+
 
 
 
@@ -36,7 +44,9 @@ function App() {
 
    return (
       <div className="App">
-         <Header />
+         <div className="mb-[6rem]">
+         <Header  />
+         </div>
 
          <Routes>
             <Route path="/" element={<Home />} />
@@ -60,6 +70,50 @@ function App() {
             <Route path="/user/confirmation" element={<EmailConf />} />
 
             <Route path="/favorite" element={<FavoritePage />} />
+            <Route path='/cart/emptycart' element={<EmptyCart />} />
+         
+            {/* Protected Routes For Checkouts & Payments */}
+            <Route path="/checkout/shipping" 
+              element={
+               <Protected>
+                  <ShippingAddressForm />
+               </Protected>
+            } />
+
+            <Route path="/checkout/payments" 
+              element={
+               <Protected>
+                  <Payment />
+               </Protected>
+            } />
+            
+            <Route path='/checkout/placeorder' 
+              element={
+               <Protected>
+                  <OrderSummary />
+               </Protected>
+            } />
+
+            <Route path='/checkout/makepayment' 
+              element={
+               <Protected>
+                  <OrderPayDetails />
+               </Protected>
+            } />
+
+            <Route path='/checkout/confirmpay' 
+              element={
+               <Protected>
+                  <OrderPayConfirm />
+               </Protected>
+            } />
+
+            {/* <Route path='/checkout/payconfirmed' 
+              element={
+               <Protected>
+                  < />
+               </Protected>
+            } /> */}
 
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />
@@ -67,5 +121,8 @@ function App() {
       </div>
    );
 }
+
+
+
 
 export default App;
