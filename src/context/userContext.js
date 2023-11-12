@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useState, useEffect } from "react";
-import jwtDecode from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 import { motion } from "framer-motion";
 
 const userContext = createContext(null);

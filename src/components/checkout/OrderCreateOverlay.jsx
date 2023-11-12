@@ -57,10 +57,19 @@ const OrderCreateOverlay = ({ orderState, onClose }) => {
   }, [isLoading, orderState, order, navigate]);
 
   const renderTimeoutMessage = (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-25 z-50 p-4">
+    <div
+      data-aos="fade-up"
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-25 z-50 p-4"
+    >
       <div className="bg-white p-8 rounded-lg shadow-lg text-center w-full max-w-md">
-        <h2 className="text-lg font-bold text-red-500 mb-4">Your Session has Expired</h2>
-        <img className="block mx-auto w-32" src={TimeOutGif} alt="error-timeout" />
+        <h2 className="text-lg font-bold text-red-500 mb-4">
+          Your Session has Expired
+        </h2>
+        <img
+          className="block mx-auto w-32"
+          src={TimeOutGif}
+          alt="error-timeout"
+        />
         <p className="text-gray-700 mt-2 mb-4 text-sm">
           You have been redirected to log in to continue.
         </p>

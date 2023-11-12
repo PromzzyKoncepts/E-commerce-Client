@@ -34,7 +34,7 @@ const OrderPayConfirm = () => {
   const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
 
   return (
-    <div className="max-w-xs  mx-auto w-full p-6 mt-10 bg-white rounded shadow-md">
+    <div data-aos="fade-up" className="max-w-xs  mx-auto w-full p-6 mt-10 bg-white rounded shadow-md">
       <img src={AphiaLogo} alt="Aphia logo" className="w-12" />
     
       <p className="text-sm font-semibold text-amber-500 mb-4 mt-4">Please proceed to your mobile banking app to complete your payment to Aphia</p>

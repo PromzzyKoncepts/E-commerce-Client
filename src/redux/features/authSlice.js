@@ -1,7 +1,7 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 
 const authUrl = 'https://aphia-dev.onrender.com/api';
 
@@ -19,7 +19,7 @@ export const signin = createAsyncThunk('auth/signin', async (body) => {
         const res = await axios.post(`${authUrl}/users/login`, body);
 
         if (res.data.success === true) {
-            const decodedToken = jwt_decode(res.data.message);
+            const decodedToken = jwtDecode(res.data.message);
             const token = res.data.message;
 
             return { token, user: decodedToken };

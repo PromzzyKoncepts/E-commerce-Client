@@ -3,17 +3,17 @@ import Footer from "../components/Footer";
 import jumiagif from "../assets/Jumiagif2.jpg";
 import Section from "../components/Section";
 import Slider from "../components/Slider";
-import Footer from "../components/Footer";
-//import MetaSearch from "../components/searchEngine/MetaSearch";
-import { useDispatch } from "react-redux";
+import LatestArrivalShortcut from "../components/LatestArrivalShortcut";
 
     function Home() {
         return (
-          <div className="mt-[5rem]">
+          <div className="">
             <img src={jumiagif} className="w-full" alt="gif" />
 
             <Slider />
             <Section />
+            <BestDealsShortcut />
+            <LatestArrivalShortcut />
             <Footer />
           </div>
         );

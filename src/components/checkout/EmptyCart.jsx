@@ -19,11 +19,11 @@ const EmptyCart = () => {
   return (
     <div className="flex items-center justify-center h-screen">
       {showOverlay && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg text-center">
+        <div className="fixed inset-0 flex items-center justify-center bg-slate-100">
+          <div data-aos="fade-up" className="bg-white p-6 rounded-lg text-center shadow-lg">
           <img
               src={emptyCartImage}
-              alt="Empty Cart Image"
+              alt="Empty Cart"
               style={{
                 display: 'block',
                 margin: '0 auto',

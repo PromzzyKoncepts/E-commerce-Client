@@ -1,20 +1,20 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import Register from "./pages/Register";
+import Login from "./Pages/Login";
+import Home from "./Pages/Home";
+import Register from "./Pages/Register";
 import "./App.css";
 import Header from "./components/Header";
-import LogOut from "./pages/LogOut";
-import BestDeals from "./pages/BestDeals";
-import EmailVerf from "./pages/EmailVerf";
-import EmailConf from "./pages/EmailConf";
-import Cart from "./pages/Cart"; 
+import LogOut from "./Pages/LogOut";
+import BestDeals from "./Pages/BestDeals";
+import EmailVerf from "./Pages/EmailVerf";
+import EmailConf from "./Pages/EmailConf";
+import Cart from "./Pages/Cart"; 
 import NotFound from "./components/404";
-// import AdminAuthForm from "./pages/adminAuth";
-import AdminAuth from "./pages/AdminAuth"
-import FavoritePage from "./pages/FavoritePage";
+// import AdminAuthForm from "./Pages/adminAuth";
+import AdminAuth from "./Pages/AdminAuth"
+import FavoritePage from "./Pages/FavoritePage";
 import PhonesAndTablets from "./categories/PhonesAndTablets";
 import Males from "./categories/Males";
 import Shoes from "./categories/Shoes";
@@ -24,7 +24,7 @@ import Electronics from "./categories/Electronics";
 import Females from "./categories/Females";
 import Laptops from "./categories/Laptops";
 import { useEffect } from "react";
-import LatestArrivals from "./pages/LatestArrivals";
+import LatestArrivals from "./Pages/LatestArrivals";
 import Protected from './HOC/Protected'
 import ShippingAddressForm from "./components/checkout/ShippingAddressForm";
 import Payment from "./components/checkout/Payments";
@@ -44,7 +44,9 @@ function App() {
 
    return (
       <div className="App">
-         <Header />
+         <div className="mb-[6rem]">
+         <Header  />
+         </div>
 
          <Routes>
             <Route path="/" element={<Home />} />

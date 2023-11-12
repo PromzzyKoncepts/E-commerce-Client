@@ -38,7 +38,7 @@ const CategoriesCard = ({ apiLink, category }) => {
         //The angle brackets tell JavaScript that the product id is a variable, and that the property name should be evaluated dynamically.
     }
     return (
-        <div className="mt-[7rem] " data-aos="fade-up">
+        <div className="" data-aos="fade-up">
             {isLoading
                 ?
                 <div className='p-8 w-10/12 mx-auto flex items-center justify-center h-[70vh]'>
