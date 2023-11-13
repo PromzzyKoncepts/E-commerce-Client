@@ -34,7 +34,7 @@ function BestDeals() {
   return (
     <>
       {isLoading ? (
-        <div className="p-8 w-10/12 mx-auto flex items-center justify-center h-[70vh]">
+        <div className="p-8 w-10/12 mx-auto flex items-center justify-center h-[70vh] flex flex-overflow">
           <p className=" animate-spin h-5 w-5 border-2 border-zinc-800 border-x-transparent rounded-full p-4 "></p>
         </div>
       ) : (
