@@ -3,9 +3,13 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from "react-redux";
+import { itemAdded } from "../redux/features/cartSlice";
 
 const LatestArrivalShortcut = () => {
     const [data, setData] = useState([])
+        const [shopped, setShopped] = useState({});
+
     const url = "https://aphia-dev.onrender.com/api/products"
     useEffect(() => {
         const fetchData = async()=>{
@@ -17,8 +21,18 @@ const LatestArrivalShortcut = () => {
         }
         fetchData()
     }, [])
+
+
+    const dispatch = useDispatch();
+    const handleShopNow = (product) => {
+      dispatch(itemAdded(product));
+      setShopped({ ...shopped, [product._id]: true }); //copies the original shopped state and adds a new product.id property dynamically and sets its value to true
+      //The angle brackets tell JavaScript that the product id is a variable, and that the property name should be evaluated dynamically.
+    };
+
+
   return (
-    <div className="">
+    <div data-aos="fade-up" className="">
       <div className="w-10/12 mx-auto mt-4 bg-slate-200 pt-6 p-4 rounded-t-lg relative">
         <div className="">
           <h2 className="pb-4 text-3xl mx-auto w-fit mb-4">Latest Arrivals</h2>
@@ -47,11 +61,28 @@ const LatestArrivalShortcut = () => {
                     <FavoriteBorderIcon />
                   </div>
                   <div className="flex justify-between">
-                    <p className="font-semibold text-sm">&#8358;{item.price}</p>
-                    <p className="text-sm text-amber-600 p-1 rounded hover:bg-amber-100 active:bg-amber-200">
-                      <ShoppingBagIcon />
-                      shop now
+                    <p className="font-semibold text-sm">
+                      &#8358;
+                      {Intl.NumberFormat("en-US", {
+                        maximumFractionDigits: 0,
+                      }).format(item.price)}
                     </p>
+                    <button
+                      className="flex items-center  font-medium text-slate-900"
+                      onClick={() => handleShopNow(item)}
+                    >
+                      <ShoppingBagIcon
+                        className={`${
+                          shopped[item._id] ? "opacity-75" : "opacity-100"
+                        }`}
+                      />
+                      {shopped[item._id] ? (
+                        <span className="opacity-75">Shopped</span>
+                      ) : (
+                        <span>Shop Now</span>
+                      )}
+                      {/* above code renders based on the state of the product.id variable */}
+                    </button>
                   </div>
                 </div>
               </div>

@@ -27,33 +27,42 @@ const cartSlice = createSlice({
 
         },
         itemIncreased(state, action) {
-            let item = state.items.find((item) => item._id === action.payload) // here, I used the find method to get the item in the cart whose id matches the id of the action.payload
-            item.quantity++; //the quantity of that found item is increased by one
-            return state  //ensures we don't change (mutate) the state. This will prevent some issues
+            const updatedItems = state.items.map((item) => {
+                if (item._id === action.payload) {
+                    return { ...item, quantity: item.quantity + 1 };
+                }
+                return item;
+            });
+            state.items = updatedItems;
+            state.total = calculateTotal(updatedItems);
         },
         itemDecreased(state, action) {
-            let item = state.items.find((item) => item._id === action.payload) //same as for itemIcreased 
-            item.quantity--; //the quantity found is decreased by one
-            return state //ensures we don't change (mutate) the state. This will prevent some issues
+            const updatedItems = state.items.map((item) => {
+                if (item._id === action.payload) {
+                    return { ...item, quantity: item.quantity - 1 };
+                }
+                return item;
+            });
+            state.items = updatedItems;
+            state.total = calculateTotal(updatedItems);
         },
+        
+        
         calcTotal(state) {
-            const total = state.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
-            let formattedTotal = Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(total)
-            return { ...state, total: formattedTotal };
-            // to get the total of the products in the array, we use the reduce method. 
-            // the reduce method takes two parameters, accumulator (refered to here as acc) which represents the results for each iteration and the current item in the array.
-            // in the callback function, the price of each item is multiplied with the quantity and added to the accumulator (acc). At the end of the iteration, acc initially 0, will represent the total of the product of item price and item quantity
-            // in the return statement, we return a copy of the state without changing it (using the spread ...) and update the total property of the initial state with our calculated total
-
-            /* we can also do it like this:
-             state.total = state.items.reduce((acc, item) => acc + item.price * item.quantity, 0)
-             */
+            state.total = Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(calculateTotal(state.items));
         },
         clearAll(state) {
-            state.items = [] //assign the items array to an empty array anytime this reducer will be called
-        }
-    }
-})
+            state.items = [];
+            state.total = 0;
+        },
+    },
+});
+
+// Extracted function to calculate total
+const calculateTotal = (items) => {
+    return items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+};
+    
 
 export const { itemAdded, itemRemoved, itemIncreased, itemDecreased, calcTotal, clearAll } = cartSlice.actions
 export default cartSlice.reducer

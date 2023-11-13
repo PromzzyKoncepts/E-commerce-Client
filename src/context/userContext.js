@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useState, useEffect } from "react";
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 import { motion } from "framer-motion";
 
 const userContext = createContext(null);
@@ -49,7 +49,8 @@ const loadingCircleTransition = {
 export const UserProvider = (props) => {
     const [authUser, setAuthUser] = useState(false);
     const [loading, setLoading] = useState(true);
-    const baseUrl = "https://aphia-dev.onrender.com/api";
+    
+   const baseUrl = "https://aphia-dev.onrender.com/api";
 
     const signIn = async (body) => {
         try {

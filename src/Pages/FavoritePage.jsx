@@ -30,7 +30,7 @@ const FavoritePage = () => {
   }, []);
 
   return (
-    <div className="mt-[7rem]">
+    <div className="">
       <div className="w-10/12 mx-auto mt-4 bg-slate-200 pt-6 p-4 rounded-t-lg relative">
         <div className="">
           <h2 className="pb-4 text-3xl mx-auto w-fit mb-4">Favorites</h2>
