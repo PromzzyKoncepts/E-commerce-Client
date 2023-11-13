@@ -20,12 +20,11 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
-  const [phone_number, setPhoneNumber] = useState('');
-
-
+  const [phone_number, setPhoneNumber] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState("");
+  const [userNameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
   // MUI FORM TEMPLATE
@@ -37,18 +36,19 @@ const Register = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-  
+
   const handleEmailChange = (e) => {
     const newEmail = e.target.value;
     setEmail(newEmail);
-    localStorage.setItem('email', JSON.stringify(newEmail));
+    localStorage.setItem("email", JSON.stringify(newEmail));
   };
 
-
   const navigate = useNavigate();
+  console.log(password.length);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const body = {
       email,
       username,
@@ -58,39 +58,51 @@ const Register = () => {
       phone_number,
     };
 
+    function containsSpace(inputString) {
+      for (let i = 0; i < inputString.length; i++) {
+        if (inputString[i] === " ") {
+          return true; // Found a space
+        }
+      }
+      return false; // No space found
+    }
+
     const baseUrl = "https://aphia-dev.onrender.com/api";
-
-    if (password.length < 8){
-      setPasswordError('password should be atleast 8 characters')
-    }
-
-    if (password !== confirmPassword) {
-      setPasswordError("passwords do not match");
-      setIsLoading(false);
-      return;
-    }
 
     setPasswordError("");
 
-    try {
-      setIsLoading(true);
-      const res = await axios.post(`${baseUrl}/users/register`, body);
-      console.log(res, "hgjfjfyxf")
-      if (res.data.success === true) {
+    if (containsSpace(username) === true) {
+      setUsernameError("username must not contain spaces");
+      if (password.length < 8) {
         setIsLoading(false);
-        setErrors(res.data.message);
-        navigate("/verify");
+        setPasswordError("password should be atleast 8 characters");
+        if (password !== confirmPassword) {
+          setIsLoading(false);
+          setPasswordError("passwords do not match");
+        }
       }
-    } catch (error) {
-      // setErrors(`${error.response.data.message}`);
-      setIsLoading(false);
-      // console.log(error.response.data.message);
+    } else {
+      try {
+        setIsLoading(true);
+        const res = await axios.post(`${baseUrl}/users/register`, body);
+        console.log(res, "hgjfjfyxf");
+        if (res.data.success === true) {
+          setIsLoading(false);
+          setErrors(res.data.message);
+          navigate("/verify");
+        }
+      } catch (error) {
+        // setErrors(`${error.response.data.message}`);
+        setIsLoading(false);
+        // console.log(error.response.data.message);
+      }
     }
   };
-   
+
   return (
-    <form data-aos="fade-up" className="shadow-black" onSubmit={(e) => handleSubmit(e)}>
-      <h1  className="text-4xl text-amber-500">Create an Account</h1>
+    <div className="flex items-center justify-center pt-5">
+    <form data-aos="fade-up" className="max-w-lg w-full p-4 px-5 bg-white rounded shadow-xl"  onSubmit={(e) => handleSubmit(e)}>
+      <h1 className="text-3xl text-amber-500 mb-3 text-center pb-4">Create an Account</h1>
       {errors && <h3>{errors}</h3>}
       <TextField
         required
@@ -98,30 +110,34 @@ const Register = () => {
         onChange={(e) => setFirstName(e.target.value)}
         label="Firstname"
         variant="outlined"
+        className="w-full mb-4 text-gray-700 rounded"
       />
-      <br/>
+      <br />
       <TextField
         required
         id="outlined-basic"
         onChange={(e) => setLastName(e.target.value)}
         label="Lastname"
         variant="outlined"
+        className="w-full mb-4 text-gray-700 rounded"
       />
-      <br/>
+      <br />
       <TextField
         required
         id="outlined-basic"
         onChange={(e) => setPhoneNumber(e.target.value)}
         label="Phonenumber"
         variant="outlined"
+        className="w-full mb-4 text-gray-700 rounded"
       />
-      <br/>
+      <br />
       <TextField
         required
         id="outlined-basic"
         onChange={handleEmailChange}
         label="Email"
         variant="outlined"
+        className="w-full mb-4 text-gray-700 rounded"
       />
       <br />
       <TextField
@@ -130,7 +146,9 @@ const Register = () => {
         onChange={(e) => setUsername(e.target.value)}
         label="Username"
         variant="outlined"
+        className="w-full mb-4 text-gray-700 rounded"
       />
+      {userNameError && <small className="text-red-500">{userNameError}</small>}
       <br />
       <FormControl sx={{ width: "100%" }} variant="outlined" required>
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
@@ -138,19 +156,8 @@ const Register = () => {
           id="outlined-adornment-password"
           type={showPassword ? "text" : "password"}
           onChange={(e) => setPassword(e.target.value)}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
           label="Password"
+          className="w-full mb-4 text-gray-700 rounded"
         />
       </FormControl>
       <br />
@@ -162,19 +169,8 @@ const Register = () => {
           id="outlined-adornment-password"
           type={showComfPassword ? "text" : "password"}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={() => setShowComfPassword((show) => !show)}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {showComfPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
           label="Confirm Password"
+          className="w-full mb-1 text-gray-700 rounded"
         />
       </FormControl>
       {/* <input
@@ -182,15 +178,17 @@ const Register = () => {
         onChange={(e) => setConfirmPassword(e.target.value)}
         placeholder=" confirm password"
       /> */}
-      {passwordError && <small>{passwordError}</small>}
-      <button>{isLoading ? "Loading" : "Submit"}</button>
-      <p className="login-link py-2">
+      {passwordError && <small className="text-red-500">{passwordError}</small>}
+
+      <button className="p-2 mt-4 w-full text-white bg-amber-500  text-lg from-neutral-900 tracking-wider hover:bg-amber-400 hover:text-white">{isLoading ? "Loading" : "Submit"}</button>
+      <p className="text-center py-2">
         Already have an account?{" "}
         <Link to="/login" className="text-amber-500">
           Sign in
         </Link>
       </p>
     </form>
+    </div>
   );
 };
 

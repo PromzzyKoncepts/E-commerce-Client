@@ -136,6 +136,13 @@ const Menu = ({ open, setOpen }) => {
                 <NavLink
                   onClick={() => setOpen(false)}
                   className=""
+                  to="/favorite"
+                >
+                  My Favorites
+                </NavLink>
+                <NavLink
+                  onClick={() => setOpen(false)}
+                  className=""
                   to="/logout"
                 >
                   Log Out
@@ -230,9 +237,9 @@ const Menu = ({ open, setOpen }) => {
 };
 
 const StyledBurger = styled.button`
-  position: absolute;
-  top: 3%;
-  right: 2rem;
+  // position: absolute;
+  // top: 3%;
+  // right: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -240,7 +247,7 @@ const StyledBurger = styled.button`
   height: 2rem;
   background: transparent;
   border: none;
-  position: fixed;
+  // position: fixed;
   z-index: 3;
   cursor: pointer;
   color: white;
