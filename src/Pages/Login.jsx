@@ -57,7 +57,7 @@ const Login = () => {
 
 
   return (
-    <div className="flex items-center justify-center pt-5">
+    <div className="flex items-center justify-center pt-5 p-[10px]">
     <form className="max-w-md w-full p-4 px-5 bg-white mb-4 rounded shadow-lg" data-aos="fade-up" onSubmit={(e) => handleSubmit(e)}>
       <h1 className="text-3xl text-amber-500 mb-3 text-center pb-4">Sign In </h1>
       {errors && <p>{errors}</p>}

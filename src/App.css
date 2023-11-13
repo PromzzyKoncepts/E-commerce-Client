@@ -113,3 +113,33 @@ small {
     display: none;
   }
 }
+
+.searchbar-double{
+  @media screen and (min-width : 701px) {
+    flex: 1;
+    display: none;
+    
+  }
+}
+
+.searchbar-main{
+  @media screen and (min-width : 0) and (max-width: 700px) {
+    display: none;
+  }
+  
+  
+}
+
+@media screen and (min-width : 0) and (max-width: 700px) {
+  .searchTerm {
+    width: 100vw;
+    border: 2px solid #f59e0b;
+    border-right: none;
+    padding: 10px 20px;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+    color: #9dbfaf;
+    margin: 0 5px;
+  }
+  
+}
