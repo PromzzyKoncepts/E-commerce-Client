@@ -7,7 +7,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ShoppingBag from "@mui/icons-material/ShoppingBag";
 import { itemAdded } from "../redux/features/cartSlice";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Favorite from "@mui/icons-material/Favorite";
@@ -15,6 +15,7 @@ import Favorite from "@mui/icons-material/Favorite";
 const CategoriesCard = ({ apiLink, category }) => {
     const token = localStorage.getItem("authToken");
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [shopped, setShopped] = useState({});
@@ -177,16 +178,17 @@ const CategoriesCard = ({ apiLink, category }) => {
                                         </div>
                                     ))}
                             </div>
-                            <div className=" flex items-center justify-between w-full left-2 pr-7 absolute top-1/2">
+                            <div className=" flex items-center justify-center p-2 bg-orange-500 w-fit m-auto my-4 rounded-sm">
                                 <button
-                                    className="disabled:invisible text-slate-500 bg-slate-100 rounded-full"
+                                    className="disabled:invisible text-slate-200 mr-2 rounded-full"
                                     onClick={handlePrev}
                                     disabled={currentPage === 1}
                                 >
                                     <ArrowBackIosIcon />
                                 </button>
+                                <span className='font-mono text-lg text-white'>{currentPage} of {totalPages.current}</span>
                                 <button
-                                    className="disabled:invisible  text-slate-500 bg-slate-100 rounded-full"
+                                    className="disabled:invisible  text-slate-200 ml-2 rounded-full"
                                     onClick={handleNext}
                                     disabled={
                                         currentPage === totalPages.current
