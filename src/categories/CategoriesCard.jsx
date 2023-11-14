@@ -39,7 +39,7 @@ const CategoriesCard = ({ apiLink, category }) => {
         //The angle brackets tell JavaScript that the product id is a variable, and that the property name should be evaluated dynamically.
     }
     return (
-        <>
+        <div className="" data-aos="fade-up">
             {isLoading
                 ?
                 <div className='p-8 w-10/12 mx-auto flex items-center justify-center h-[70vh]'>
@@ -82,7 +82,7 @@ const CategoriesCard = ({ apiLink, category }) => {
                                         </h2>
                                         <div className="flex items-center justify-between">
                                             <p className=' opacity-70 text-sm'>{category}</p>
-                                            <p className='font-medium text-sm'>₦{product.price}</p>
+                                            <p className='font-medium text-sm'>₦{Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(product.price)}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -104,7 +104,7 @@ const CategoriesCard = ({ apiLink, category }) => {
 
                 </aside>)
             }
-        </>
+        </div>
     )
 }
 

@@ -45,7 +45,7 @@ import {
     const [hoveredIndex, setHoveredIndex] = useState(true);
   
     return (
-      <div data-aos="" className={`w-10/12 m-auto  ${hoveredIndex ? "blacked" : ""}`}>
+      <div  className={`w-10/12 max-h-[60vh] m-auto  ${hoveredIndex ? "blacked" : ""}`}>
         <CCarousel
           controls
           indicators
@@ -61,7 +61,7 @@ import {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               <CImage
-                className={`block w-full ${
+                className={`block w-full max-h-[60vh] ${
                   hoveredIndex === index ? "hovered" : ""
                 }`}
                 src={item.image}
