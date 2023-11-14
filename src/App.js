@@ -71,7 +71,7 @@ function App() {
             <Route path="/auth"  element={<AdminAuth/>}/>
             <Route path="/user/confirmation" element={<EmailConf />} />
             <Route path="/products/:id" element={<ProductDescription />} />
-            <Route path ="/orders" element={<Orders />}/>
+            <Route path ="/orders" element={<Orders />} />
 
             <Route path="/favorite" element={<FavoritePage />} />
             <Route path='/cart/emptycart' element={<EmptyCart />} />
