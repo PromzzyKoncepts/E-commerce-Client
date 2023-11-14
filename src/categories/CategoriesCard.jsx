@@ -84,129 +84,111 @@ const CategoriesCard = ({ apiLink, category }) => {
     };
 
     return (
-        <div className="" data-aos="fade-up">
-            {isLoading ? (
-                <div className="p-8 w-10/12 mx-auto flex items-center justify-center h-[70vh]">
-                    <p className=" animate-spin h-5 w-5 border-2 border-zinc-800 border-x-transparent rounded-full p-4 "></p>
-                </div>
-            ) : (
-                <aside
-                data-aos="fade-up"
-                className="p-6 w-10/12 mx-auto bg-slate-50 my-3 relative"
-                >
-                    {Array.isArray(products) ? (
-                        <>
-                            <div className=" grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
-                                {products
-                                    .slice(startIndex, endIndex)
-                                    .map((product) => (
-                                        <div
-                                        className="relative bg-white hover:shadow-lg hover:rounded-md duration-500 p-4 flex flex-col"
-                                        key={product._id}
-                                        >
-                                        <ToastContainer />
-                                            <div className="flex-1 ">
-                                                <NavLink to="description">
-                                                    <img
-                                                        src={product.images[0]}
-                                                        alt={
-                                                            product.description
-                                                        }
-                                                        className="h-full w-full"
-                                                    />
-                                                </NavLink>
-                                            </div>
-                                            <div className="flex items-center justify-between py-4">
-                                                <div className="flex gap-3">
-                                                    <button className="  hover:text-red-500" >
-                                                        <FavoriteBorderIcon
-                                                            onClick={() =>
-                                                                addToFavorite(
-                                                                    product._id
-                                                                )
-                                                            }
-                                                        />
-                                                    </button>
+      <div className="" data-aos="fade-up">
+        {isLoading ? (
+          <div className="p-8 w-10/12 mx-auto flex items-center justify-center h-[70vh]">
+            <p className=" animate-spin h-5 w-5 border-2 border-zinc-800 border-x-transparent rounded-full p-4 "></p>
+          </div>
+        ) : (
+          <aside
+            data-aos="fade-up"
+            className="p-6 w-10/12 mx-auto bg-slate-50 my-3 relative"
+          >
+            {Array.isArray(products) ? (
+              <>
+                <div className=" grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+                  {products.slice(startIndex, endIndex).map((product) => (
+                    <div
+                      className="relative bg-white hover:shadow-lg hover:rounded-md duration-500 p-4 flex flex-col"
+                      key={product._id}
+                    >
+                      <ToastContainer />
+                      <div className="flex-1 ">
+                        <img
+                          src={product.images[0]}
+                          alt={product.description}
+                          className="h-full w-full hover:scale-105 transition-all duration-500 cursor-pointer"
+                          onClick={() => navigate(`/products/${product._id}`)}
+                        />
+                      </div>
+                      <div className="flex items-center justify-between py-4">
+                        <div className="flex gap-3">
+                          <button className="  hover:text-red-500">
+                            <FavoriteBorderIcon
+                              onClick={() => addToFavorite(product._id)}
+                            />
+                          </button>
 
-                                                    <Search />
-                                                </div>
-                                                <button
-                                                    className="flex items-center text-xl font-medium text-slate-900"
-                                                    onClick={() =>
-                                                        handleShopNow(product)
-                                                    }
-                                                >
-                                                    <ShoppingBag
-                                                        className={`${
-                                                            shopped[product._id]
-                                                                ? "opacity-75"
-                                                                : "opacity-100"
-                                                        }`}
-                                                    />
-                                                    {shopped[product._id] ? (
-                                                        <span className="opacity-75">
-                                                            Shopped
-                                                        </span>
-                                                    ) : (
-                                                        <span>Shop Now</span>
-                                                    )}
-                                                    {/* above code renders based on the state of the product.id variable */}
-                                                </button>
-                                            </div>
-                                            <h2 className="font-semibold text-base">
-                                                <NavLink
-                                                    to="description"
-                                                    className="no-underline hover:underline"
-                                                >
-                                                    {product.name}
-                                                </NavLink>
-                                            </h2>
-                                            <div className="flex items-center justify-between">
-                                                <p className=" opacity-70 text-sm">
-                                                    {category}
-                                                </p>
-                                                <p className="font-medium text-sm">
-                                                    ₦
-                                                    {Intl.NumberFormat(
-                                                        "en-US",
-                                                        {
-                                                            maximumFractionDigits: 0,
-                                                        }
-                                                    ).format(product.price)}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    ))}
-                            </div>
-                            <div className=" flex items-center justify-center p-2 bg-orange-500 w-fit m-auto my-4 rounded-sm">
-                                <button
-                                    className="disabled:invisible text-slate-200 mr-2 rounded-full"
-                                    onClick={handlePrev}
-                                    disabled={currentPage === 1}
-                                >
-                                    <ArrowBackIosIcon />
-                                </button>
-                                <span className='font-mono text-lg text-white'>{currentPage} of {totalPages.current}</span>
-                                <button
-                                    className="disabled:invisible  text-slate-200 ml-2 rounded-full"
-                                    onClick={handleNext}
-                                    disabled={
-                                        currentPage === totalPages.current
-                                    }
-                                >
-                                    {" "}
-                                    <ArrowForwardIosIcon />
-                                </button>
-                            </div>
-                        </>
-                    ) : (
-                        <h1 className="text-center text-slate-500">
-                            No products found in this category.
-                        </h1>
-                    )}
-                </aside>
+                          <Search />
+                        </div>
+                        <button
+                          className="flex items-center text-xl font-medium text-slate-900"
+                          onClick={() => handleShopNow(product)}
+                        >
+                          <ShoppingBag
+                            className={`${
+                              shopped[product._id]
+                                ? "opacity-75"
+                                : "opacity-100"
+                            }`}
+                          />
+                          {shopped[product._id] ? (
+                            <span className="opacity-75">Shopped</span>
+                          ) : (
+                            <span>Shop Now</span>
+                          )}
+                          {/* above code renders based on the state of the product.id variable */}
+                        </button>
+                      </div>
+                      <h2 className="font-semibold text-base">
+                        <div
+                          className="no-underline hover:underline cursor-pointer"
+                          onClick={() => navigate(`/products/${product._id}`)}
+                        >
+                          {product.name}
+                        </div>
+                      </h2>
+                      <div className="flex items-center justify-between">
+                        <p className=" opacity-70 text-sm">{category}</p>
+                        <p className="font-medium text-sm">
+                          ₦
+                          {Intl.NumberFormat("en-US", {
+                            maximumFractionDigits: 0,
+                          }).format(product.price)}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className=" flex items-center justify-center p-2 bg-orange-500 w-fit m-auto my-4 rounded-sm">
+                  <button
+                    className="disabled:invisible text-slate-200 mr-2 rounded-full"
+                    onClick={handlePrev}
+                    disabled={currentPage === 1}
+                  >
+                    <ArrowBackIosIcon />
+                  </button>
+                  <span className="font-mono text-lg text-white">
+                    {currentPage} of {totalPages.current}
+                  </span>
+                  <button
+                    className="disabled:invisible  text-slate-200 ml-2 rounded-full"
+                    onClick={handleNext}
+                    disabled={currentPage === totalPages.current}
+                  >
+                    {" "}
+                    <ArrowForwardIosIcon />
+                  </button>
+                </div>
+              </>
+            ) : (
+              <h1 className="text-center text-slate-500">
+                No products found in this category.
+              </h1>
             )}
-        </div>
+          </aside>
+        )}
+      </div>
     );
 };
 
