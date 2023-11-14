@@ -51,7 +51,7 @@ const FavoritePage = () => {
                         </p>
                     ) : (
                         <div className="">
-                            <div className="grid grid-cols-5 gap-[0.6rem]">
+                            <div className="md:grid md:grid-cols-5 gap-[0.6rem]">
                                 {productsToDisplay?.map((item) => (
                                     <FavoriteProduct
                                         productObject={item.product}
