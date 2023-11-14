@@ -1,160 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import shoes from '../assets/shoes.jpg'
-import clothes from '../assets/clothings.jpg'
+import { Link, NavLink } from "react-router-dom";
+
+
+import FemaleIcon from "@mui/icons-material/Female";
+import MaleIcon from "@mui/icons-material/Male";
+import EarbudsIcon from "@mui/icons-material/Earbuds";
+import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
+import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
+import MicrowaveIcon from "@mui/icons-material/Microwave";
+import IceSkatingIcon from "@mui/icons-material/IceSkating";
+import LaptopMacOutlinedIcon from '@mui/icons-material/LaptopMacOutlined';
+import ArrowDownwardOutlinedIcon from '@mui/icons-material/ArrowDownwardOutlined';
 
 
 function Orders() {
     const [orders,setOrders] = useState ([])
     const [isObject,setIsObject] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
+    const [isOpen,setIsOpen] = useState(false)
+    const [errors,setErrors] = useState('')
+    const [newProducts, setNewProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [ordersPerPage] = useState(5);  
     const [expandedOrderId, setExpandedOrderId] = useState(null);
     const auth =localStorage.getItem('authToken')
     
-    
-    const temOrders = [
-        {
-            _id : 1,
-            street_address: "zik avenue",
-            city: "awka",
-            state: "anambra",
-            phone_number: "08109210257",
-            order_date: "2023-11-02T15:12:44.576Z",
-            total : 8000,
-            completed : true,
-            items : [
-                {
-                    name : 'Shoes',
-                    img : shoes,
-                    price : 2000
-                }
-            ]
-        },
-        {
-            _id : 2,
-            street_address: "zik avenue",
-            city: "awka",
-            state: "anambra",
-            phone_number: "08109210257",
-            order_date: "2023-11-02T15:12:44.576Z",
-            total : 8000,
-            completed : false,
-            items : [
-                {
-                    name : 'Shoes',
-                    img : shoes,
-                    price : 2000
-                }
-            ]
-        },
-        {
-            _id : 3,
-            street_address: "zik avenue",
-            city: "awka",
-            state: "anambra",
-            phone_number: "08109210257",
-            order_date: "2023-11-02T15:12:44.576Z",
-            total : 8000,
-            completed : false,
-            items : [
-                {
-                    name : 'Shoes',
-                    img : shoes,
-                    price : 2000
-                }
-            ]
-        },
-        {
-            _id : 4,
-            street_address: "zik avenue",
-            city: "awka",
-            state: "anambra",
-            phone_number: "08109210257",
-            order_date: "2023-11-02T15:12:44.576Z",
-            total : 8000,
-            completed : false,
-            items : [
-                {
-                    name : 'Shoes',
-                    img : shoes,
-                    price : 2000
-                },
-                {
-                    name : 'Tops',
-                    img : clothes,
-                    price : 2000
-                }
-            ]
-        },
-        {
-            _id : 5,
-            street_address: "zik avenue",
-            city: "awka",
-            state: "anambra",
-            phone_number: "08109210257",
-            order_date: "2023-11-02T15:12:44.576Z",
-            total : 8000,
-            completed : true,
-            items : [
-                {
-                    name : 'Shoes',
-                    img : shoes,
-                    price : 2000
-                },
-                {
-                    name : 'Tops',
-                    img : clothes,
-                    price : 2000
-                }
-            ]
-        },
-        {
-            _id : 6,
-            street_address: "zik avenue",
-            city: "awka",
-            state: "anambra",
-            phone_number: "08109210257",
-            order_date: "2023-11-02T15:12:44.576Z",
-            total : 8000,
-            completed : false,
-            items : [
-                {
-                    name : 'Shoes',
-                    img : shoes,
-                    price : 2000
-                },
-                {
-                    name : 'Tops',
-                    img : clothes,
-                    price : 2000
-                }
-            ]
-        },
-        {
-            _id : 7,
-            street_address: "zik avenue",
-            city: "awka",
-            state: "anambra",
-            phone_number: "08109210257",
-            order_date: "2023-11-02T15:12:44.576Z",
-            total : 8000,
-            completed : false,
-            items : [
-                {
-                    name : 'Shoes',
-                    img : shoes,
-                    price : 2000
-                },
-                {
-                    name : 'Tops',
-                    img : clothes,
-                    price : 2000
-                }
-            ]
-        }
-    ];
+
     useEffect(() =>{
+        setIsLoading(true)
         axios.get('https://aphia-dev.onrender.com/api/orders',{
             headers:
             {
@@ -162,28 +37,69 @@ function Orders() {
             }
         })
         .then(res => {
+          if(res.data.success === true){
+            setIsLoading(false)
             setOrders(res.data.message)
-            // if(typeof res.data.message === 'string'){
-            //     setIsObject(false)
-            // }
+
+          }else if(typeof res.data.message === 'string'){
+              setIsObject(false)
+              setErrors(res.data.message)
+          }
+            
         })
         
     },[]);
 
+    useEffect(() => {
+      const fetchProductDetails = async () => {
+        try {
+          const productData = [];
+  
+          for (const order of orders) {
+            for (const productId of order.products) {
+              const response = await axios.get(
+                `https://aphia-dev.onrender.com/api/products/${productId}`
+              );
+  
+              const productDetails = response.data.message;
+  
+              productData.push({
+                id: productDetails._id,
+                name: productDetails.name,
+                description: productDetails.description,
+                price: productDetails.price,
+                images: productDetails.images,
+                // Add more properties as needed
+              });
+            }
+          }
+  
+          setNewProducts(productData);
+          setIsLoading(false);
+        } catch (error) {
+          console.error('Error fetching product details:', error);
+          setIsLoading(false);
+        }
+      };
+  
+      fetchProductDetails();
+    }, [orders]);
+
     const toggleDetails = (_id) => {
         setExpandedOrderId((prevId) => (prevId === _id ? null : _id));
+        setIsOpen(!isOpen)
     };
 
     // Get current orders for the current page
   const indexOfLastOrder = currentPage * ordersPerPage;
   const indexOfFirstOrder = indexOfLastOrder - ordersPerPage;
-  const currentOrders = temOrders.slice(indexOfFirstOrder, indexOfLastOrder);
+  const currentOrders = orders.slice(indexOfFirstOrder, indexOfLastOrder);
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const nextPage = () => {
-    if (currentPage < Math.ceil(temOrders.length / ordersPerPage)) {
+    if (currentPage < Math.ceil(orders.length / ordersPerPage)) {
       setCurrentPage((prevPage) => prevPage + 1);
     }
   };
@@ -193,100 +109,195 @@ function Orders() {
       setCurrentPage((prevPage) => prevPage - 1);
     }
   };
+
+
     console.log(isObject);
   return (
-    <div className="container mx-auto my-8 p-8 bg-gray-100 rounded-lg shadow-md">
-      <nav className="text-center mb-8">
-      <h1 className="text-3xl font-bold flex items-center justify-between mb-2">
-          Your Orders
-          <div className='h-4'>
-            <span className="ml-2">
-              <span
-                className="h-4 w-4 inline-block rounded-full"
-                style={{ backgroundColor: 'green' }}
-              ></span>{' '}
-              Completed
-            </span>
-            <span className="ml-2">
-              <span
-                className="h-4 w-4 inline-block rounded-full"
-                style={{ backgroundColor: 'yellow' }}
-              ></span>{' '}
-              Pending
-            </span>
+    <>
+      <div className="container mx-auto my-8 p-8 bg-gray-100 rounded-lg shadow-md">
+        <nav className="text-center mb-8">
+          <h1 className="text-3xl font-bold flex items-center justify-between mb-2">
+              Your Orders
+              <div className='h-4'>
+                <span className="ml-2">
+                  Completed
+                  <span
+                    className="h-4 w-4 inline-block rounded-full"
+                    style={{ backgroundColor: 'green' }}
+                  ></span>{' '}
+                </span>
+                <span className="ml-2">
+                  Pending
+                  <span
+                    className="h-4 w-4 inline-block rounded-full"
+                    style={{ backgroundColor: '#f59e0b' }}
+                  ></span>{' '}
+                </span>
 
-          </div>
-        </h1>
-      </nav>
-      {isObject ? (
-        <div >
-          <div className="flex justify-between items-center mb-2">
-            <h2 className="text-xl font-bold">Order Number</h2>
-            <h2 className="text-xl font-bold">Order Amount</h2>
-            <h2 className="text-xl font-bold ">Status</h2>
-            <h2 className="text-xl font-bold">Order Details</h2>
-          </div>
-          {currentOrders.map((order) => (
-            <div key={order._id} className="mb-4 p-4 bg-white rounded-lg shadow-md">
-              <div className="flex justify-between items-center mb-2">
-                <h3 className="text-xl font-bold">Order #{order._id}</h3> 
-
-                <h3 className="text-xl font-semibold ">{order.items.length}</h3>
-                {order.completed ? <span className="h-4 w-4 inline-block rounded-full" style={{ backgroundColor: 'green' }}></span>
-                  : <span className="h-4 w-4 inline-block rounded-full" style={{ backgroundColor: 'yellow' }}></span>
-                }
-                <button
-                  className="text-white bg-amber-500 py-2 px-4 rounded-md"
-                  onClick={() => toggleDetails(order._id)}
-                >
-                  Show Details
-                </button>
               </div>
-                <div className={`transition-max-height ${expandedOrderId === order._id ? 'h-auto' : 'h-0'} overflow-hidden`}>
-                  {<ul>
-                    {order.items.map((item) => (
-                      <li key={item.name} className="flex justify-between items-center border-b py-2">
-                        <img src={item.img} alt="item-pic" className="w-16 h-16 object-cover"/>
-                        <span className="ml-4" >${item.price}</span>
+          </h1>
+        </nav>
+        {isObject ? (
+            <div >
+              {/* <div className="flex justify-between items-center mb-2">
+                <h2 className="text-xl font-bold ">Status</h2>
+                <h2 className="text-xl font-bold">Order Details</h2>
+              </div> */}
+              {currentOrders.map((order) => (
+                <div key={order._id} className={`mb-4 p-4 rounded-lg shadow-md ${
+                  expandedOrderId === order._id ? 'text-white bg-blue-950' : ' bg-white'
+                }`}>
+                  <div className='flex justify-between items-center mb-2'>
+                    <div className='flex-col'>
+                      <h2 className="text-xl font-bold">Order Number</h2>
+                      <h3 className="text-x1 font-bold">Order# <span className='text-x1'>{order._id}</span></h3> 
+                    </div>
+
+                    <div>
+                    {/* <h2 className="text-xl font-bold">Order Amount</h2> */}
+
+                    <h3 className="text-xl font-semibold ">Orders:{order.products.length}</h3>
+                    {order.completed ? <span className="h-4 w-4 inline-block rounded-full" style={{ backgroundColor: 'green' }}></span>
+                      : <span className="h-4 w-4 inline-block rounded-full" style={{ backgroundColor: '#f59e0b' }}></span>
+                    }
+                    </div>
+
+                    <button
+                      className="text-white bg-amber-500 py-2 px-4 rounded-md"
+                      onClick={() => toggleDetails(order._id)}
+                    >
+                      {isOpen?"Show less":"Show Details"}
+                    </button>
+                  </div>
+                    <div className={`transition-max-height ${expandedOrderId === order._id ? 'h-auto' : 'h-0'} overflow-hidden`}>
+                    {<ul>
+                    {order.products.map((item) => (
+                      <li key={item}>
+                        {/* Display product details if available */}
+                        {newProducts.map((product) => product.id === item) && (
+                          <div className="flex justify-between items-center border-b py-2">
+                            <img
+                              src={newProducts.map((product) => product.id === item).images}
+                              alt="item-pic"
+                              className="w-16 h-16 object-cover"
+                            />
+                            <span className="ml-4">
+                              ${newProducts.map((product) => product.id === item).price}
+                            </span>
+                          </div>
+                        )}
                       </li>
                     ))}
                   </ul>}
-                  <p className="mt-2 text-gray-600">Order Total: ${order.total}</p>
+                      <p className="mt-2 text-gray-600">Order Total: ${order.total}</p>
+                    </div>
+                  
                 </div>
-              
-            </div>
-          ))}
+              ))}
 
-            <div className="flex justify-center">
-                <button
-                className="mx-1 text-blue-500 font-bold"
-                onClick={prevPage}
-                disabled={currentPage === 1}
-                >
-                Prev
-                </button>
-                {Array.from({ length: Math.ceil(temOrders.length / ordersPerPage) }, (_, i) => (
-                <button
-                    key={i}
-                    className={`mx-1 ${currentPage === i + 1 ? 'text-blue-500 font-bold' : 'text-gray-600'}`}
-                    onClick={() => paginate(i + 1)}
-                >
-                    {i + 1}
-                </button>
-                ))}
-                <button
-                className="mx-1 text-blue-500 font-bold"
-                onClick={nextPage}
-                disabled={currentPage === Math.ceil(temOrders.length / ordersPerPage)}
-                >
-                Next
-                </button>
+                <div className="flex justify-center">
+                    <button
+                      className="mx-1 text-blue-500 font-bold"
+                      onClick={prevPage}
+                      disabled={currentPage === 1}
+                      >
+                      Prev
+                    </button>
+                    {Array.from({ length: Math.ceil(orders.length / ordersPerPage) }, (_, i) => (
+                    <button
+                        key={i}
+                        className={`mx-1 ${currentPage === i + 1 ? 'text-blue-500 font-bold' : 'text-gray-600'}`}
+                        onClick={() => paginate(i + 1)}
+                    >
+                        {i + 1}
+                    </button>
+                    ))}
+                    <button
+                    className="mx-1 text-blue-500 font-bold"
+                    onClick={nextPage}
+                    disabled={currentPage === Math.ceil(orders.length / ordersPerPage)}
+                    >
+                    Next
+                    </button>
+                </div>
             </div>
-        </div>
-      ) : (
-        <p className="text-center text-gray-600">No orders available.</p>
-      )}
-    </div>
+            ) : (
+            <>
+              <p className="text-center text-white text-2xl font-bold bg-green-600 rounded-lg">{errors}</p>
+              <div className="rounded item1 col-span-2 bg-slate-200">
+                <h3 className=" bg-slate-300 p-3 rounded "> Shop Categories Here <ArrowDownwardOutlinedIcon /> </h3>
+                <div className="navlink flex flex-col gap-2 items-left justify-center">
+                  <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
+                    <NavLink
+                      className="p-3 no-underline text-[#3a3a3a] text-lg gap-2 flex items-center "
+                      to="/laptops"
+                    >
+                      <LaptopMacOutlinedIcon /> Laptops
+                    </NavLink>
+                  </div>
+                  <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
+                    <NavLink
+                      className="p-3 no-underline phones text-[#3a3a3a] text-lg gap-2 flex items-center "
+                      to="/devices"
+                    >
+                      <PhoneIphoneIcon />
+                      Phone & Tablets
+                    </NavLink>
+                  </div>
+                  <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
+                    <NavLink
+                      className="p-3 no-underline text-[#3a3a3a] text-lg gap-2 flex items-center "
+                      to="/shoes"
+                    >
+                      <IceSkatingIcon /> Shoes
+                    </NavLink>
+                  </div>
+                  <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
+                    <NavLink
+                      className="p-3 no-underline text-[#3a3a3a] text-lg gap-2 flex items-center "
+                      to="/electronics"
+                    >
+                      <MicrowaveIcon /> Electronics
+                    </NavLink>
+                  </div>
+                  <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
+                    <NavLink
+                      className="p-3 no-underline text-[#3a3a3a] text-lg gap-2 flex items-center "
+                      to="/fashion/male"
+                    >
+                      <MaleIcon /> Male wears
+                    </NavLink>
+                  </div>
+                  <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
+                    <NavLink
+                      className="p-3 no-underline text-[#3a3a3a] text-lg gap-2 flex items-center "
+                      to="/fashion/female"
+                    >
+                      <FemaleIcon /> Female wears
+                    </NavLink>
+                  </div>
+                  <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
+                    <NavLink
+                      className="p-3 no-underline text-[#3a3a3a] text-lg gap-2 flex items-center "
+                      to="/accessories"
+                    >
+                      <EarbudsIcon /> Accessories
+                    </NavLink>
+                  </div>
+                  <div className="hover:border-r-2 hover:border-amber-500 hover:bg-slate-300">
+                    <NavLink
+                      className="p-3 no-underline text-[#3a3a3a] text-lg gap-2 flex items-center "
+                      to="/others"
+                    >
+                      <DevicesOtherIcon /> Other Categories
+                    </NavLink>
+                  </div>
+                </div>
+              </div>
+            </>
+        )}
+      </div>
+    </>
   );
 };
 
