@@ -3,7 +3,6 @@ import axios from 'axios'
 import shoes from '../assets/shoes.jpg'
 import { Link, NavLink } from "react-router-dom";
 
-
 import FemaleIcon from "@mui/icons-material/Female";
 import MaleIcon from "@mui/icons-material/Male";
 import EarbudsIcon from "@mui/icons-material/Earbuds";
@@ -27,7 +26,6 @@ function Orders() {
     const [expandedOrderId, setExpandedOrderId] = useState(null);
     const auth =localStorage.getItem('authToken')
     
-
     useEffect(() =>{
         setIsLoading(true)
         axios.get('https://aphia-dev.onrender.com/api/orders',{
