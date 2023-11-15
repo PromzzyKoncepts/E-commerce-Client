@@ -119,7 +119,6 @@ const CategoriesCard = ({ apiLink, category }) => {
                             />
                           </button>
 
-                          <Search />
                         </div>
                         <button
                           className="flex items-center text-xl font-medium text-slate-900"
