@@ -32,6 +32,7 @@ import OrderSummary from "./components/checkout/OrderSummary";
 import EmptyCart from "./components/checkout/EmptyCart";
 import OrderPayDetails from "./components/checkout/OrderPayDetails";
 import OrderPayConfirm from "./components/checkout/OrderPayConfirm.jsx";
+import FAQ from "./components/FAQ.jsx";
 
 
 
@@ -68,7 +69,7 @@ function App() {
             <Route path="/verify" element={<EmailVerf />} />
             <Route path="/auth"  element={<AdminAuth/>}/>
             <Route path="/user/confirmation" element={<EmailConf />} />
-
+            <Route path="/faqs" element ={<FAQ />} />
             <Route path="/favorite" element={<FavoritePage />} />
             <Route path='/cart/emptycart' element={<EmptyCart />} />
          
