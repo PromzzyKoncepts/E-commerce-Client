@@ -36,7 +36,6 @@ const Header = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
   const [query, setQuery] = useState("");
-  const navigate = useNavigate()
 
   const handleSellButtonClick = () => {
 
