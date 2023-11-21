@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, NavLink, useNavigate, useNavigate, Navigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, Navigate } from "react-router-dom";
 import aphia from "../assets/aphia.png";
 import userContext from "../context/userContext";
 import Badge from "@mui/material/Badge";
