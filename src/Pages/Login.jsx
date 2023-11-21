@@ -45,7 +45,7 @@ const Login = () => {
         setIsLoading(false);
         setErrors("");
         navigate("/cart");
-      } else if (res.data.message === "Incorrect Credetials") {
+      } else if (res.data.message === "Incorrect Credentials") {
            setErrors("Incorrect Credentials");}
 
            else if (res.data.message === "User is not registered"){
