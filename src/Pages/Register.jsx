@@ -72,16 +72,16 @@ const Register = () => {
     setPasswordError("");
 
     if (containsSpace(username) === true) {
-      setUsernameError("username must not contain spaces");
+      setUsernameError("username must not contain spaces");}
       if (password.length < 8) {
         setIsLoading(false);
-        setPasswordError("password should be atleast 8 characters");
+        setPasswordError("password should be atleast 8 characters");}
         if (password !== confirmPassword) {
           setIsLoading(false);
-          setPasswordError("passwords do not match");
-        }
-      }
-    } else {
+          setPasswordError("passwords do not match");}
+        
+      
+     else {
       try {
         setIsLoading(true);
         const res = await axios.post(`${baseUrl}/users/register`, body);
@@ -103,7 +103,7 @@ const Register = () => {
     <div className="flex items-center justify-center pt-5">
     <form data-aos="fade-up" className="max-w-lg w-full p-4 px-5 bg-white rounded shadow-xl"  onSubmit={(e) => handleSubmit(e)}>
       <h1 className="text-3xl text-amber-500 mb-3 text-center pb-4">Create an Account</h1>
-      {errors && <h3>{errors}</h3>}
+      {passwordError && <small className="text-red-500">{passwordError}</small>}
       <TextField
         required
         id="outlined-basic"
