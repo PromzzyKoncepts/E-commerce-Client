@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useNavigate, Navigate } from "react-router-dom";
 import aphia from "../assets/aphia.png";
 import userContext from "../context/userContext";
 import Badge from "@mui/material/Badge";
@@ -26,6 +26,7 @@ const Header = () => {
   const [isCategories, setIsCategories] = useState(false);
   // const [isScrolled, setIsScrolled] = useState(false);
   const { authUser } = useContext(userContext);
+  const navigate = useNavigate()
 
   const handleCategories = () => setIsCategories((prev) => !prev);
 
@@ -48,6 +49,12 @@ const Header = () => {
     setShowSearchResults(false);
     setQuery("");
   };
+
+  function handleNavigate(result) {
+    navigate(`/products/${result._id}`)
+    // Navigate(`/products/${result._id}`);
+      handleClearSearch()
+  }
 
   useEffect(() => {
     const handleSearch = async () => {
@@ -143,28 +150,31 @@ const Header = () => {
                   </div>
                   {searchResults?.map((result) => (
                     <div
-                      className="flex text-slate-700 bg-slate-50 mb-3 p-2 justify-between items-center"
+                      onClick={() => handleNavigate(result)}
+                      className="flex text-slate-700 cursor-pointer bg-slate-50 mb-3 p-2 justify-between items-center"
                       key={result._id}
                     >
-                      <div className="flex gap-2 items-center">
-                        <img
-                          className="w-11 object-cover "
-                          src={result.images?.[0]}
-                          alt={result.name}
-                        ></img>
-                        <h6>{result.name}</h6>
-                      </div>
-                      <div className="flex  gap-4 items-center">
-                        <p className="font-bold">
-                          &#8358;
-                          {Intl.NumberFormat("en-US", {
-                            maximumFractionDigits: 0,
-                          }).format(result.price)}
-                        </p>
-                        <small className="hidden md:block">
-                          {result.quantity} products in stock
-                        </small>
-                      </div>
+                      {/* <NavLink to={`/products/${result._id}`}> */}
+                        <div className="flex gap-2 items-center">
+                          <img
+                            className="w-11 object-cover "
+                            src={result.images?.[0]}
+                            alt={result.name}
+                          ></img>
+                          <h6>{result.name}</h6>
+                        </div>
+                        <div className="flex  gap-4 items-center">
+                          <p className="font-bold">
+                            &#8358;
+                            {Intl.NumberFormat("en-US", {
+                              maximumFractionDigits: 0,
+                            }).format(result.price)}
+                          </p>
+                          <small className="hidden md:block">
+                            {result.quantity} products in stock
+                          </small>
+                        </div>
+                      {/* </NavLink> */}
                     </div>
                   ))}
                 </ul>
