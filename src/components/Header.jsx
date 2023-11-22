@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate, Navigate } from "react-router-dom";
 import aphia from "../assets/aphia.png";
 import userContext from "../context/userContext";
 import Badge from "@mui/material/Badge";
@@ -26,6 +26,7 @@ const Header = () => {
     const [isCategories, setIsCategories] = useState(false);
     // const [isScrolled, setIsScrolled] = useState(false);
     const { authUser } = useContext(userContext);
+  const navigate = useNavigate()
 
     const handleCategories = () => setIsCategories((prev) => !prev);
 
@@ -40,6 +41,12 @@ const Header = () => {
         setShowSearchResults(false);
         setQuery("");
     };
+
+  function handleNavigate(result) {
+    navigate(`/products/${result._id}`)
+    // Navigate(`/products/${result._id}`);
+      handleClearSearch()
+  }
 
     useEffect(() => {
         const handleSearch = async () => {
