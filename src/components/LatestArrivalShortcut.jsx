@@ -103,6 +103,7 @@ const LatestArrivalShortcut = () => {
                   
                   
                                 <div className="flex items-center justify-between py-4">
+                                <p className="font-semibold mt-6">{item.name}</p>
                                     <div className="flex gap-3">
                                         <button className="  hover:text-red-500">
                                             <FavoriteBorderIcon
