@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Favorite from "@mui/icons-material/Favorite";
 
+
 const CategoriesCard = ({ apiLink, category }) => {
     const token = localStorage.getItem("authToken");
     const dispatch = useDispatch();
