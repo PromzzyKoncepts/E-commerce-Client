@@ -37,6 +37,13 @@ const Header = () => {
   const [totalResults, setTotalResults] = useState(0);
   const [query, setQuery] = useState("");
 
+  const handleSellButtonClick = () => {
+
+    if (!authUser || !authUser.isVendor) {
+      navigate("/auth");
+    }
+  };
+
   const handleClearSearch = () => {
     setShowSearchResults(false);
     setQuery("");
@@ -271,14 +278,16 @@ const Header = () => {
 
           <NavLink
             className="bg-amber-500 px-3 py-1 rounded font-bold hover-bg-orange-500 no-underline text-white desktop"
-            to="/dashboard"
+            to="/auth"
+            onClick={handleSellButtonClick}
+
           >
             Sell
           </NavLink>
         </nav>
 
         <NavLink
-          to="/cart"
+          to="/auth"
           className="  items-center gap-2 no-underline text-slate-900  md:hidden"
         >
           <IconButton aria-label="cart ">

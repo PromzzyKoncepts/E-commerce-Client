@@ -110,6 +110,14 @@ function App() {
                </Protected>
             } />
 
+
+
+
+
+
+
+            
+
             {/* <Route path='/checkout/payconfirmed' 
               element={
                <Protected>
@@ -119,6 +127,10 @@ function App() {
 
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />
+
+
+
+
          </Routes>
       </div>
    );
