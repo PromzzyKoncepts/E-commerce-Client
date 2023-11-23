@@ -36,6 +36,7 @@ import OrderPayConfirm from "./components/checkout/OrderPayConfirm.jsx";
 import ProductDescription from "./components/ProductDescription";
 import ReviewForm from "./Pages/ReviewForm.jsx";
 import Orders from "./Pages/Orders";
+import OrderDetails from "./categories/OrderDetails.jsx";
 
 
 
@@ -74,6 +75,7 @@ function App() {
             <Route path="/products/:id" element={<ProductDescription />} />
             <Route path="/review" element={<ReviewForm/>}/>
             <Route path ="/orders" element={<Orders />} />
+            <Route path="/orders/:currentId" element= {<OrderDetails />} />
 
             <Route path="/favorite" element={<FavoritePage />} />
             <Route path='/cart/emptycart' element={<EmptyCart />} />
