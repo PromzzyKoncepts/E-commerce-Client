@@ -34,6 +34,7 @@ import OrderPayDetails from "./components/checkout/OrderPayDetails";
 import OrderPayConfirm from "./components/checkout/OrderPayConfirm.jsx";
 
 import ProductDescription from "./components/ProductDescription";
+import Orders from "./Pages/Orders";
 
 
 
@@ -70,6 +71,7 @@ function App() {
             <Route path="/auth"  element={<AdminAuth/>}/>
             <Route path="/user/confirmation" element={<EmailConf />} />
             <Route path="/products/:id" element={<ProductDescription />} />
+            <Route path ="/orders" element={<Orders />} />
 
             <Route path="/favorite" element={<FavoritePage />} />
             <Route path='/cart/emptycart' element={<EmptyCart />} />
