@@ -34,12 +34,9 @@ import OrderPayDetails from "./components/checkout/OrderPayDetails";
 import OrderPayConfirm from "./components/checkout/OrderPayConfirm.jsx";
 
 import ProductDescription from "./components/ProductDescription";
-<<<<<<< HEAD
 import ReviewForm from "./Pages/ReviewForm.jsx";
-=======
 import Orders from "./Pages/Orders";
 
->>>>>>> e484a08914c94d56f0a494fffae4a36455f6be54
 
 
 function App() {
@@ -75,12 +72,9 @@ function App() {
             <Route path="/auth"  element={<AdminAuth/>}/>
             <Route path="/user/confirmation" element={<EmailConf />} />
             <Route path="/products/:id" element={<ProductDescription />} />
-<<<<<<< HEAD
             <Route path="/review" element={<ReviewForm/>}/>
-=======
             <Route path ="/orders" element={<Orders />} />
 
->>>>>>> e484a08914c94d56f0a494fffae4a36455f6be54
             <Route path="/favorite" element={<FavoritePage />} />
             <Route path='/cart/emptycart' element={<EmptyCart />} />
          
