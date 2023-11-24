@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const ReviewForm = () => {
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
   const [message, setMessage] = useState('');
   const [token, setToken] = useState('');
+  let {productid} = useParams()
 
   
  
@@ -19,19 +21,24 @@ const ReviewForm = () => {
       rating: rating,
     };
         const token = localStorage.getItem('authToken');
-      axios.post(`https://aphia-dev.onrender.com/api/reviews/:productId/create`, data, {
+      axios.post(`https://aphia-dev.onrender.com/api/reviews/${productid}/create`, data, {
         headers: {
-          authorization:  'token',
+          authorization:  token,
         },
       })
         .then((response) => {
           console.log('Response:', response.data);
   
           if (response.data && response.data.message === 'Review added successfully') {
-            setMessage('Review added successfully');
-          } else if (response.data && response.data.message === 'Unauthorized. Please log in') {
-            setMessage('Unauthorized. Please log in');
-          } else {
+            setMessage('Review added successfully');}
+           else if (response.data && response.data.message === 'Unauthorized. Please log in') {
+            setMessage('Unauthorized. Please log in');}
+          
+          else if(response.data && response.data.message === 'You have already reviewed this product'){
+            setMessage('You have already reviewed this product!');
+          }
+          
+          else {
             console.error('Unexpected response:', response.data);
           }
         })
@@ -47,7 +54,7 @@ const ReviewForm = () => {
     <div className="max-w-md mx-auto my-8 p-6 bg-white rounded-md shadow-xl">
       <h2 className="text-2xl font-semibold mb-4">Product Review</h2>
       <form onSubmit={handleSubmit}>
-      {message && <div>{message}</div>}
+      {message && <div className="text-red-500 text-sm text-center mb-3">{message}</div>}
 
         <label htmlFor="comment" className="block mb-2 text-sm font-medium text-gray-600">
           Comment:
