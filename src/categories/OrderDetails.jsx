@@ -10,7 +10,7 @@ function OrderDetails() {
     const [isLoading, setIsLoading] = useState(true)
     const [errors,setErrors] = useState('')
     const [isObject,setIsObject] = useState(true)    
-    let {currentId,id} = useParams()
+    let {currentId,productid} = useParams()
     const navigate = useNavigate()
   
 
@@ -89,6 +89,9 @@ function OrderDetails() {
       // Example: Redirect to "/products/:productId"
       return navigate(`/products/${productId}`)
     };
+    const review = (productId)=>{
+      return navigate(`/review/${productId}`)
+    }
     console.log(orders,'this order');
     console.log(newProducts,'product..detail');
   return (
@@ -173,7 +176,10 @@ function OrderDetails() {
                     </div>
                       <div className='flex justify-end'>
                         {/* Buy Again Button/Link */}
-                        <button onClick={() => handleBuyAgain(item.product_id)} className="mt-2 bg-blue-500 text-white px-2 py-1 rounded">
+                        <button onClick={() => review(item.product_id)} className="mt-2 bg-amber-500 text-white px-2 py-1 rounded">
+                          Review
+                        </button>
+                        <button onClick={() => handleBuyAgain(item.product_id)} className="mt-2 ml-2 bg-blue-500 text-white px-2 py-1 rounded">
                           Buy Again
                         </button>
                       </div>

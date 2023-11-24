@@ -73,7 +73,7 @@ function App() {
             <Route path="/auth"  element={<AdminAuth/>}/>
             <Route path="/user/confirmation" element={<EmailConf />} />
             <Route path="/products/:id" element={<ProductDescription />} />
-            <Route path="/review" element={<ReviewForm/>}/>
+            <Route path="/review/:productid" element={<ReviewForm/>}/>
             <Route path ="/orders" element={<Orders />} />
             <Route path="/orders/:currentId" element= {<OrderDetails />} />
 

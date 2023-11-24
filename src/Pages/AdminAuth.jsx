@@ -117,6 +117,7 @@ function AdminAuthForm() {
           setIsLoading(false);
           setErrors(res.data.message);
           RedirectComponent()
+          navigate("/verify")
         }
       } catch (error) {
         // setErrors('error:', error);
@@ -129,10 +130,10 @@ function AdminAuthForm() {
   return (
     <form
       className="max-w-md mx-auto p-12 space-y-4 shadow-lg "
-      onSubmit={(e) => handleSubmit(e)}
+      onSubmit={handleSubmit}
     >
       <h1>Create an Account</h1>
-      <small className="text-center ">
+      <small className="text-center  text-align-center ">
         Sign up as vendor, brand or business
       </small>
       <TextField
