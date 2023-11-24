@@ -1,21 +1,21 @@
 import BestDealsShortcut from "../components/BestDealsShortcut";
 import Footer from "../components/Footer";
-import jumiagif from "../assets/Jumiagif2.jpg";
+import Aphiagif from "../assets/Jumiagif2.jpg";
 import Section from "../components/Section";
 import Slider from "../components/Slider";
 import LatestArrivalShortcut from "../components/LatestArrivalShortcut";
 
-    function Home() {
-        return (
-          <div className="">
-            <img src={jumiagif} className="w-full" alt="gif" />
+function Home() {
+    return (
+        <div className="">
+            <img src={Aphiagif} className="w-full" alt="gif" />
 
             <Slider />
             <Section />
             <BestDealsShortcut />
             <LatestArrivalShortcut />
             <Footer />
-          </div>
-        );
+        </div>
+    );
 }
 export default Home;
