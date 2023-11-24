@@ -113,10 +113,11 @@ const CategoriesCard = ({ apiLink, category }) => {
                         />
                       </div>
                       <div className="flex items-center justify-between py-4">
-                        <div className="flex gap-3">
-                          <button className="  hover:text-red-500">
+                        <div className="flex gap-3 ">
+                          <button className="  hover:text-red-500 ">
                             <FavoriteBorderIcon
                               onClick={() => addToFavorite(product._id)}
+                              // style={{ color: addToFavorite(product._id) ? 'red' : 'inherit' }}
                             />
                           </button>
 
@@ -124,6 +125,7 @@ const CategoriesCard = ({ apiLink, category }) => {
                         <button
                           className="flex items-center text-xl font-medium text-slate-900"
                           onClick={() => handleShopNow(product)}
+                          
                         >
                           <ShoppingBag
                             className={`${
