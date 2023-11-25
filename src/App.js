@@ -32,7 +32,7 @@ import OrderSummary from "./components/checkout/OrderSummary";
 import EmptyCart from "./components/checkout/EmptyCart";
 import OrderPayDetails from "./components/checkout/OrderPayDetails";
 import OrderPayConfirm from "./components/checkout/OrderPayConfirm.jsx";
-
+import Conditions from "./components/Conditions.jsx"  
 import ProductDescription from "./components/ProductDescription";
 import Orders from "./Pages/Orders";
 import OrderDetails from "./categories/OrderDetails.jsx";
@@ -72,9 +72,11 @@ function App() {
             <Route path="/auth"  element={<AdminAuth/>}/>
             <Route path="/user/confirmation" element={<EmailConf />} />
             <Route path="/products/:id" element={<ProductDescription />} />
+
+            <Route path="/condition" element={<Conditions/>} />
+
             <Route path ="/orders" element={<Orders />} />
             <Route path="/orders/:currentId" element= {<OrderDetails />} />
-
             <Route path="/favorite" element={<FavoritePage />} />
             <Route path='/cart/emptycart' element={<EmptyCart />} />
          
@@ -117,17 +119,6 @@ function App() {
 
 
 
-
-
-
-            
-
-            {/* <Route path='/checkout/payconfirmed' 
-              element={
-               <Protected>
-                  < />
-               </Protected>
-            } /> */}
 
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />

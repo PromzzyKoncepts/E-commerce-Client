@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logo from "../assets/aphialight.png";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => { 
   
@@ -52,12 +53,10 @@ const Footer = () => {
               Return Policy
             </a>
             <br></br>
-            <a
-              className="no-underline text-gray-400 hover:text-amber-500"
-              href="#"
-            >
+            <NavLink to='/condition' className="no-underline text-gray-400 hover:text-amber-500">
               Terms & Conditions
-            </a>
+            </NavLink>
+            
           </div>
           <div>
             <h3>Explore</h3>
