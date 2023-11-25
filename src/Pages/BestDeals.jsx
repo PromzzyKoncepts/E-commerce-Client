@@ -60,7 +60,7 @@ const handleShopNow = (product) => {
                 <div
                   href={""}
                   key={item.product._id}
-                  className="bg-white pb-2 px-2 pt-6 rounded relative no-underline hover:"
+                  className="bg-white pb-2 px-2 pt-6 rounded relative no-underline hover:scale-[1.02] duration-1000 hover:drop-shadow-lg"
                 >
                   <div className="bg-white">
                     <small className="text-slate-100 bg-red-500 p-1 absolute top-0 left-0 rounded-tl-sm">

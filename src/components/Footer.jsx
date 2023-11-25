@@ -30,7 +30,7 @@ const Footer = () => {
                 rel="noreferrer"
               >
                 {" "}
-                Lm-Techies
+                Lm-Tech Students (Cohort 2)
               </a>
             </p>            
           </div>
