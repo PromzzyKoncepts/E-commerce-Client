@@ -46,7 +46,7 @@ function App() {
     }, [])
 
    return (
-      <div className="App">
+      <div className="App p-[10px] m-[10px]">
          <div className="mb-[6rem]">
          <Header  />
          </div>
