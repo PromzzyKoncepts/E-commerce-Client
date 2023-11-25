@@ -13,7 +13,7 @@
 }
 
 .searchTerm {
-  width: 30vw;
+  width: 100%;
   border: 2px solid #f59e0b;
   border-right: none;
   padding: 10px 20px;
@@ -46,61 +46,6 @@ a.active svg {
   color: #f59e0b;
 }
 
-/* hover style */
-
-form {
-  background-color: #eeeeee;
-  display: flex;
-  flex-direction: column;
-  max-width: 40%;
-  margin: auto;
-  margin-top: 3rem;
-  padding: 3rem;
-  text-align: center;
-  box-shadow: 1px 2px 5px #00000064;
-  border-radius: 6px;
-}
-form h1 {
-  color: #f59e0b;
-  /* font-size: 1rem; */
-  margin-bottom: 20px;
-}
-form input {
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  outline: none;
-  border: none;
-  border-radius: 5px;
-}
-
-form input:nth-child(2) {
-  margin-top: 1rem;
-}
-
-form input:last-of-type {
-  margin-bottom: 0;
-}
-
-form button {
-  padding: 0.5rem 1rem;
-  margin-top: 1rem;
-  border: none;
-  cursor: pointer;
-  background-color: #f59e0b;
-  color: #f0f0f0;
-}
-
-form button:active {
-  color: #f59e0b;
-  background-color: #f0f0f0;
-  border-radius: 3px;
-}
-form button:hover {
-  color: #f0f0f0;
-  background-color: #f59e0b;
-  border-radius: 3px;
-}
-
 small {
   align-self: flex-start;
   color: tomato;
@@ -114,8 +59,8 @@ small {
 }
 
 .image {
-  background-color: whitesmoke;
-  padding: 1rem;
+  /* background-color: whitesmoke; */
+  /* padding: 5rem; */
 }
 
 .hamburger {
@@ -123,12 +68,8 @@ small {
 }
 
 @media screen and (max-width: 768px) {
-  form {
-    max-width: 80%;
-  }
-
   .hamburger {
-    display: block;
+    display: flex;
   }
 
   .desktop {
@@ -154,3 +95,57 @@ small {
     border-radius: 20px;
   }
 }
+
+@media screen and (max-width: 640px) {
+.sm-screen-hidden {
+    display: none;
+ }
+}
+
+@media screen and (max-width: 768px) {
+  .max-flex-767 {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .max-hide-767 {
+    display: none;
+  }
+}
+
+@media screen and(min-width: 799px) {
+  .searchTerm {
+    width: 50rem;
+    display: none;
+    border: 2px solid #f59e0b;
+    border-right: none;
+    padding: 10px 20px;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+    color: #9dbfaf;
+  }
+    /* .searchbar-double{
+      background: #000;
+    flex: 1;
+    display: none;
+    width: 10vw;
+    justify-items: center;
+  } */
+}
+
+@media screen and (min-width: 0) and (max-width: 800px) {
+    .searchbar-main{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 700px) {
+  
+
+}
+
+.saerchbar-main{
+  width: 30vw;
+}
+

@@ -77,7 +77,7 @@ const LatestArrivals = () => {
                     </div>
                     <div className="flex justify-between">
                       <p className="font-semibold text-sm">
-                        &#8358;{item.price}
+                        &#8358;{Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(item.price)}
                       </p>
                       <button
                         className="flex items-center  font-medium text-slate-900"

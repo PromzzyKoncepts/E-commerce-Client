@@ -12,7 +12,7 @@ import EmailVerf from "./Pages/EmailVerf";
 import EmailConf from "./Pages/EmailConf";
 import Cart from "./Pages/Cart"; 
 import NotFound from "./components/404";
-// import AdminAuthForm from "./pages/adminAuth";
+// import AdminAuthForm from "./Pages/adminAuth";
 import AdminAuth from "./Pages/AdminAuth"
 import FavoritePage from "./Pages/FavoritePage";
 import PhonesAndTablets from "./categories/PhonesAndTablets";
@@ -25,6 +25,18 @@ import Females from "./categories/Females";
 import Laptops from "./categories/Laptops";
 import { useEffect } from "react";
 import LatestArrivals from "./Pages/LatestArrivals";
+import Protected from './HOC/Protected'
+import ShippingAddressForm from "./components/checkout/ShippingAddressForm";
+import Payment from "./components/checkout/Payments";
+import OrderSummary from "./components/checkout/OrderSummary";
+import EmptyCart from "./components/checkout/EmptyCart";
+import OrderPayDetails from "./components/checkout/OrderPayDetails";
+import OrderPayConfirm from "./components/checkout/OrderPayConfirm.jsx";
+import FAQ from "./components/FAQ.jsx";
+import Conditions from "./components/Conditions.jsx"  
+import ProductDescription from "./components/ProductDescription";
+import Orders from "./Pages/Orders";
+import OrderDetails from "./categories/OrderDetails.jsx";
 
 
 
@@ -35,8 +47,10 @@ function App() {
     }, [])
 
    return (
-      <div className="App">
-         <Header />
+      <div className="App p-[10px] m-[10px]">
+         <div className="mb-[6rem]">
+         <Header  />
+         </div>
 
          <Routes>
             <Route path="/" element={<Home />} />
@@ -58,14 +72,67 @@ function App() {
             <Route path="/verify" element={<EmailVerf />} />
             <Route path="/auth"  element={<AdminAuth/>}/>
             <Route path="/user/confirmation" element={<EmailConf />} />
+            <Route path="/products/:id" element={<ProductDescription />} />
+            <Route path="/faqs" element ={<FAQ />} />
+            <Route path="/condition" element={<Conditions/>} />
 
+            <Route path ="/orders" element={<Orders />} />
+            <Route path="/orders/:currentId" element= {<OrderDetails />} />
             <Route path="/favorite" element={<FavoritePage />} />
+            <Route path='/cart/emptycart' element={<EmptyCart />} />
+         
+            {/* Protected Routes For Checkouts & Payments */}
+            <Route path="/checkout/shipping" 
+              element={
+               <Protected>
+                  <ShippingAddressForm />
+               </Protected>
+            } />
+
+            <Route path="/checkout/payments" 
+              element={
+               <Protected>
+                  <Payment />
+               </Protected>
+            } />
+            
+            <Route path='/checkout/placeorder' 
+              element={
+               <Protected>
+                  <OrderSummary />
+               </Protected>
+            } />
+
+            <Route path='/checkout/makepayment' 
+              element={
+               <Protected>
+                  <OrderPayDetails />
+               </Protected>
+            } />
+
+            <Route path='/checkout/confirmpay' 
+              element={
+               <Protected>
+                  <OrderPayConfirm />
+               </Protected>
+            } />
+
+
+
+
 
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />
+
+
+
+
          </Routes>
       </div>
    );
 }
+
+
+
 
 export default App;

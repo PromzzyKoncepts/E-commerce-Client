@@ -46,9 +46,9 @@ const handleShopNow = (product) => {
   const handlePrev = () => setCurrentPage((prev) => prev - 1);
   const handleNext = () => setCurrentPage((prev) => prev + 1);
   return (
-    <div className="mt-[7rem]">
+    <div className="">
       {isLoading ? (
-        <div className="p-8 w-10/12 mx-auto flex items-center justify-center h-[70vh]">
+        <div className="p-8 w-10/12 mx-auto flex items-center justify-center h-[70vh] ">
           <p className=" animate-spin h-5 w-5 border-2 border-zinc-800 border-x-transparent rounded-full p-4 "></p>
         </div>
       ) : (
@@ -77,12 +77,12 @@ const handleShopNow = (product) => {
                       <p className="font-semibold mt-6">{item.product.name}</p>
                       <FavoriteBorderIcon />
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between items-center">
                       <p className="font-semibold text-sm">
-                        &#8358;{item.product.price}
+                        &#8358;{Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(item.product.price)}
                       </p>
                       <button
-                        className="flex items-center  font-medium text-slate-900"
+                        className="  font-medium text-slate-900"
                         onClick={() => handleShopNow(item)}
                       >
                         <ShoppingBagIcon

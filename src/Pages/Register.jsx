@@ -72,16 +72,16 @@ const Register = () => {
     setPasswordError("");
 
     if (containsSpace(username) === true) {
-      setUsernameError("username must not contain spaces");
+      setUsernameError("username must not contain spaces");}
       if (password.length < 8) {
         setIsLoading(false);
-        setPasswordError("password should be atleast 8 characters");
+        setPasswordError("password should be atleast 8 characters");}
         if (password !== confirmPassword) {
           setIsLoading(false);
-          setPasswordError("passwords do not match");
-        }
-      }
-    } else {
+          setPasswordError("passwords do not match");}
+        
+      
+     else {
       try {
         setIsLoading(true);
         const res = await axios.post(`${baseUrl}/users/register`, body);
@@ -100,15 +100,17 @@ const Register = () => {
   };
 
   return (
-    <form  data-aos="fade-up" className="mt-[7rem] shadow-black" onSubmit={(e) => handleSubmit(e)}>
-      <h1  className="text-4xl text-amber-500">Create an Account</h1>
-      {errors && <h3>{errors}</h3>}
+    <div className="flex items-center justify-center pt-5">
+    <form data-aos="fade-up" className="max-w-lg w-full p-4 px-5 bg-white rounded shadow-xl"  onSubmit={(e) => handleSubmit(e)}>
+      <h1 className="text-3xl text-amber-500 mb-3 text-center pb-4">Create an Account</h1>
+      {passwordError && <small className="text-red-500">{passwordError}</small>}
       <TextField
         required
         id="outlined-basic"
         onChange={(e) => setFirstName(e.target.value)}
         label="Firstname"
         variant="outlined"
+        className="w-full mb-4 text-gray-700 rounded"
       />
       <br />
       <TextField
@@ -117,6 +119,7 @@ const Register = () => {
         onChange={(e) => setLastName(e.target.value)}
         label="Lastname"
         variant="outlined"
+        className="w-full mb-4 text-gray-700 rounded"
       />
       <br />
       <TextField
@@ -125,6 +128,7 @@ const Register = () => {
         onChange={(e) => setPhoneNumber(e.target.value)}
         label="Phonenumber"
         variant="outlined"
+        className="w-full mb-4 text-gray-700 rounded"
       />
       <br />
       <TextField
@@ -133,6 +137,7 @@ const Register = () => {
         onChange={handleEmailChange}
         label="Email"
         variant="outlined"
+        className="w-full mb-4 text-gray-700 rounded"
       />
       <br />
       <TextField
@@ -141,6 +146,7 @@ const Register = () => {
         onChange={(e) => setUsername(e.target.value)}
         label="Username"
         variant="outlined"
+        className="w-full mb-4 text-gray-700 rounded"
       />
       {userNameError && <small className="text-red-500">{userNameError}</small>}
       <br />
@@ -150,19 +156,8 @@ const Register = () => {
           id="outlined-adornment-password"
           type={showPassword ? "text" : "password"}
           onChange={(e) => setPassword(e.target.value)}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
           label="Password"
+          className="w-full mb-4 text-gray-700 rounded"
         />
       </FormControl>
       <br />
@@ -174,19 +169,8 @@ const Register = () => {
           id="outlined-adornment-password"
           type={showComfPassword ? "text" : "password"}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={() => setShowComfPassword((show) => !show)}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {showComfPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
           label="Confirm Password"
+          className="w-full mb-1 text-gray-700 rounded"
         />
       </FormControl>
       {/* <input
@@ -196,14 +180,15 @@ const Register = () => {
       /> */}
       {passwordError && <small className="text-red-500">{passwordError}</small>}
 
-      <button>{isLoading ? "Loading" : "Submit"}</button>
-      <p className="login-link py-2">
+      <button className="p-2 mt-4 w-full text-white bg-amber-500  text-lg from-neutral-900 tracking-wider hover:bg-amber-400 hover:text-white">{isLoading ? "Loading" : "Submit"}</button>
+      <p className="text-center py-2">
         Already have an account?{" "}
         <Link to="/login" className="text-amber-500">
           Sign in
         </Link>
       </p>
     </form>
+    </div>
   );
 };
 
