@@ -32,6 +32,7 @@ import OrderSummary from "./components/checkout/OrderSummary";
 import EmptyCart from "./components/checkout/EmptyCart";
 import OrderPayDetails from "./components/checkout/OrderPayDetails";
 import OrderPayConfirm from "./components/checkout/OrderPayConfirm.jsx";
+import FAQ from "./components/FAQ.jsx";
 import Conditions from "./components/Conditions.jsx"  
 import ProductDescription from "./components/ProductDescription";
 import Orders from "./Pages/Orders";
@@ -72,7 +73,7 @@ function App() {
             <Route path="/auth"  element={<AdminAuth/>}/>
             <Route path="/user/confirmation" element={<EmailConf />} />
             <Route path="/products/:id" element={<ProductDescription />} />
-
+            <Route path="/faqs" element ={<FAQ />} />
             <Route path="/condition" element={<Conditions/>} />
 
             <Route path ="/orders" element={<Orders />} />

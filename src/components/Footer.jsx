@@ -91,12 +91,9 @@ const Footer = () => {
               Chat With Us
             </a>
             <br></br>
-            <a
-              className="no-underline text-gray-400 hover:text-amber-500"
-              href="#"
-            >
-              Complaints & Reports
-            </a>
+            <NavLink
+            className="no-underline text-gray-400 hover:text-amber-500" to="/faqs"
+            >FAQs</NavLink>
             <br></br>
             <a
               className="no-underline text-gray-400 hover:text-amber-500"
