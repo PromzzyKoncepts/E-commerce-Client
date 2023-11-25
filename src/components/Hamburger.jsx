@@ -24,6 +24,8 @@ import PhoneIphone from "@mui/icons-material/PhoneIphone";
 import DevicesOther from "@mui/icons-material/DevicesOther";
 import People from "@mui/icons-material/People";
 import userContext from "../context/userContext";
+import { useSelector } from "react-redux";
+
 import { BiUser } from "react-icons/bi";
 
 const StyledMenu = styled.nav`
@@ -103,6 +105,7 @@ const StyledMenu = styled.nav`
 `;
 
 const Menu = ({ open, setOpen }) => {
+  const allCartItems = useSelector((state) => state.cart.items);
   const { authUser } = useContext(userContext);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropDown, setDropDown] = useState(false);

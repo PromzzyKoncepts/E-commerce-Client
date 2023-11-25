@@ -30,12 +30,19 @@ const Header = () => {
 
     const handleCategories = () => setIsCategories((prev) => !prev);
 
-    const [searchResults, setSearchResults] = useState([]);
-    const [showSearchResults, setShowSearchResults] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-    const [totalResults, setTotalResults] = useState(0);
-    const [query, setQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);
+  const [query, setQuery] = useState("");
+
+  const handleSellButtonClick = () => {
+
+    if (!authUser || !authUser.isVendor) {
+      navigate("/auth");
+    }
+  };
 
     const handleClearSearch = () => {
         setShowSearchResults(false);
@@ -279,7 +286,9 @@ const Header = () => {
 
                     <NavLink
                         className="bg-amber-500 px-3 py-1 rounded font-bold hover-bg-orange-500 no-underline text-white desktop"
-                        to="/dashboard"
+                        to="/auth"
+            onClick={handleSellButtonClick}
+
                     >
                         Sell
                     </NavLink>
