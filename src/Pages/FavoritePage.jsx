@@ -31,7 +31,32 @@ const FavoritePage = () => {
     }, []);
     console.log(productsToDisplay[0]);
 
-    
+    const removeFromFavorite = async (favoriteId) => {
+        const token = localStorage.getItem("authToken");
+
+        setFavoriteProducts((prevProducts) =>
+            prevProducts.filter((item) => item._id !== favoriteId)
+        );
+
+        try {
+            const res = await axios.delete(
+                `https://aphia-dev.onrender.com/api/favorites/${favoriteId}/remove`,
+
+                {
+                    headers: {
+                        authorization: token,
+                    },
+                }
+            );
+            console.log(res);
+            if (res.data.success === true) {
+                console.log("Removed from favorites");
+
+                // return productsToDisplay.filter((item)=>item._id !== favoriteId)
+            }
+        } catch (error) {}
+    };
+
     return (
         <div className="">
             <div className="w-10/12 mx-auto mt-4 bg-slate-200 pt-6 p-4 rounded-t-lg relative">
@@ -54,8 +79,9 @@ const FavoritePage = () => {
                             <div className="md:grid md:grid-cols-5 gap-[0.6rem]">
                                 {productsToDisplay?.map((item) => (
                                     <FavoriteProduct
+                                        removeFromFavorite={removeFromFavorite}
                                         productObject={item.product}
-                                        favoriteId = {item._id}
+                                        favoriteId={item._id}
                                         key={item._id}
                                     />
                                 ))}
@@ -77,7 +103,6 @@ const FavoritePage = () => {
                                 >
                                     {<ArrowForwardIosIcon />}
                                 </button>
-                                
                             </div>
                         </div>
                     )}
