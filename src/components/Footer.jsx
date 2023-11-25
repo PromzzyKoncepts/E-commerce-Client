@@ -56,7 +56,7 @@ const Footer = () => {
               className="no-underline text-gray-400 hover:text-amber-500"
               href="#"
             >
-              Terms & Agreement
+              Terms & Conditions
             </a>
           </div>
           <div>

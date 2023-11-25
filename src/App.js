@@ -33,6 +33,9 @@ import EmptyCart from "./components/checkout/EmptyCart";
 import OrderPayDetails from "./components/checkout/OrderPayDetails";
 import OrderPayConfirm from "./components/checkout/OrderPayConfirm.jsx";
 
+import ProductDescription from "./components/ProductDescription";
+import Orders from "./Pages/Orders";
+import OrderDetails from "./categories/OrderDetails.jsx";
 
 
 
@@ -68,6 +71,9 @@ function App() {
             <Route path="/verify" element={<EmailVerf />} />
             <Route path="/auth"  element={<AdminAuth/>}/>
             <Route path="/user/confirmation" element={<EmailConf />} />
+            <Route path="/products/:id" element={<ProductDescription />} />
+            <Route path ="/orders" element={<Orders />} />
+            <Route path="/orders/:currentId" element= {<OrderDetails />} />
 
             <Route path="/favorite" element={<FavoritePage />} />
             <Route path='/cart/emptycart' element={<EmptyCart />} />
@@ -108,6 +114,14 @@ function App() {
                </Protected>
             } />
 
+
+
+
+
+
+
+            
+
             {/* <Route path='/checkout/payconfirmed' 
               element={
                <Protected>
@@ -117,6 +131,10 @@ function App() {
 
             {/* 404 PAGE */}
             <Route path="*" element={<NotFound />} />
+
+
+
+
          </Routes>
       </div>
    );

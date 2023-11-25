@@ -45,11 +45,14 @@ const Login = () => {
         setIsLoading(false);
         setErrors("");
         navigate("/cart");
-      } else {
-        throw new Error("Authentication failed");
-      }
+      } else if (res.data.message === "Incorrect Credentials") {
+           setErrors("Incorrect Credentials");}
+
+           else if (res.data.message === "User is not registered"){
+            setErrors("User is not Registered ")
+           }
+
     } catch (error) {
-      setErrors("");
       setIsLoading(false);
       console.log(error);
     }
@@ -60,7 +63,9 @@ const Login = () => {
     <div className="flex items-center justify-center pt-5 p-[10px]">
     <form className="max-w-md w-full p-4 px-5 bg-white mb-4 rounded shadow-lg" data-aos="fade-up" onSubmit={(e) => handleSubmit(e)}>
       <h1 className="text-3xl text-amber-500 mb-3 text-center pb-4">Sign In </h1>
-      {errors && <p>{errors}</p>}
+      {errors && (
+  <p className="text-red-500 text-sm text-center mb-3">{errors}</p>
+)}
       <TextField
         required
         className="w-full mb-4 text-gray-700 rounded"
@@ -70,6 +75,8 @@ const Login = () => {
         variant="outlined"
       />
       <br />
+
+
 
       <FormControl sx={{ width: "100%" }} variant="outlined" required>
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
