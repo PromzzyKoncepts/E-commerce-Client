@@ -102,9 +102,10 @@ const LatestArrivalShortcut = () => {
                   />
                 </div>
 
-                <div className="flex items-center justify-between py-4">
+                <div className="flex items-end justify-between py-4 ">
+
+                  <div className="flex gap-3 flex-col items-end ">
                   <p className="font-semibold mt-6">{item.name}</p>
-                  <div className="flex gap-3">
                     <button className="  hover:text-red-500">
                       <FavoriteBorderIcon
                         onClick={() => addToFavorite(item._id)}
@@ -112,7 +113,7 @@ const LatestArrivalShortcut = () => {
                     </button>
                   </div>
 
-                  <div className="flex justify-between">
+                  <div className="flex justify-between flex-col items-end">
                     <p className="font-semibold text-sm">
                       &#8358;
                       {Intl.NumberFormat("en-US", {

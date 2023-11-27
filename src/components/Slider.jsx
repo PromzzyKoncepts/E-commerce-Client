@@ -53,7 +53,7 @@ const Slider = () => {
     const [hoveredIndex, setHoveredIndex] = useState(true);
 
     return (
-        <div className="md:flex flex-row-reverse w-10/12 mx-auto gap-3 m-3 md:w-full">
+        <div className="md:flex flex-row-reverse w-10/12 mx-auto gap-3 m-3 ">
             <div
                 className={`md:w-[70vw] md:h-[75vh]   ${
                     hoveredIndex ? "blacked" : ""
