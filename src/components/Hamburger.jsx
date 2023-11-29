@@ -216,21 +216,11 @@ const Menu = ({ open, setOpen }) => {
         </div>
         {dropDown && (
           <section className="bg-[#7c542f1c] mt-2 rounded flex flex-col pt-4 w-full">
-            <NavLink onClick={() => setOpen(false)} to="/fashion/male">
-              <People /> About Us
+            <NavLink onClick={() => setOpen(false)} to="/faqs">
+              <People /> FAQ
             </NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/fashion/female">
-              <DeliveryDining /> Delivery Stations
-            </NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/electronics">
-              <ArrowBack /> Return Policy
-            </NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/devices">
-              <Store />
-              Official Stores
-            </NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/others">
-              <ChatBubbleOutlineRounded /> Chat with us
+            <NavLink onClick={() => setOpen(false)} to="/condition">
+              <DeliveryDining /> T & C
             </NavLink>
           </section>
         )}

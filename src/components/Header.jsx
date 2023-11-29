@@ -105,7 +105,7 @@ const Header = () => {
 
     return (
         <div className="bg-slate-50 fixed w-full top-0  z-[10000000] py-[0.6rem]">
-            <header className=" text-gray-800 flex  justify-between md:justify-evenly  items-center  m-auto">
+            <header className=" text-gray-800 flex w-10/12 justify-between  items-center  m-auto">
                 <Link to="/">
                     <img
                         src={aphia}

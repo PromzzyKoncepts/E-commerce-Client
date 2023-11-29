@@ -7,7 +7,7 @@
 /* header styles */
 
 .search {
-  width: 100%;
+  width: 35vw;
   position: relative;
   display: flex;
 }
@@ -70,6 +70,10 @@ small {
 @media screen and (max-width: 768px) {
   .hamburger {
     display: flex;
+  }
+
+  .search {
+    width: 100%;
   }
 
   .desktop {
@@ -144,8 +148,8 @@ small {
   
 
 }
-
+/* 
 .saerchbar-main{
   width: 30vw;
-}
+} */
 
