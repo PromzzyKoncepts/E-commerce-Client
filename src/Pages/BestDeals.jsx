@@ -74,7 +74,7 @@ const handleShopNow = (product) => {
                   </div>
                   <div className="">
                     <div className="flex justify-between items-center gap-2 ">
-                      <p className="font-semibold mt-6">{item.product.name}</p>
+                      <p className="overflow-ellipsis overflow-hidden font-semibold mt-6">{item.product.name}</p>
                       <FavoriteBorderIcon />
                     </div>
                     <div className="flex justify-between items-center">
