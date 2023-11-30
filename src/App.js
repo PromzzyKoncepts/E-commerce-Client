@@ -35,6 +35,7 @@ import OrderPayConfirm from "./components/checkout/OrderPayConfirm.jsx";
 import FAQ from "./components/FAQ.jsx";
 import Conditions from "./components/Conditions.jsx"  
 import ProductDescription from "./components/ProductDescription";
+import ReviewForm from "./Pages/ReviewForm.jsx";
 import Orders from "./Pages/Orders";
 import OrderDetails from "./categories/OrderDetails.jsx";
 
@@ -73,9 +74,9 @@ function App() {
             <Route path="/auth"  element={<AdminAuth/>}/>
             <Route path="/user/confirmation" element={<EmailConf />} />
             <Route path="/products/:id" element={<ProductDescription />} />
+            <Route path="/review/:productid" element={<ReviewForm/>}/>
             <Route path="/faqs" element ={<FAQ />} />
             <Route path="/condition" element={<Conditions/>} />
-
             <Route path ="/orders" element={<Orders />} />
             <Route path="/orders/:currentId" element= {<OrderDetails />} />
             <Route path="/favorite" element={<FavoritePage />} />
