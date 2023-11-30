@@ -1,6 +1,6 @@
 import { useState } from "react";
 import logo from "../assets/aphialight.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const Footer = () => { 
   
@@ -39,69 +39,34 @@ const Footer = () => {
         <div className="flex flex-wrap gap-5">
           <div className="">
             <h3>About Aphia</h3>
-            <a
-              className="no-underline text-gray-400 hover:text-amber-500"
-              href="#"
-            >
-              About Us
-            </a>
-            <br></br>
-            <a
-              className="no-underline text-gray-400 hover:text-amber-500"
-              href="#"
-            >
-              Return Policy
-            </a>
-            <br></br>
+            
             <NavLink to='/condition' className="no-underline text-gray-400 hover:text-amber-500">
               Terms & Conditions
             </NavLink>
+            <br></br>
+          
             
           </div>
           <div>
             <h3>Explore</h3>
-            <a
+            <Link
               className="no-underline text-gray-400 hover:text-amber-500"
-              href="#"
+              to="/auth"
             >
               Sell On Aphia
-            </a>
+            </Link>
             <br></br>
-            <a
-              className="no-underline text-gray-400 hover:text-amber-500"
-              href="#"
-            >
-              Ads and Contents
-            </a>
-            <br></br>
-            <a
-              className="no-underline text-gray-400 hover:text-amber-500"
-              href="#"
-            >
-              Official Stores
-            </a>
-            <br></br>
+           
+            
           </div>
           <div>
             <h3>Quick Links</h3>
-            <a
-              className="no-underline text-gray-400 hover:text-amber-500"
-              href="#"
-            >
-              Chat With Us
-            </a>
-            <br></br>
+            
             <NavLink
             className="no-underline text-gray-400 hover:text-amber-500" to="/faqs"
             >FAQs</NavLink>
             <br></br>
-            <a
-              className="no-underline text-gray-400 hover:text-amber-500"
-              href="#"
-            >
-              Delivery Stations
-            </a>
-            <br></br>
+            
           </div>
         </div>
       </div>
