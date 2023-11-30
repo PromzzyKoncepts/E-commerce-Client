@@ -7,13 +7,13 @@
 /* header styles */
 
 .search {
-  width: 100%;
+  width: 35vw;
   position: relative;
   display: flex;
 }
 
 .searchTerm {
-  width: 30vw;
+  width: 100%;
   border: 2px solid #f59e0b;
   border-right: none;
   padding: 10px 20px;
@@ -59,8 +59,8 @@ small {
 }
 
 .image {
-  background-color: whitesmoke;
-  padding: 1rem;
+  /* background-color: whitesmoke; */
+  /* padding: 5rem; */
 }
 
 .hamburger {
@@ -69,7 +69,11 @@ small {
 
 @media screen and (max-width: 768px) {
   .hamburger {
-    display: block;
+    display: flex;
+  }
+
+  .search {
+    width: 100%;
   }
 
   .desktop {
@@ -113,3 +117,39 @@ small {
     display: none;
   }
 }
+
+@media screen and(min-width: 799px) {
+  .searchTerm {
+    width: 50rem;
+    display: none;
+    border: 2px solid #f59e0b;
+    border-right: none;
+    padding: 10px 20px;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+    color: #9dbfaf;
+  }
+    /* .searchbar-double{
+      background: #000;
+    flex: 1;
+    display: none;
+    width: 10vw;
+    justify-items: center;
+  } */
+}
+
+@media screen and (min-width: 0) and (max-width: 800px) {
+    .searchbar-main{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 700px) {
+  
+
+}
+/* 
+.saerchbar-main{
+  width: 30vw;
+} */
+

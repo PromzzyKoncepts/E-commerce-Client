@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Favorite from "@mui/icons-material/Favorite";
 
+
 const CategoriesCard = ({ apiLink, category }) => {
     const token = localStorage.getItem("authToken");
     const dispatch = useDispatch();
@@ -112,10 +113,11 @@ const CategoriesCard = ({ apiLink, category }) => {
                         />
                       </div>
                       <div className="flex items-center justify-between py-4">
-                        <div className="flex gap-3">
-                          <button className="  hover:text-red-500">
+                        <div className="flex gap-3 ">
+                          <button className="  hover:text-red-500 ">
                             <FavoriteBorderIcon
                               onClick={() => addToFavorite(product._id)}
+                              // style={{ color: addToFavorite(product._id) ? 'red' : 'inherit' }}
                             />
                           </button>
 
@@ -123,6 +125,7 @@ const CategoriesCard = ({ apiLink, category }) => {
                         <button
                           className="flex items-center text-xl font-medium text-slate-900"
                           onClick={() => handleShopNow(product)}
+                          
                         >
                           <ShoppingBag
                             className={`${

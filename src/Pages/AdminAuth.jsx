@@ -244,7 +244,7 @@ function AdminAuthForm() {
         
   <small className="text-bold p-3 m-2">if you are already a vendor</small>
   <small>
-    <a href="http://aphia-dashboard.vercel.app">click here</a>
+    <a href="http://aphia-vendor.vercel.app">click here</a>
   </small>
 </form>
 
