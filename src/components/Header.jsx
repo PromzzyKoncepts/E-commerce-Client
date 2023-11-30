@@ -284,15 +284,13 @@ const Header = () => {
                         <span className="">Cart</span>
                     </NavLink>
 
-                    <NavLink
-                        className="bg-amber-500 px-3 py-1 rounded font-bold hover-bg-orange-500 no-underline text-white desktop"
-                        to="/auth"
-            onClick={handleSellButtonClick}
-
-                    >
-                        Sell
-                    </NavLink>
-                </nav>
+          <NavLink
+            className="bg-amber-500 px-3 py-1 rounded font-bold hover-bg-orange-500 no-underline text-white desktop"
+            to="/sell"
+          >
+            Sell
+          </NavLink>
+        </nav>
 
                 <div className="hamburger md:py-3 pr-4 md:my-3 gap-5 justify-between items-center">
                     
