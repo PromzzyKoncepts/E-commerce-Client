@@ -103,7 +103,7 @@ function BestDealsShortcut() {
                         {data.map((item) => (
                             <div
                                 key={item.product._id}
-                                className="bg-white text-black pb-2 px-6 pt-6 rounded relative no-underline"
+                                className= "bg-white text-black pb-2 px-6 pt-6 md:w-full min-w-[18rem] md:min-w-full rounded relative no-underline"
                             >
                                 <div className="bg-white md:w-full md:min-w-full min-w-[30vw]">
                                     <small className="text-slate-100 bg-red-500 p-1 absolute top-0 left-0 rounded-tl-sm">
@@ -117,9 +117,9 @@ function BestDealsShortcut() {
                                 </div>
 
                                 <div className="">
-                                    <div className="flex justify-between items-center gap-2 ">
-                                        <p className="font-semibold mt-6">
-                                            {item.product.name}
+                                    <div className=" flex justify-between items-center gap-2 ">
+                                        <p className="font-semibold text-ellipsis  mt-6">
+                                            {item.product.name}...
                                         </p>
                                         <button className="  hover:text-red-500">
                                             <FavoriteBorderIcon
