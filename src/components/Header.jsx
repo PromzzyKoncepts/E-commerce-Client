@@ -271,7 +271,7 @@ const Header = () => {
 
           <NavLink
             className="bg-amber-500 px-3 py-1 rounded font-bold hover-bg-orange-500 no-underline text-white desktop"
-            to="/dashboard"
+            to="/sell"
           >
             Sell
           </NavLink>
