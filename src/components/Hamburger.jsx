@@ -24,6 +24,8 @@ import PhoneIphone from "@mui/icons-material/PhoneIphone";
 import DevicesOther from "@mui/icons-material/DevicesOther";
 import People from "@mui/icons-material/People";
 import userContext from "../context/userContext";
+import { useSelector } from "react-redux";
+
 import { BiUser } from "react-icons/bi";
 
 const StyledMenu = styled.nav`
@@ -103,6 +105,7 @@ const StyledMenu = styled.nav`
 `;
 
 const Menu = ({ open, setOpen }) => {
+  const allCartItems = useSelector((state) => state.cart.items);
   const { authUser } = useContext(userContext);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropDown, setDropDown] = useState(false);
@@ -213,21 +216,11 @@ const Menu = ({ open, setOpen }) => {
         </div>
         {dropDown && (
           <section className="bg-[#7c542f1c] mt-2 rounded flex flex-col pt-4 w-full">
-            <NavLink onClick={() => setOpen(false)} to="/fashion/male">
-              <People /> About Us
+            <NavLink onClick={() => setOpen(false)} to="/faqs">
+              <People /> FAQ
             </NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/fashion/female">
-              <DeliveryDining /> Delivery Stations
-            </NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/electronics">
-              <ArrowBack /> Return Policy
-            </NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/devices">
-              <Store />
-              Official Stores
-            </NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/others">
-              <ChatBubbleOutlineRounded /> Chat with us
+            <NavLink onClick={() => setOpen(false)} to="/condition">
+              <DeliveryDining /> T & C
             </NavLink>
           </section>
         )}
@@ -237,9 +230,7 @@ const Menu = ({ open, setOpen }) => {
 };
 
 const StyledBurger = styled.button`
-  // position: absolute;
-  // top: 3%;
-  // right: 2rem;
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -247,7 +238,7 @@ const StyledBurger = styled.button`
   height: 2rem;
   background: transparent;
   border: none;
-  // position: fixed;
+
   z-index: 3;
   cursor: pointer;
   color: white;

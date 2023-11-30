@@ -1,20 +1,20 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+// import { Link, NavLink } from "react-router-dom";
 import advert1 from "../assets/advert1.jpg";
-import advert2 from "../assets/shoes.jpg";
-import advert3 from "../assets/clothings.jpg";
+// import advert2 from "../assets/shoes.jpg";
+// import advert3 from "../assets/clothings.jpg";
 import Advert from "../reusables/Advert";
-import FemaleIcon from "@mui/icons-material/Female";
-import MaleIcon from "@mui/icons-material/Male";
-import EarbudsIcon from "@mui/icons-material/Earbuds";
-import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
-import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
-import MicrowaveIcon from "@mui/icons-material/Microwave";
-import IceSkatingIcon from "@mui/icons-material/IceSkating";
+// import FemaleIcon from "@mui/icons-material/Female";
+// import MaleIcon from "@mui/icons-material/Male";
+// import EarbudsIcon from "@mui/icons-material/Earbuds";
+// import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
+// import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
+// import MicrowaveIcon from "@mui/icons-material/Microwave";
+// import IceSkatingIcon from "@mui/icons-material/IceSkating";
 
-const Section = () => {
+const Section2 = () => {
   return (
-    <div className=" w-10/12 mx-auto mt-4 gap-4 desktop ">
+    <div className="md:grid md:grid-cols-6 w-10/12 mx-auto mt-4 gap-4 ">
       {/* <div
         data-aos="fade-right"
         className="rounded desktop item1 md:col-span-2 bg-slate-200"
@@ -81,19 +81,17 @@ const Section = () => {
         </div>
       </div> */}
 
-      <div data-aos="fade-down" className="item2 md:col-span-4 grid gap-3 ">
+      <div data-aos="fade-down" className="item2 md:col-span-6 grid gap-3 ">
         {/* first card */}
-        {/* <Advert className="h-20 rounded " pics={advert1} /> */}
+        <Advert className="h-20 rounded " pics={advert1} />
 
         {/* second and third card */}
-        <div data-aos="fade-up" className="grid grid-cols-3 gap-4">
-          <Advert className="item1 col-span-1" pics={advert2} />
-          <Advert className="item2 col-span-1" pics={advert3} />
-          <Advert className="item3 col-span-1" pics={advert3} />
+        {/* <div data-aos="fade-up" className="grid grid-cols-2 gap-4"> */}
+          {/* <Advert className="item1 col-span-1" pics={advert2} /> */}
+          {/* <Advert className="item2 col-span-1" pics={advert3} /> */}
         </div>
       </div>
-    </div>
   );
 };
 
-export default Section;
+export default Section2;

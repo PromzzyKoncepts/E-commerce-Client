@@ -6,12 +6,12 @@ const Advert = ({pics}) => {
     const [isHovered, setIsHovered] = useState(false);
   return (
     <div
-      className={`card relative`}
+      className={` relative`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className={`image h-80 rounded bg-no-repeat bg-cover bg-center ${
+        className={`w-full md:h-[25rem] h-[23vh]  rounded bg-no-repeat bg-cover md:bg-cover bg-center ${
           isHovered ? "hoveredd" : ""
         }`}
         style={{ backgroundImage: `url(${pics})` }}
