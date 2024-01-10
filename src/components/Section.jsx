@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import advert1 from "../assets/advert1.jpg";
 import advert2 from "../assets/shoes.jpg";
-import advert3 from "../assets/clothings.jpg";
+import advert3 from "../assets/clothes2.jpg";
 import Advert from "../reusables/Advert";
 import FemaleIcon from "@mui/icons-material/Female";
 import MaleIcon from "@mui/icons-material/Male";
