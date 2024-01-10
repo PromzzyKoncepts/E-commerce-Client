@@ -2,7 +2,8 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import advert1 from "../assets/advert1.jpg";
 import advert2 from "../assets/shoes.jpg";
-import advert3 from "../assets/clothes2.jpg";
+import advert3 from "../assets/clothings.jpg";
+import advert4 from "../assets/clothes2.jpg";
 import Advert from "../reusables/Advert";
 import FemaleIcon from "@mui/icons-material/Female";
 import MaleIcon from "@mui/icons-material/Male";
@@ -89,7 +90,7 @@ const Section = () => {
         <div data-aos="fade-up" className="grid grid-cols-3 gap-4">
           <Advert className="item1 col-span-1" pics={advert2} />
           <Advert className="item2 col-span-1" pics={advert3} />
-          <Advert className="item3 col-span-1" pics={advert3} />
+          <Advert className="item3 col-span-1" pics={advert4} />
         </div>
       </div>
     </div>
