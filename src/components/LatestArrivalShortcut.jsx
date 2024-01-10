@@ -89,37 +89,43 @@ const LatestArrivalShortcut = () => {
             {data.map((item) => (
               <div
                 key={item._id}
-                className="bg-white text-black pb-2 px-6 pt-6 rounded relative no-underline"
+                className="bg-white text-black pb-2 px-6 pt-6 md:w-full min-w-[18rem] md:min-w-full rounded relative no-underline"
               >
-                <div className="bg-white">
+                <div className=" flex justify-center items-center bg-white">
                   <small className="text-slate-100 bg-green-500 p-1 absolute top-0 left-0 rounded-tl-sm">
                     New
                   </small>
                   <img
+                    className=" bg-white md:w-full md:min-w-full min-w-[30vw] h-48 object-contain"
                     src={item.images[0]}
                     alt={item.name}
-                    className=" bg-white md:w-full md:min-w-full min-w-[30vw] h-48 object-contain"
                   />
                 </div>
 
                 <div className="flex items-end justify-between py-4 ">
 
                   <div className="flex gap-3 flex-col items-end ">
-                  <p className="font-semibold mt-6">{item.name}</p>
-                    <button className="  hover:text-red-500">
-                      <FavoriteBorderIcon
-                        onClick={() => addToFavorite(item._id)}
-                      />
-                    </button>
-                  </div>
-
-                  <div className="flex justify-between flex-col items-end">
-                    <p className="font-semibold text-sm">
+                  <p className="font-semibold mt-6 text-ellipsis">{item.name}...</p>
+                  <p className="font-semibold text-sm">
                       &#8358;
                       {Intl.NumberFormat("en-US", {
                         maximumFractionDigits: 0,
                       }).format(item.price)}
                     </p>
+                  </div>
+
+                  <div className="flex justify-between flex-col items-end">
+                    <button className="  hover:text-red-500">
+                      <FavoriteBorderIcon
+                        onClick={() => addToFavorite(item._id)}
+                      />
+                    </button>
+                    {<p className="font-semibold text-sm">
+                      &#8358;
+                      {Intl.NumberFormat("en-US", {
+                        maximumFractionDigits: 0,
+                      }).format(item.price)}
+                    </p> }
                     <button
                       className="flex items-center  font-medium text-slate-900"
                       onClick={() => handleShopNow(item)}

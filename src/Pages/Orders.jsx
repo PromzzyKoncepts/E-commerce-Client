@@ -191,13 +191,14 @@ function Orders() {
                             </ul>
                           ))}
                           {order.completed ? <span className="h-4 w-4 inline-block rounded-full" style={{ backgroundColor: 'green' }}></span>
-                            : <span className="h-4 w-4 inline-block rounded-full" style={{ backgroundColor: '#f59e0b' }}></span>
+                            : 
+                            <span className="h-4 w-4 inline-block rounded-full" style={{ backgroundColor: '#f59e0b' }}></span>
                           }
                       </div>
                       
                       <div className='flex justify-between items-center'>
-                        <p><span className='font-bold'>Total:</span>₦{order.amount}</p>
-                        <p><span className='font-bold'>Order ref:</span> {order.order_ref}</p>
+                        <p className = "font-semibold"><span className='font-bold'>Total:</span>₦{order.amount}</p>
+                        <p className = "font-semibold"><span className='font-bold'>Order ref:</span> {order.order_ref}</p>
                       </div>
                       
                     </div>

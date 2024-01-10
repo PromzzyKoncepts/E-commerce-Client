@@ -111,15 +111,15 @@ const ProductDescription = () => {
               </div>
             </section>
           </main>
-          <div className="reviews mt-4">
+          <div className="reviews mt-4 w-10/12 mx-auto mt-5">
             <h3 className="font-extrabold text-lg mb-2">Reviews</h3>
-            {reviews.length === 0 ? (
+            {reviews.length !== 0 ? (
 
             reviews?.map((review) => (
               <div key={review.id} className="review mb-4">
                 <div className="flex justify-between items-center mb-1">
-                  <div className="flex items-center">
-                    <p className="font-bold">{review.name}</p>
+                  <div className="flex-col items-center">
+                    <p className="font-bold">{review.by}</p>
                     <Rating
                       value={review.rating}
                       readOnly
@@ -128,7 +128,7 @@ const ProductDescription = () => {
                     />
                   </div>
                   <p className="text-gray-500">
-                    {formatDistanceToNow(new Date(review.time), {
+                    {formatDistanceToNow(new Date(review.edited), {
                       addSuffix: true,
                     })}
                   </p>

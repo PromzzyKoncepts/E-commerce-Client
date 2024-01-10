@@ -38,6 +38,7 @@ import ProductDescription from "./components/ProductDescription";
 import ReviewForm from "./Pages/ReviewForm.jsx";
 import Orders from "./Pages/Orders";
 import OrderDetails from "./categories/OrderDetails.jsx";
+import BenefitsPage from "./Pages/SellOnAphia.jsx";
 
 
 
@@ -79,6 +80,8 @@ function App() {
             <Route path="/condition" element={<Conditions/>} />
             <Route path ="/orders" element={<Orders />} />
             <Route path="/orders/:currentId" element= {<OrderDetails />} />
+            <Route path = "/sell" element = {<BenefitsPage />} />
+
             <Route path="/favorite" element={<FavoritePage />} />
             <Route path='/cart/emptycart' element={<EmptyCart />} />
          

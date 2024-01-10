@@ -51,7 +51,7 @@ const Footer = () => {
             <h3>Explore</h3>
             <Link
               className="no-underline text-gray-400 hover:text-amber-500"
-              to="/auth"
+              to="/sell"
             >
               Sell On Aphia
             </Link>
