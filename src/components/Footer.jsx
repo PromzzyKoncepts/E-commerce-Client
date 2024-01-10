@@ -21,7 +21,7 @@ const Footer = () => {
           </div>
           <div className="">
             <p>All Rights Reserved &copy; Aphia Stores Inc</p>
-            <p className="text-amber-500">
+            {/* <p className="text-amber-500">
               Designed and Built by
               <a
                 className="text-amber-500 no-underline"
@@ -32,7 +32,7 @@ const Footer = () => {
                 {" "}
                 Lm-Tech Students (Cohort 2)
               </a>
-            </p>            
+            </p>             */}
           </div>
         </div>
 
