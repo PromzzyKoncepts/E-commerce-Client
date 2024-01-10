@@ -50,21 +50,21 @@ const ProductDescription = () => {
   //   formattedDate = formatDistanceToNow(new Date(review.date), { addSuffix: true });
   // });
 
-  useEffect(() => {
-    setIsLoading(true);
+  // useEffect(() => {
+  //   setIsLoading(true);
 
-    // Fetch reviews data from API
-    axios
-      .get(`https://aphia-dev.onrender.com/api/reviews/${id}`)
-      .then((res) => {
-        console.log(res)
-        setIsLoading(false);
-        setReviews(res.data.message);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
+  //   // Fetch reviews data from API
+  //   axios
+  //     .get(`https://aphia-dev.onrender.com/api/reviews/${id}`)
+  //     .then((res) => {
+  //       console.log(res)
+  //       setIsLoading(false);
+  //       setReviews(res.data.message);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, [id]);
 
   return (
     <>
@@ -111,7 +111,7 @@ const ProductDescription = () => {
               </div>
             </section>
           </main>
-          <div className="reviews mt-4 w-10/12 mx-auto mt-5">
+          {/* <div className="reviews mt-4 w-10/12 mx-auto mt-5">
             <h3 className="font-extrabold text-lg mb-2">Reviews</h3>
             {reviews.length !== 0 ? (
 
@@ -137,7 +137,7 @@ const ProductDescription = () => {
               </div>
             ))
             ) : <p>No reviews yet!</p>}
-          </div>
+          </div> */}
         </div>
       )}
     </>
